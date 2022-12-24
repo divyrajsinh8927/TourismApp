@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="black_white">#FFFFFF</color>
+    <color name="white_black">#000000</color>
+    <color name="green_green">#81C784</color>
+    <color name="login_signup_background">#38393f</color>
+    <color name="white_lightblack">#373f43</color>
+    <color name="gray_formalgray">#97969a</color>
+    <color name="gray_anchorgrey">#596062</color>
+
+</resources>

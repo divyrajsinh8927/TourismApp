@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">TourismApp</string>
+
+    <string name="nav_open">Open</string>
+    <string name="nav_close">Close</string>
+    <string name="first">Import</string>
+    <string name="gallery">Gallery</string>
+    <string name="slideshow">Slideshow</string>
+    <string name="tools">Tools</string>
+    <string name="togglebutton_title">Only Toggle Theme would work</string>
+    <string name="share">Share</string>
+    <string name="about">About</string>
+    <string name="sign_up">New User? Sign up.</string>
+    <string name="signup">Sign-Up</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="username">Username</string>
+    <string name="log_in">LOG-IN</string>
+    <string name="login">LOGIN</string>
+    <string name="options">options</string>
+    <string name="your_profile_image">Your Profile Image</string>
+    <string name="register_form">Register Form</string>
+    <string name="mobile_number">Mobile Number</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="logout">Log-Out</string>
+    <string name="welcome_back">Welcome Back</string>
+    <string name="your_email">Your Email</string>
+    <string name="your_password">Your Password</string>
+    <string name="image">image</string>
+    <string name="please_log_into_your_existing_account">Please Log into your existing account</string>
+    <string name="please_register_your_account">Please Register your account</string>
+    <string name="profile">User Profile</string>
+</resources>
