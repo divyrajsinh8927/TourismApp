@@ -30,4 +30,6 @@
     <string name="please_log_into_your_existing_account">Please Log into your existing account</string>
     <string name="please_register_your_account">Please Register your account</string>
     <string name="profile">User Profile</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
