@@ -5,8 +5,6 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Looper
-import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import com.google.gson.Gson
@@ -63,6 +61,7 @@ class ProfileActivity : AppCompatActivity()
                 withContext(Dispatchers.Main){
                     lblName.text = name
                     lblEmail.text = email
+                    lblMobile.text = mobileNumber.toString()
                 }
             }
         }

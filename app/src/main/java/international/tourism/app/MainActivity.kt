@@ -1,13 +1,10 @@
 package international.tourism.app
 
-import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import android.view.View
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import international.tourism.app.models.Booking
 
 class MainActivity : AppCompatActivity() {
 

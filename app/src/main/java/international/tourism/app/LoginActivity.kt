@@ -54,7 +54,7 @@ class LoginActivity : AppCompatActivity()
             val email = txtEmail.text.toString()
             val password = txtPassword.text.toString()
             user = User(Email = email, PasswordHash = password)
-            loginDone(email!!)
+            loginDone(email)
         }
     }
 
