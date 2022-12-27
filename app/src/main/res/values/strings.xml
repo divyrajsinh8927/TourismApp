@@ -38,4 +38,8 @@
     <string name="bookings">Bookings</string>
     <string name="place">Place</string>
     <string name="hotel">Hotel</string>
+    <string name="your_old_password">Your Old Password</string>
+    <string name="your_new_password">Your New Passsword</string>
+    <string name="confirm_new_password">Confirm New Password</string>
+    <string name="change_password">Change Password</string>
 </resources>

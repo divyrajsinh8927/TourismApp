@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.constraintlayout.widget.ConstraintSet.Constraint
 import com.google.gson.Gson
 import international.tourism.app.models.User
 import international.tourism.app.repo.AuthService
@@ -22,6 +24,7 @@ class ProfileActivity : AppCompatActivity()
     private lateinit var btnBack: Button
     private lateinit var  authService: AuthService
     private lateinit var user: User
+    private lateinit var btnChangePassword : ConstraintLayout
 
 
     @SuppressLint("MissingInflatedId")
@@ -32,16 +35,13 @@ class ProfileActivity : AppCompatActivity()
         sharedPref = getSharedPreferences("tourism_pref", MODE_PRIVATE)
         val id = sharedPref.getString("id",null)
 
-        if(id == null)
-            sendToLogin()
-
         lblName = findViewById(R.id.lblName)
         lblMobile = findViewById(R.id.lblMobileNumber)
         lblEmail = findViewById(R.id.lblEmail)
         btnBack = findViewById(R.id.btnBack)
-        user = User(
-            Id = id!!.toInt()
-        )
+        user = User(Id = id!!.toInt())
+        btnChangePassword = findViewById(R.id.btnChangePassword)
+        btnChangePassword.setOnClickListener{startActivity(Intent(this,ChangePassword::class.java))}
         configureData()
     }
 
@@ -65,12 +65,5 @@ class ProfileActivity : AppCompatActivity()
                 }
             }
         }
-    }
-
-    private fun sendToLogin()
-    {
-        val intent = Intent(this,LoginActivity::class.java)
-        startActivity(intent)
-        finish()
     }
 }

@@ -12,7 +12,7 @@
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="86dp"
+        android:layout_marginTop="80sp"
         android:layout_gravity="center"
         android:src="@drawable/login_register_image"
         android:contentDescription="@string/image" />

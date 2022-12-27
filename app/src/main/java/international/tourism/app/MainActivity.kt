@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity()
         hotelFragment = HotelFragment()
         bookingFragment = BookingFragment()
 
-        bottomNavigationView.setItemSelected(R.id.btnHome, true)
+        bottomNavigationView.setItemSelected(R.id.bottomNavHomeBtn, true)
         showHomeFragment()
     }
 
@@ -87,10 +87,10 @@ class MainActivity : AppCompatActivity()
     {
         when (itemId)
         {
-            R.id.btnHome -> showHomeFragment()
-            R.id.btnPlace -> showPlaceFragment()
-            R.id.btnHotel -> showHotelFragment()
-            R.id.btnBookings -> showBookingFragment()
+            R.id.bottomNavHomeBtn -> showHomeFragment()
+            R.id.bottomNavPlaceBtn -> showPlaceFragment()
+            R.id.bottomNavHotelBtn -> showHotelFragment()
+            R.id.bottomNavBookingBtn -> showBookingFragment()
             else -> return false
         }
 

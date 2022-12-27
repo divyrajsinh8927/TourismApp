@@ -31,6 +31,8 @@ class LoginActivity : AppCompatActivity()
         setTheme(R.style.Theme_TourismApp)
         setContentView(R.layout.activity_login)
 
+        this.supportActionBar!!.hide()
+
         sharedPref = getSharedPreferences("tourism_pref", MODE_PRIVATE)
         val aEmail = sharedPref.getString("email",null)
         if(aEmail != null)

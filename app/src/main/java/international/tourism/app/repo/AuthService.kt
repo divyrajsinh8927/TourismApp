@@ -23,6 +23,11 @@ class AuthService
         return ApiRequest.post(ApiRequest.REGISTER_URL,Gson().toJson(user))
     }
 
+    fun changePassword(user: User): ApiResponse
+    {
+        return ApiRequest.put(ApiRequest.REGISTER_URL,Gson().toJson(user))
+    }
+
     fun country(country: Country): ApiResponse
     {
         return ApiRequest.get(ApiRequest.COUNTRY_URL)

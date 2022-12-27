@@ -3,25 +3,25 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/btnHome"
+        android:id="@+id/bottomNavHomeBtn"
         android:title="@string/home"
         android:icon="@drawable/ic_home"
         app:cnb_iconColor="@color/colorPrimary"/>
 
     <item
-        android:id="@+id/btnPlace"
+        android:id="@+id/bottomNavPlaceBtn"
         android:title="@string/places"
         android:icon="@drawable/ic_place"
         app:cnb_iconColor="@color/colorPrimary"/>
 
     <item
-        android:id="@+id/btnHotel"
+        android:id="@+id/bottomNavHotelBtn"
         android:title="@string/hotels"
         android:icon="@drawable/ic_hotel"
         app:cnb_iconColor="@color/colorPrimary"/>
 
     <item
-        android:id="@+id/btnBookings"
+        android:id="@+id/bottomNavBookingBtn"
         android:title="@string/bookings"
         android:icon="@drawable/ic_booking"
         app:cnb_iconColor="@color/colorPrimary"/>
