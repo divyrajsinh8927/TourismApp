@@ -36,4 +36,6 @@
     <string name="places">Places</string>
     <string name="hotels">Hotels</string>
     <string name="bookings">Bookings</string>
+    <string name="place">Place</string>
+    <string name="hotel">Hotel</string>
 </resources>

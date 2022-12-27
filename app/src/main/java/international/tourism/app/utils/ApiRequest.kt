@@ -11,7 +11,7 @@ class ApiRequest
     //mobile: 192.168.145.51
     companion object
     {
-        @JvmStatic val BASE_URL = "http://192.168.145.51/ATourism/api"
+        @JvmStatic val BASE_URL = "http://192.168.43.23/ATourism/api"
         @JvmStatic val LOGIN_URL = "$BASE_URL/login.php"
         @JvmStatic val REGISTER_URL = "$BASE_URL/user.php"
         @JvmStatic val COUNTRY_URL = "$BASE_URL/country.php"

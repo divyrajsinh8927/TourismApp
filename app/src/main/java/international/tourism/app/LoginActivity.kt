@@ -67,23 +67,45 @@ class LoginActivity : AppCompatActivity()
             val response = authService.login(user)
             if (response.code == HTTP_OK)
             {
-                 user = Gson().fromJson(response.message, User::class.java)
+                user = Gson().fromJson(response.message, User::class.java)
                 val id = user.Id
-                withContext(Dispatchers.Main) {
-                        val editor = sharedPref.edit()
+                val userIsDelete = user.UserIsDelete
+                val status = user.Status
+                if (userIsDelete != 1)
+                {
+                    if (status == 1)
+                    {
+                        withContext(Dispatchers.Main) {
+                            val editor = sharedPref.edit()
 
-                        editor.putString("email",email)
-                        editor.putString("id", id.toString())
-                        editor.apply()
-                        sendToHome()
+                            editor.putString("email", email)
+                            editor.putString("id", id.toString())
+                            editor.apply()
+                            sendToHome()
+                        }
+                    }
+                    else
+                    {
+                        Looper.prepare()
+                        Toast.makeText(this@LoginActivity, "User Is Deactivated!", Toast.LENGTH_LONG)
+                            .show()
+                        Looper.loop()
+                    }
+                }else
+                {
+                    Looper.prepare()
+                    Toast.makeText(this@LoginActivity, "User Is Deleted!", Toast.LENGTH_LONG)
+                        .show()
+                    Looper.loop()
                 }
             } else if (response.code == HTTP_NOT_FOUND)
             {
-                    Looper.prepare()
-                    Toast.makeText(this@LoginActivity, "Wrong email or password", Toast.LENGTH_LONG)
-                        .show()
-                    Looper.loop()
+                Looper.prepare()
+                Toast.makeText(this@LoginActivity, "Wrong email or password", Toast.LENGTH_LONG)
+                    .show()
+                Looper.loop()
             }
+
         }
 
     }
