@@ -16,16 +16,11 @@
         tools:ignore="NotSibling,UnknownIdInLayout"
         tools:layout="@layout/fragment_home" />
 
-    <com.ismaeldivita.chipnavigation.ChipNavigationBar
+    <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavBar"
         android:layout_width="match_parent"
-        android:layout_height="60sp"
-        app:cnb_iconSize="40sp"
-        android:layout_gravity="bottom"
-        android:background="@color/white_black"
-        android:elevation="10sp"
-        android:outlineSpotShadowColor="@color/aliceblue"
-        android:layout_alignParentBottom="true"
-        app:cnb_menuResource="@menu/bottom_nav_menu" />
+        android:layout_height="wrap_content"
+        app:menu="@menu/bottom_nav_menu"
+        android:layout_alignParentBottom="true" />
 
 </RelativeLayout>

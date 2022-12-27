@@ -6,7 +6,6 @@ import okhttp3.RequestBody.Companion.toRequestBody
 
 class ApiRequest
 {
-
     //home : 192.168.0.102
     //mobile: 192.168.145.51
     companion object

@@ -15,7 +15,7 @@ import international.tourism.app.repo.AuthService
 import kotlinx.coroutines.*
 import java.net.HttpURLConnection
 
-class ProfileActivity : AppCompatActivity()
+class   ProfileActivity : AppCompatActivity()
 {
     private lateinit var sharedPref: SharedPreferences
     private lateinit var lblName: TextView
@@ -25,8 +25,7 @@ class ProfileActivity : AppCompatActivity()
     private lateinit var  authService: AuthService
     private lateinit var user: User
     private lateinit var btnChangePassword : ConstraintLayout
-
-
+    
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?)
     {

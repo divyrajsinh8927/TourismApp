@@ -5,24 +5,20 @@
     <item
         android:id="@+id/bottomNavHomeBtn"
         android:title="@string/home"
-        android:icon="@drawable/ic_home"
-        app:cnb_iconColor="@color/colorPrimary"/>
+        android:icon="@drawable/ic_home" />
 
     <item
         android:id="@+id/bottomNavPlaceBtn"
         android:title="@string/places"
-        android:icon="@drawable/ic_place"
-        app:cnb_iconColor="@color/colorPrimary"/>
+        android:icon="@drawable/ic_place" />
 
     <item
         android:id="@+id/bottomNavHotelBtn"
         android:title="@string/hotels"
-        android:icon="@drawable/ic_hotel"
-        app:cnb_iconColor="@color/colorPrimary"/>
+        android:icon="@drawable/ic_hotel" />
 
     <item
         android:id="@+id/bottomNavBookingBtn"
         android:title="@string/bookings"
-        android:icon="@drawable/ic_booking"
-        app:cnb_iconColor="@color/colorPrimary"/>
+        android:icon="@drawable/ic_booking" />
 </menu>
