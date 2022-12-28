@@ -14,7 +14,7 @@
     <color name="white_black">#FFFFFFFF</color>
     <color name="green_green">#303F9F</color>
     <color name="login_signup_background">#fdfff5</color>
-    <color name="white_lightblack">#FFFFFFFF</color>
+    <color name="white_lightBlack">#FFFFFFFF</color>
     <color name="gray_formalgray">#f3f9e9</color>
     <color name="gray_anchorgrey">#FFFFFFFF</color>
 
