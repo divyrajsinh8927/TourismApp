@@ -8,6 +8,7 @@ import android.os.Looper
 import android.text.method.LinkMovementMethod
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import com.google.gson.Gson
@@ -42,6 +43,9 @@ class LoginActivity : AppCompatActivity()
         val txtPassword = findViewById<EditText>(R.id.txtPassword)
         val btnLogin = findViewById<Button>(R.id.btnlogin)
         val signUp = findViewById<TextView>(R.id.newUser)
+        val btnClose = findViewById<ImageView>(R.id.btnClose)
+
+        btnClose.setOnClickListener{startActivity(Intent(this,MainActivity::class.java))}
 
 
 

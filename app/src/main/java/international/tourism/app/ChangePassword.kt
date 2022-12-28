@@ -25,7 +25,7 @@ class ChangePassword : AppCompatActivity()
     private lateinit var txtEmail: EditText
     private lateinit var txtPassword: EditText
     private lateinit var txtNewPassword: EditText
-    private lateinit var txtNewConfirmPassword: EditText
+    private lateinit var txtConfirmPassword: EditText
     private lateinit var btnConfirm: Button
 
     @SuppressLint("MissingInflatedId")
@@ -35,13 +35,16 @@ class ChangePassword : AppCompatActivity()
         setContentView(R.layout.activity_change_password)
 
         sharedPref = getSharedPreferences("tourism_pref", MODE_PRIVATE)
-        val sharedPrefEmail = sharedPref.getString("email",null)
+        var sharedPrefEmail = sharedPref.getString("email",null)
         val sharedPrefId = sharedPref.getString("id",null)!!.toInt()
+
+//        if(sharedPrefEmail == null)
+//            startActivity(Intent(this,LoginActivity::class.java))
 
         txtEmail = findViewById(R.id.txtEmail)
         txtPassword = findViewById(R.id.txtOldPassword)
         txtNewPassword = findViewById(R.id.txtNewPassword)
-        txtNewConfirmPassword = findViewById(R.id.txtConfirmPassword)
+        txtConfirmPassword = findViewById(R.id.txtNewConfirmPassword)
         btnConfirm = findViewById(R.id.btnConfirm)
 
         txtEmail.setText(sharedPrefEmail)
@@ -52,7 +55,7 @@ class ChangePassword : AppCompatActivity()
             val email = txtEmail.text.toString()
             val password = txtPassword.text.toString()
             val newPassword = txtNewPassword.text.toString()
-            val newConfirmPassword= txtNewConfirmPassword.text.toString()
+            val newConfirmPassword= txtConfirmPassword.text.toString()
 
             user = User(Id = sharedPrefId,Email = email, PasswordHash = password)
             confirmData(newPassword,newConfirmPassword)
@@ -70,6 +73,12 @@ class ChangePassword : AppCompatActivity()
                 {
                    setNewPassword(newPassword)
                 }
+                else
+                {
+                    Looper.prepare()
+                    Toast.makeText(this@ChangePassword,"Password Doesn't Match",Toast.LENGTH_LONG).show()
+                    Looper.loop()
+                }
             }
             else if (response.code == HttpURLConnection.HTTP_NOT_FOUND)
             {
@@ -83,17 +92,27 @@ class ChangePassword : AppCompatActivity()
 
     private fun setNewPassword(newPassword: String)
     {
-        user = User(PasswordHash = newPassword)
+        val sharedPrefId = sharedPref.getString("id",null)!!.toInt()
+        user = User(Id = sharedPrefId ,PasswordHash = newPassword)
         val updateResponse = authService.changePassword(user)
         if (updateResponse.code == HttpURLConnection.HTTP_OK)
         {
-            Toast.makeText(this,"Password Is Changed",Toast.LENGTH_LONG).show()
+            Looper.prepare()
+            Toast.makeText(this@ChangePassword,"Password Is Changed",Toast.LENGTH_LONG).show()
+            val spEditor = sharedPref.edit()
+            spEditor.remove("id")
+            spEditor.remove("email")
+            spEditor.apply()
             startActivity(Intent(this,LoginActivity::class.java))
+            finish()
+            Looper.loop()
+
         }
         else
         {
-            Toast.makeText(this, "Password Is Not Updated", Toast.LENGTH_LONG)
-                .show()
+            Looper.prepare()
+            Toast.makeText(this@ChangePassword, "Password Is Not Updated", Toast.LENGTH_LONG).show()
+            Looper.loop()
         }
     }
 }

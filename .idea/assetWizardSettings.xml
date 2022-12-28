@@ -18,7 +18,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:/$PROJECT_DIR$/../../Android/sdk/icons/material/materialicons/content_paste/baseline_content_paste_24.xml" />
+                                      <entry key="url" value="file:/$PROJECT_DIR$/../../Android/sdk/icons/material/materialicons/close/baseline_close_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -28,8 +28,7 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="3756d7" />
-                            <entry key="outputName" value="ic_booking" />
+                            <entry key="outputName" value="ic_close" />
                             <entry key="sourceFile" value="C:\androidproject\TourismApp" />
                           </map>
                         </option>

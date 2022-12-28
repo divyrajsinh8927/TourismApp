@@ -20,7 +20,7 @@
         android:id="@+id/bottomNavBar"
         android:layout_width="match_parent"
         android:layout_height="60sp"
-        app:cnb_iconSize="40sp"
+        app:cnb_iconSize="30sp"
         android:layout_gravity="bottom"
         android:background="@color/white_black"
         android:elevation="10sp"

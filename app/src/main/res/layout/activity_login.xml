@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas..com/tools"
     xmlns:tools2="http://schemas.android.com/tools"
@@ -8,11 +8,24 @@
     android:background="@color/login_signup_background"
     android:orientation="vertical">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/btnClose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_close"
+        android:layout_gravity="end"
+        android:layout_margin="10sp"/>
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80sp"
+        android:layout_marginTop="60sp"
         android:layout_gravity="center"
         android:src="@drawable/login_register_image"
         android:contentDescription="@string/image" />
@@ -101,4 +114,5 @@
         android:textStyle="bold"
         tools2:ignore="TouchTargetSizeCheck" />
     </LinearLayout>
+    </ScrollView>
 

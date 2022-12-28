@@ -42,4 +42,13 @@
     <string name="your_new_password">Your New Passsword</string>
     <string name="confirm_new_password">Confirm New Password</string>
     <string name="change_password">Change Password</string>
+    <string name="userimage">UserImage</string>
+    <string name="background_image">background Image</string>
+    <string name="change">Change</string>
+    <string name="history">History</string>
+    <string name="close">Close</string>
+    <string name="profilelogo">profileLogo</string>
+    <string name="booking">Booking</string>
+    <string name="logo">logo</string>
+    <string name="historylogo">historylogo</string>
 </resources>
