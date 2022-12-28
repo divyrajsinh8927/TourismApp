@@ -26,15 +26,14 @@ class ProfileActivity : AppCompatActivity()
     private lateinit var user: User
     private lateinit var btnChangePassword : ConstraintLayout
 
+
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
-        supportActionBar!!.hide()
         sharedPref = getSharedPreferences("tourism_pref", MODE_PRIVATE)
-        var id = sharedPref.getString("id",null)
-
+        val id = sharedPref.getString("id",null)
 
         lblName = findViewById(R.id.lblName)
         lblMobile = findViewById(R.id.lblMobileNumber)
@@ -44,19 +43,6 @@ class ProfileActivity : AppCompatActivity()
         btnChangePassword = findViewById(R.id.btnChangePassword)
         btnChangePassword.setOnClickListener{startActivity(Intent(this,ChangePassword::class.java))}
         configureData()
-
-         findViewById<Button>(R.id.btnBack).setOnClickListener {
-            startActivity(Intent(this,MainActivity::class.java))
-        }
-    }
-
-    public override fun onResume()
-    {
-        super.onResume()
-        sharedPref = getSharedPreferences("tourism_pref", MODE_PRIVATE)
-        var id = sharedPref.getString("id",null)
-        if (id == null)
-            startActivity(Intent(this,LoginActivity::class.java))
     }
 
     private fun configureData()
