@@ -24,7 +24,6 @@
         android:layout_gravity="bottom"
         android:background="@color/white_black"
         android:elevation="10sp"
-        android:outlineSpotShadowColor="@color/aliceblue"
         android:layout_alignParentBottom="true"
         app:cnb_menuResource="@menu/bottom_nav_menu" />
 

@@ -35,13 +35,14 @@ class ChangePassword : AppCompatActivity()
         setContentView(R.layout.activity_change_password)
 
         sharedPref = getSharedPreferences("tourism_pref", MODE_PRIVATE)
-        var sharedPrefEmail = sharedPref.getString("email",null)
+        val sharedPrefEmail = sharedPref.getString("email",null)
         val sharedPrefId = sharedPref.getString("id",null)!!.toInt()
 
 //        if(sharedPrefEmail == null)
 //            startActivity(Intent(this,LoginActivity::class.java))
 
         txtEmail = findViewById(R.id.txtEmail)
+        txtEmail.isEnabled = false
         txtPassword = findViewById(R.id.txtOldPassword)
         txtNewPassword = findViewById(R.id.txtNewPassword)
         txtConfirmPassword = findViewById(R.id.txtNewConfirmPassword)

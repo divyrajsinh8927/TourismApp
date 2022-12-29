@@ -13,4 +13,12 @@
     <style name="actionbar">
         <item name="color" tools:targetApi="33">@android:color/system_accent1_400</item>
     </style>
+
+    <style name="groupStylegray_200cornerRadius"></style>
+
+    <style name="txtSofiaProbold13"></style>
+
+    <style name="groupStyleamber_A400cornerRadius"></style>
+
+    <style name="txtOverpassbold16_1"></style>
 </resources>

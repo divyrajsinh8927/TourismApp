@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:textSize="18sp"
-            android:textStyle="bold"
+            android:fontFamily="@font/raleway_extrabolditalic"
             app:layout_constraintEnd_toEndOf="@+id/Profile"
             app:layout_constraintStart_toStartOf="@+id/Profile"
             app:layout_constraintTop_toBottomOf="@+id/Profile"
@@ -123,7 +123,7 @@
                         android:textColor="@color/black_white"
                         android:text="@string/change"
                         android:textSize="15sp"
-                        android:textStyle="bold"
+                        android:fontFamily="@font/raleway_extrabolditalic"
                         app:layout_constraintEnd_toEndOf="@+id/constraintLayout1"
                         app:layout_constraintStart_toStartOf="@+id/constraintLayout1"
                         app:layout_constraintTop_toBottomOf="@+id/constraintLayout1" />
@@ -136,7 +136,7 @@
                         android:textColor="@color/black_white"
                         android:text="@string/password"
                         android:textSize="15sp"
-                        android:textStyle="bold"
+                        android:fontFamily="@font/raleway_extrabolditalic"
                         app:layout_constraintEnd_toEndOf="@+id/constraintLayout1"
                         app:layout_constraintStart_toStartOf="@+id/constraintLayout1"
                         app:layout_constraintTop_toBottomOf="@+id/constraintLayout1" />
@@ -180,8 +180,7 @@
                         android:text="@string/change"
                         android:textSize="14sp"
                         android:textColor="@color/black_white"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="@+id/constraintLayout2"
+                        android:fontFamily="@font/raleway_extrabolditalic"                        app:layout_constraintEnd_toEndOf="@+id/constraintLayout2"
                         app:layout_constraintStart_toStartOf="@+id/constraintLayout2"
                         app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
 
@@ -192,8 +191,7 @@
                         android:textColor="@color/black_white"
                         android:text="@string/profile"
                         android:textSize="13sp"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="@+id/constraintLayout2"
+                        android:fontFamily="@font/raleway_extrabolditalic"                        app:layout_constraintEnd_toEndOf="@+id/constraintLayout2"
                         app:layout_constraintStart_toStartOf="@+id/constraintLayout2"
                         app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
 
@@ -238,8 +236,7 @@
                         android:text="@string/booking"
                         android:textColor="@color/black_white"
                         android:textSize="15sp"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="@+id/constraintLayout3"
+                        android:fontFamily="@font/raleway_extrabolditalic"                        app:layout_constraintEnd_toEndOf="@+id/constraintLayout3"
                         app:layout_constraintStart_toStartOf="@+id/constraintLayout3"
                         app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
 
@@ -250,8 +247,7 @@
                         android:textColor="@color/black_white"
                         android:text="@string/history"
                         android:textSize="15sp"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="@+id/constraintLayout3"
+                        android:fontFamily="@font/raleway_extrabolditalic"                        app:layout_constraintEnd_toEndOf="@+id/constraintLayout3"
                         app:layout_constraintStart_toStartOf="@+id/constraintLayout3"
                         app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
 
@@ -281,6 +277,7 @@
                         android:layout_weight="1"
                         android:text="@string/mobile_number"
                         android:textColor="#1325BA"
+                        android:fontFamily="@font/raleway_extrabolditalic"
                         android:textSize="18sp" />
 
                     <TextView
@@ -289,6 +286,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/black_white"
                         android:layout_weight="1"
+                        android:fontFamily="@font/raleway_extrabolditalic"
                         tools:text="102121212"
                         android:textAlignment="viewEnd"
                         android:textSize="15sp" />
@@ -307,6 +305,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/email"
+                        android:fontFamily="@font/raleway_extrabolditalic"
                         android:textColor="#1325BA"
                         android:textSize="18sp" />
 
@@ -317,6 +316,7 @@
                         android:layout_weight="1"
                         tools:text="Divyrajvala8917@gmail.com"
                         android:textAlignment="viewEnd"
+                        android:fontFamily="@font/raleway_extrabolditalic"
                         android:textColor="@color/black_white"
                         android:textSize="15sp" />
                 </LinearLayout>
@@ -333,8 +333,8 @@
         android:background="@drawable/profileactivity_background_button"
         android:text="@string/close"
         android:textColor="@color/white"
-        android:textSize="18sp"
-        android:textStyle="bold"
+        android:textSize="25sp"
+        android:fontFamily="@font/raleway_extrabolditalic"
         app:layout_constraintTop_toBottomOf="@+id/cardview" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

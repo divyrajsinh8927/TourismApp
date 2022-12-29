@@ -10,7 +10,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
     <ImageView
@@ -19,7 +19,8 @@
         android:layout_height="wrap_content"
         android:src="@drawable/ic_close"
         android:layout_gravity="end"
-        android:layout_margin="10sp"/>
+        android:layout_margin="10sp"
+        android:contentDescription="@string/loginimage" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -40,7 +41,7 @@
         android:layout_marginTop="50sp"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:fontFamily="@font/ralewabold" />
+        android:fontFamily="@font/raleway_extrabolditalic" />
 
     <TextView
         android:id="@+id/lblaccount"
@@ -51,7 +52,7 @@
         android:text="@string/please_log_into_your_existing_account"
         android:layout_marginTop="20sp"
         android:textSize="16sp"
-        android:fontFamily="@font/ralewabold" />
+        android:fontFamily="@font/raleway_extrabolditalic" />
 
     <EditText
         android:id="@+id/txtEmail"
@@ -59,11 +60,12 @@
         android:layout_height="60sp"
         android:layout_marginStart="20sp"
         android:layout_marginEnd="20sp"
+        android:fontFamily="@font/raleway_extrabolditalic"
         android:layout_marginTop="25sp"
         android:background="@drawable/login_signup_editext"
         android:hint="@string/your_email"
-        android:textStyle="bold"
         android:padding="10sp"
+        android:gravity="center"
         android:importantForAutofill="no"
         android:inputType="textEmailAddress" />
 
@@ -79,25 +81,28 @@
             android:background="@drawable/login_signup_editext"
             android:hint="@string/your_password"
             android:inputType="textPassword"
+            android:fontFamily="@font/raleway_extrabolditalic"
+            android:gravity="center"
             android:padding="10sp"
             tools:ignore="TextFields" />
 
         <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnlogin"
-        android:layout_width="match_parent"
-        android:layout_height="60sp"
-        android:layout_marginStart="20sp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20sp"
-        android:background="@drawable/login_signup_button"
-        android:elevation="10sp"
-        android:text="@string/log_in"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/txtPassword"
-        tools2:ignore="TextContrastCheck" />
+            android:id="@+id/btnlogin"
+            android:layout_width="match_parent"
+            android:layout_height="60sp"
+            android:layout_marginStart="20sp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20sp"
+            android:background="@drawable/login_signup_button"
+            android:elevation="10sp"
+            android:text="@string/log_in"
+            android:fontFamily="@font/raleway_extrabolditalic"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/txtPassword"
+            tools2:ignore="TextContrastCheck" />
 
     <TextView
         android:id="@+id/newUser"
@@ -109,6 +114,7 @@
         android:clickable="true"
         android:focusable="true"
         android:minHeight="48dp"
+        android:fontFamily="@font/raleway_extrabolditalic"
         android:text="@string/sign_up"
         android:textSize="20sp"
         android:textStyle="bold"
