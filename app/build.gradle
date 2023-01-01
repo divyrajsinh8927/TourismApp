@@ -45,5 +45,6 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1'
     implementation 'com.google.code.gson:gson:2.10'
     implementation 'com.github.ismaeldivita:chip-navigation-bar:1.4.0'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.7.20'
 
 }
