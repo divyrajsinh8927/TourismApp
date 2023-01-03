@@ -1,7 +1,7 @@
 package international.tourism.app
 
-import Adapter.recHotelAdapter
-import Adapter.recPlaceAdapter
+import international.tourism.app.Adapter.recHotelAdapter
+import international.tourism.app.Adapter.recPlaceAdapter
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater

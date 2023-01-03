@@ -1,4 +1,4 @@
-package Adapter
+package international.tourism.app.Adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -8,14 +8,15 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import international.tourism.app.R
-import international.tourism.app.models.recPlacemodel
-import java.util.ArrayList
+import international.tourism.app.models.recHotelmodel
+import kotlin.collections.ArrayList
 
-  class recPlaceAdapter(
+class recHotelAdapter(
     private var mycontext: Context,
-    private var model: ArrayList<recPlacemodel>
-) : RecyclerView.Adapter<recPlaceAdapter.ViewHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+    private var model: ArrayList<recHotelmodel>
+) : RecyclerView.Adapter<recHotelAdapter.ViewHolder>() {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder
+    {
         val myview =
             LayoutInflater.from(mycontext).inflate(R.layout.card_view_design, null, true)
         return ViewHolder(myview)
