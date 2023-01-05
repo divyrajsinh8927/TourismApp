@@ -5,8 +5,8 @@
     <color name="white_black">#000000</color>
     <color name="green_green">#81C784</color>
     <color name="login_signup_background">#38393f</color>
-    <color name="white_lightblack">#373f43</color>
     <color name="gray_formalgray">#97969a</color>
     <color name="gray_anchorgrey">#596062</color>
+    <color name="about_heading">#0D7EE3</color>
 
 </resources>
