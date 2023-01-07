@@ -5,7 +5,6 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.ismaeldivita.chipnavigation.ChipNavigationBar
 
@@ -64,7 +63,7 @@ class MainActivity : AppCompatActivity()
         when (item.itemId)
         {
             R.id.menuProfile -> startActivity(Intent(this, ProfileActivity::class.java))
-            R.id.menuAbout -> Toast.makeText(this, "Shows image icon", Toast.LENGTH_SHORT).show()
+            R.id.menuAbout -> startActivity(Intent(this,AboutUsActivity::class.java))
             R.id.menuLogin -> startActivity(Intent(this, LoginActivity::class.java))
             R.id.menuLogout ->
             {

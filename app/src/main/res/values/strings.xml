@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">TourismApp</string>
 
     <string name="nav_open">Open</string>
@@ -63,6 +63,7 @@
     <string name="our_service">OUR SERVICE</string>
     <string name="about_Us_Discription1">We Are provide Service 24/7 and different Type of Things Link :</string>
     <string name="our_team">OUR TEAM</string>
-    <string name="about_Us_Description_3">our tourism business is a Top 5 in All india and achive NATIONAL TOURISM AWARDS 2009-10. we are provide booking hotel in india and show different typs of package in all of the world.</string>
+    <string name="about_Us_Description_3" tools:ignore="TypographyDashes">our tourism business is a Top 5 in All india and achieve NATIONAL TOURISM AWARDS 2009-10. we are provide booking hotel in india and show different typs of package in all of the world.</string>
     <string name="aboutuspng3">aboutUsPng3</string>
+    <string name="top_hotels">Top Hotels</string>
 </resources>

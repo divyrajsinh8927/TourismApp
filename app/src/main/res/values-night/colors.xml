@@ -8,5 +8,6 @@
     <color name="gray_formalgray">#97969a</color>
     <color name="gray_anchorgrey">#596062</color>
     <color name="about_heading">#0D7EE3</color>
+    <color name="bottom_Nav_Background">#B4B4B4</color>
 
 </resources>

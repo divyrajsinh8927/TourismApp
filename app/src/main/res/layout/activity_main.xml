@@ -6,7 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/login_signup_background"
+    >
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainer"
@@ -22,7 +24,7 @@
         android:layout_height="60sp"
         app:cnb_iconSize="40sp"
         android:layout_gravity="bottom"
-        android:background="@color/white_black"
+        android:background="@color/bottom_Nav_Background"
         android:elevation="10sp"
         android:layout_alignParentBottom="true"
         app:cnb_menuResource="@menu/bottom_nav_menu" />

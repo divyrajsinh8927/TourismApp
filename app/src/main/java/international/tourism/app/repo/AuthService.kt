@@ -9,8 +9,7 @@ class AuthService
 {
     fun login(user: User): ApiResponse
     {
-        val user = Gson().toJson(user)
-        return ApiRequest.post(ApiRequest.LOGIN_URL, user)
+        return ApiRequest.post(ApiRequest.LOGIN_URL,Gson().toJson(user))
     }
 
     fun register(user: User): ApiResponse
@@ -28,17 +27,22 @@ class AuthService
         return ApiRequest.put(ApiRequest.REGISTER_URL,Gson().toJson(user))
     }
 
+    fun getPlaceImage(placeImage: PlaceImage): ApiResponse
+    {
+        return ApiRequest.post(ApiRequest.PLACE_IMAGE,Gson().toJson(placeImage))
+    }
+
     fun country(country: Country): ApiResponse
     {
         return ApiRequest.get(ApiRequest.COUNTRY_URL)
     }
 
-    fun place(place: Place): ApiResponse
+    fun getAllPlace(): ApiResponse
     {
         return ApiRequest.get(ApiRequest.PLACE_URL)
     }
 
-    fun hotel(hotel: Hotel): ApiResponse
+    fun getAllHotel(): ApiResponse
     {
         return ApiRequest.get(ApiRequest.HOTEL_URL)
     }
