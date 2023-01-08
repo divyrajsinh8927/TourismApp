@@ -1,7 +1,12 @@
 package international.tourism.app.models
 
 data class PlaceImage(
-    var Id: Int = 0,
-    var PlaceImages: String = "",
-    var Place_id: Int = 0
+    val Place_id: Int = 0,
+    val PlaceName: String = "",
+    val CityName: String = "",
+    val CountryName: String = "",
+    val Discription: String = "",
+    val PlaceImage1: String = "",
+    val PlaceImage2: String = "",
+    val PlaceImage3: String = ""
 )

@@ -9,39 +9,23 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9aa8eab4-7be1-4d44-9564-e7d4d8e2abf8" name="Changes" comment="aboutUsDesign">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/HotelActivity.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/InterNetConnection.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/PlaceActivity.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/adapter/AboutUsSlider.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/models/PlaceImage.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/color/your_color_selector.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_hotel.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_place.xml" afterDir="false" />
+    <list default="true" id="9aa8eab4-7be1-4d44-9564-e7d4d8e2abf8" name="Changes" comment="recycleViewWithAPi">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/models/HotelImage.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/font/nunito_sans.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/font/nunito_sans_bold.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/font/nunito_sans_extrabold.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/font/nunito_sans_semibold.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/font_certs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/preloaded_fonts.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/AboutUsActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/AboutUsActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/Adapter/recHotelAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/adapter/recHotelAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/Adapter/recPlaceAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/adapter/recPlaceAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/HomeFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/HomeFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/HotelFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/HotelFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/PlaceFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/PlaceFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/models/Hotel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/models/Hotel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/models/Place.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/models/Place.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/models/recHotelmodel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/models/recHotelmodel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/models/recPlacemodel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/models/recPlacemodel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/HotelActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/HotelActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/PlaceActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/PlaceActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/models/PlaceImage.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/models/PlaceImage.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/repo/AuthService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/repo/AuthService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/utils/ApiRequest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/utils/ApiRequest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_aboutus.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_aboutus.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/card_view_design.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/card_view_design.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_about_us_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_about_us_2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_hotel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_hotel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_place.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_place.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-night/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-night/colors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_hotel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_hotel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_place.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_place.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
@@ -60,8 +44,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="layoutResourceFile" />
-        <option value="Kotlin Data Class" />
         <option value="Kotlin Class" />
+        <option value="Kotlin Data Class" />
       </list>
     </option>
   </component>
@@ -82,14 +66,18 @@
     <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="cidr.known.project.marker" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/drawable" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/values" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/values" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\androidproject\project\app\src\main\res\values" />
+      <recent name="C:\androidproject\project\app\src\main\res\font" />
       <recent name="C:\androidproject\project\app\src\main\res\drawable" />
       <recent name="C:\androidproject\project\app\src\main\res\color" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\androidproject\project\app\src\main\res\font" />
       <recent name="C:\androidproject\project\app\src\main\res\drawable" />
     </key>
     <key name="android.template.191626797">
@@ -187,7 +175,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672890868430</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="recycleViewWithAPi">
+      <created>1673082734739</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1673082734739</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -204,7 +199,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="grid design" />
     <MESSAGE value="aboutUsDesign" />
-    <option name="LAST_COMMIT_MESSAGE" value="aboutUsDesign" />
+    <MESSAGE value="recycleViewWithAPi" />
+    <option name="LAST_COMMIT_MESSAGE" value="recycleViewWithAPi" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -213,11 +209,6 @@
           <url>file://$PROJECT_DIR$/app/src/main/java/international/tourism/app/LoginActivity.kt</url>
           <line>51</line>
           <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/international/tourism/app/repo/AuthService.kt</url>
-          <line>32</line>
-          <option name="timeStamp" value="25" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/international/tourism/app/HomeFragment.kt</url>
@@ -233,6 +224,26 @@
           <url>file://$PROJECT_DIR$/app/src/main/java/international/tourism/app/HomeFragment.kt</url>
           <line>50</line>
           <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/international/tourism/app/PlaceActivity.kt</url>
+          <line>46</line>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/international/tourism/app/PlaceActivity.kt</url>
+          <line>47</line>
+          <option name="timeStamp" value="37" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/international/tourism/app/PlaceActivity.kt</url>
+          <line>42</line>
+          <option name="timeStamp" value="38" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/international/tourism/app/PlaceActivity.kt</url>
+          <line>48</line>
+          <option name="timeStamp" value="39" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

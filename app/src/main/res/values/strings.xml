@@ -66,4 +66,8 @@
     <string name="about_Us_Description_3" tools:ignore="TypographyDashes">our tourism business is a Top 5 in All india and achieve NATIONAL TOURISM AWARDS 2009-10. we are provide booking hotel in india and show different typs of package in all of the world.</string>
     <string name="aboutuspng3">aboutUsPng3</string>
     <string name="top_hotels">Top Hotels</string>
+    <string name="details">Details</string>
+    <string name="city">City:</string>
+    <string name="price">Price:</string>
+    <string name="country">Country:</string>
 </resources>

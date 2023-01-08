@@ -27,9 +27,14 @@ class AuthService
         return ApiRequest.put(ApiRequest.REGISTER_URL,Gson().toJson(user))
     }
 
-    fun getPlaceImage(placeImage: PlaceImage): ApiResponse
+    fun getPlaceImages(placeImage: PlaceImage): ApiResponse
     {
-        return ApiRequest.post(ApiRequest.PLACE_IMAGE,Gson().toJson(placeImage))
+        return ApiRequest.post(ApiRequest.PLACE_URL,Gson().toJson(placeImage))
+    }
+
+    fun getHotelImages(hotelImage: HotelImage): ApiResponse
+    {
+        return ApiRequest.post(ApiRequest.HOTEL_URL,Gson().toJson(hotelImage))
     }
 
     fun country(country: Country): ApiResponse

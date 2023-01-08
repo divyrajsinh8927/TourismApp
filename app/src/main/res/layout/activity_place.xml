@@ -1,9 +1,161 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PlaceActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="40dp">
+
+        <com.denzcoskun.imageslider.ImageSlider
+            android:id="@+id/image_slider"
+            android:layout_width="match_parent"
+            android:layout_height="220sp"
+            android:scaleType="centerCrop"
+            app:iss_auto_cycle="true"
+            app:iss_delay="2000"
+            app:iss_period="3000"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/lblPlace"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24sp"
+            android:layout_marginTop="32sp"
+            android:layout_marginEnd="24sp"
+            android:fontFamily="@font/nunito_sans_extrabold"
+            tools:text="Taj Mahal"
+            android:textColor="@color/black"
+            android:textSize="28sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/image_slider" />
+
+        <TextView
+            android:id="@+id/lblCity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="38sp"
+            android:layout_marginEnd="12sp"
+            android:fontFamily="@font/nunito_sans_extrabold"
+            android:textAlignment="viewEnd"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:text="@string/city"
+            app:layout_constraintEnd_toStartOf="@+id/lblCityName"
+            app:layout_constraintTop_toBottomOf="@id/image_slider"/>
+
+        <TextView
+            android:id="@+id/lblCityName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24sp"
+            android:layout_marginTop="38sp"
+            android:layout_marginEnd="24sp"
+            android:fontFamily="@font/nunito_sans_extrabold"
+            tools:text="Agra"
+            android:textAlignment="viewEnd"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/image_slider" />
+
+
+
+        <TextView
+            android:id="@+id/lblCountry"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8sp"
+            android:layout_marginEnd="24dp"
+            android:fontFamily="@font/nunito_sans_extrabold"
+            android:text="Country: "
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lblPlace" />
+
+        <TextView
+            android:id="@+id/lblCountryName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="8sp"
+            android:layout_marginEnd="14sp"
+            android:fontFamily="@font/nunito_sans_extrabold"
+            tools:text="India"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@id/lblCountry"
+            app:layout_constraintTop_toBottomOf="@id/lblPlace" />
+
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/nunito_sans_extrabold"
+            android:text="@string/details"
+            android:textColor="#1976D2"
+            android:textSize="25sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lblCountry" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="0dp"
+            android:layout_height="7sp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:background="@color/colorPrimaryDark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textView2"
+            app:layout_constraintTop_toBottomOf="@+id/textView2"
+            tools:ignore="SmallSp" />
+
+
+        <TextView
+            android:id="@+id/lblPlaceDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="24dp"
+            android:fontFamily="@font/nunito_sans_bold"
+            tools:text="Description here"
+            android:textColor="#CC000000"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/divider"
+            app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+        <Button
+            android:id="@+id/citydetails_getlocationbtn"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:backgroundTint="#1976D2"
+            android:fontFamily="@font/nunito_sans_extrabold"
+            android:text="Get Location"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lblPlaceDescription" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
