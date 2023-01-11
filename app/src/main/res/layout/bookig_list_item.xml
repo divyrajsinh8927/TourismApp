@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardElevation="8dp"
+    app:cardCornerRadius="8sp"
+    app:cardMaxElevation="10dp"
+    app:cardPreventCornerOverlap="true"
+    app:cardUseCompatPadding="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cardInnerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="80sp"
+        android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/lblHotelName"
+                android:layout_width="230sp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:layout_marginBottom="5sp"
+                android:lineSpacingExtra="6sp"
+                tools:text="Ramada by Wyndham Gandhidham Shinay"
+                android:fontFamily="@font/raleway_extrabolditalic"
+                android:textColor="@color/black_white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:id="@+id/lblPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/raleway_extrabolditalic"
+            android:gravity="center"
+            android:layout_marginEnd="4sp"
+            android:text="@string/totalprice"
+            android:layout_marginTop="5sp"
+            android:textColor="@color/black_white"
+            app:layout_constraintEnd_toStartOf="@id/lblTotalPrice"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/lblTotalPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginEnd="6sp"
+            android:layout_marginTop="5sp"
+            android:textColor="@color/price"
+            tools:text="2000Rs"
+            android:fontFamily="@font/raleway_extrabolditalic"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/cardInnerLayout" />
+
+        <TextView
+            android:id="@+id/lblStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/price"
+            android:textSize="22sp"
+            android:layout_marginBottom="4sp"
+            android:layout_marginEnd="3sp"
+            tools:text="Waiting"
+            android:fontFamily="@font/raleway_extrabolditalic"
+            app:layout_constraintEnd_toEndOf="@+id/lblTotalPrice"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

@@ -26,40 +26,4 @@ class AuthService
     {
         return ApiRequest.put(ApiRequest.REGISTER_URL,Gson().toJson(user))
     }
-
-    fun getPlaceImages(placeImage: PlaceImage): ApiResponse
-    {
-        return ApiRequest.post(ApiRequest.PLACE_URL,Gson().toJson(placeImage))
-    }
-
-    fun getHotelImages(hotelImage: HotelImage): ApiResponse
-    {
-        return ApiRequest.post(ApiRequest.HOTEL_URL,Gson().toJson(hotelImage))
-    }
-
-    fun country(country: Country): ApiResponse
-    {
-        return ApiRequest.get(ApiRequest.COUNTRY_URL)
-    }
-
-    fun getAllPlace(): ApiResponse
-    {
-        return ApiRequest.get(ApiRequest.PLACE_URL)
-    }
-
-    fun getAllHotel(): ApiResponse
-    {
-        return ApiRequest.get(ApiRequest.HOTEL_URL)
-    }
-
-    fun bookingData(booking: Booking): ApiResponse
-    {
-        return ApiRequest.get(ApiRequest.BOOKING_URL)
-    }
-
-    fun bookingHotel(booking: Booking): ApiResponse
-    {
-        return ApiRequest.post(ApiRequest.BOOKING_URL, Gson().toJson(booking))
-    }
-
 }

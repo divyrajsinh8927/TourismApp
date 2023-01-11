@@ -1,6 +1,6 @@
 package international.tourism.app
 
-import international.tourism.app.adapter.recHotelAdapter
+import international.tourism.app.adapter.RecHotelAdapter
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,18 +11,19 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import international.tourism.app.models.Hotel
-import international.tourism.app.models.recHotelmodel
-import international.tourism.app.repo.AuthService
+import international.tourism.app.models.ImagesUrl
+import international.tourism.app.repo.HotelService
 import kotlinx.coroutines.*
 import java.net.HttpURLConnection
 
 class HotelFragment : Fragment()
 {
-    private lateinit var authService: AuthService
+    private lateinit var hotelService: HotelService
+    private lateinit var imagesUrl: ImagesUrl
 
     private lateinit var recHotel: RecyclerView
-    private lateinit var recHotelModel: ArrayList<recHotelmodel>
-    private lateinit var recHotelAdapter: recHotelAdapter
+    private lateinit var recHotelModel: ArrayList<Hotel>
+    private lateinit var recHotelAdapter: RecHotelAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,12 +39,13 @@ class HotelFragment : Fragment()
         super.onViewCreated(view, savedInstanceState)
 
         recHotel = view.findViewById(R.id.recHotel)
+        imagesUrl = ImagesUrl()
         val interNetConnection = InterNetConnection()
         if (interNetConnection.checkForInternet(requireContext()))
         {
             CoroutineScope(Dispatchers.IO).launch {
-                authService = AuthService()
-                val hotelResponse = authService.getAllHotel()
+                hotelService = HotelService()
+                val hotelResponse = hotelService.getAllHotel()
                 if (hotelResponse.code == HttpURLConnection.HTTP_OK)
                 {
                     recHotelModel = ArrayList()
@@ -55,16 +57,16 @@ class HotelFragment : Fragment()
                             if (hotelKey.HotelIsDelete == 0)
                             {
                                 recHotelModel.add(
-                                    recHotelmodel(
-                                        "http://192.168.43.23/ATourism/images/".plus(hotelKey.HotelImage),
-                                        hotelKey.HotelName,
-                                        hotelKey.CityName
+                                    Hotel(
+                                        HotelImage = imagesUrl.ImageBaseUrl.plus(hotelKey.HotelImage),
+                                        HotelName = hotelKey.HotelName,
+                                        CityName = hotelKey.CityName
                                     )
                                 )
                             }
                         }
 
-                        recHotelAdapter = context?.let { recHotelAdapter(it, recHotelModel) }!!
+                        recHotelAdapter = context?.let { RecHotelAdapter(it, recHotelModel) }!!
                         val hotelManager = GridLayoutManager(context, 2)
                         recHotel.layoutManager = hotelManager
                         recHotel.adapter = recHotelAdapter

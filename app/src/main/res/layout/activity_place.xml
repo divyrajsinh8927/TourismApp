@@ -27,47 +27,49 @@
 
         <TextView
             android:id="@+id/lblPlace"
-            android:layout_width="0dp"
+            android:layout_width="0sp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24sp"
-            android:layout_marginTop="32sp"
+            android:layout_marginTop="10sp"
             android:layout_marginEnd="24sp"
-            android:fontFamily="@font/nunito_sans_extrabold"
-            tools:text="Taj Mahal"
-            android:textColor="@color/black"
-            android:textSize="28sp"
+            android:fontFamily="@font/raleway_extrabolditalic"
+            android:textColor="@color/black_white"
+            android:textSize="25sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/image_slider" />
+            app:layout_constraintTop_toBottomOf="@id/image_slider"
+            tools:text="Taj Mahal" />
 
         <TextView
             android:id="@+id/lblCity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="38sp"
+            android:layout_marginStart="24sp"
+            android:layout_marginTop="4sp"
             android:layout_marginEnd="12sp"
             android:fontFamily="@font/nunito_sans_extrabold"
             android:textAlignment="viewEnd"
-            android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textColor="@color/black_white"
+            android:textSize="17sp"
             android:text="@string/city"
-            app:layout_constraintEnd_toStartOf="@+id/lblCityName"
-            app:layout_constraintTop_toBottomOf="@id/image_slider"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lblCountryName"/>
 
         <TextView
             android:id="@+id/lblCityName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24sp"
-            android:layout_marginTop="38sp"
+            android:layout_marginStart="15sp"
+            android:layout_marginTop="9sp"
             android:layout_marginEnd="24sp"
-            android:fontFamily="@font/nunito_sans_extrabold"
+            android:fontFamily="@font/raleway_extrabolditalic"
             tools:text="Agra"
             android:textAlignment="viewEnd"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/image_slider" />
+            android:textColor="@color/black_white"
+            android:textSize="15sp"
+            app:layout_constraintStart_toEndOf="@id/lblCity"
+            app:layout_constraintTop_toBottomOf="@id/lblCountryName" />
 
 
 
@@ -76,11 +78,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="8sp"
+            android:layout_marginTop="4sp"
             android:layout_marginEnd="24dp"
             android:fontFamily="@font/nunito_sans_extrabold"
-            android:text="Country: "
-            android:textColor="@color/black"
+            android:text="@string/country"
+            android:textColor="@color/black_white"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/lblPlace" />
@@ -89,13 +91,13 @@
             android:id="@+id/lblCountryName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="8sp"
+            android:layout_marginStart="10sp"
+            android:layout_marginTop="11sp"
             android:layout_marginEnd="14sp"
-            android:fontFamily="@font/nunito_sans_extrabold"
+            android:fontFamily="@font/raleway_extrabolditalic"
             tools:text="India"
-            android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textColor="@color/black_white"
+            android:textSize="17sp"
             app:layout_constraintStart_toEndOf="@id/lblCountry"
             app:layout_constraintTop_toBottomOf="@id/lblPlace" />
 
@@ -106,19 +108,19 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
-            android:fontFamily="@font/nunito_sans_extrabold"
+            android:fontFamily="@font/raleway_extrabolditalic"
             android:text="@string/details"
             android:textColor="#1976D2"
             android:textSize="25sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lblCountry" />
+            app:layout_constraintTop_toBottomOf="@+id/lblCity" />
 
         <View
             android:id="@+id/divider"
             android:layout_width="0dp"
-            android:layout_height="7sp"
+            android:layout_height="4sp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="24dp"
+            android:layout_marginEnd="10dp"
             android:background="@color/colorPrimaryDark"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/textView2"
@@ -132,28 +134,15 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="24dp"
-            android:fontFamily="@font/nunito_sans_bold"
+            android:fontFamily="@font/raleway_extrabolditalic"
             tools:text="Description here"
-            android:textColor="#CC000000"
+            android:textColor="@color/black_white"
             android:textSize="18sp"
+            android:justificationMode="inter_word"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/divider"
-            app:layout_constraintTop_toBottomOf="@+id/divider" />
-
-        <Button
-            android:id="@+id/citydetails_getlocationbtn"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="24dp"
-            android:backgroundTint="#1976D2"
-            android:fontFamily="@font/nunito_sans_extrabold"
-            android:text="Get Location"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lblPlaceDescription" />
-
+            app:layout_constraintTop_toBottomOf="@+id/divider"
+            tools:targetApi="o" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

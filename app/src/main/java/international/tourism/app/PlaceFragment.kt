@@ -1,6 +1,7 @@
 package international.tourism.app
 
-import international.tourism.app.adapter.recPlaceAdapter
+import android.content.Intent
+import international.tourism.app.adapter.PlaceAdapter
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,20 +11,20 @@ import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
+import international.tourism.app.models.ImagesUrl
 import international.tourism.app.models.Place
-import international.tourism.app.models.recPlacemodel
-import international.tourism.app.repo.AuthService
+import international.tourism.app.repo.PlaceService
 import kotlinx.coroutines.*
 import java.net.HttpURLConnection
 
 
 class PlaceFragment : Fragment()
 {
-    private lateinit var authService: AuthService
+    private lateinit var placeService: PlaceService
 
     private lateinit var recPlace: RecyclerView
-    private lateinit var recPlaceModel: ArrayList<recPlacemodel>
-    private lateinit var recPlaceAdapter: recPlaceAdapter
+    private lateinit var placeList: ArrayList<Place>
+    private lateinit var recPlaceAdapter: PlaceAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,45 +38,58 @@ class PlaceFragment : Fragment()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?)
     {
         super.onViewCreated(view, savedInstanceState)
+
+        val imagesUrl = ImagesUrl()
         recPlace = view.findViewById(R.id.recPlace)
+
         val interNetConnection = InterNetConnection()
-        if (interNetConnection.checkForInternet(requireContext()))
+        if (!interNetConnection.checkForInternet(requireContext()))
         {
-            CoroutineScope(Dispatchers.IO).launch {
-                authService = AuthService()
-                val response = authService.getAllPlace()
-                if (response.code == HttpURLConnection.HTTP_OK)
-                {
-                    recPlaceModel = ArrayList()
-                    val data = Gson().fromJson(response.message, Array<Place>::class.java)
+            Toast.makeText(context, "Please Connect To Internet!!", Toast.LENGTH_LONG).show()
+            return
+        }
 
+        CoroutineScope(Dispatchers.IO).launch {
+            placeService = PlaceService()
+            val response = placeService.getAllPlace()
 
-                    for (key in data)
+            if (response.code == HttpURLConnection.HTTP_NOT_FOUND)
+            {
+                Toast.makeText(context, "No Data Found!!", Toast.LENGTH_LONG)
+                    .show()
+            }
+
+            placeList = ArrayList()
+            val places = Gson().fromJson(response.message, Array<Place>::class.java)
+
+            for (place in places)
+            {
+                if (place.PlaceIsDelete == 1)
+                    continue
+
+                GlobalScope.launch(Dispatchers.Main) {
+                    placeList.add(
+                        Place(
+                            Id = place.Id,
+                            PlaceImage = imagesUrl.ImageBaseUrl.plus(place.PlaceImage),
+                            PlaceName = place.PlaceName,
+                            CityName = place.CityName
+                        )
+                    )
+                    recPlaceAdapter = PlaceAdapter(requireContext(), placeList, object: PlaceAdapter.OnItemClickListener
                     {
-                        if (key.PlaceIsDelete == 0)
+                        override fun onClick(place: Place)
                         {
-                            GlobalScope.launch(Dispatchers.Main) {
-                                recPlaceModel.add(
-                                    recPlacemodel(
-                                        "http://192.168.43.23/ATourism/images/".plus(key.PlaceImage),
-                                        key.PlaceName,
-                                        key.CityName
-                                    )
-                                )
-                                recPlaceAdapter =
-                                    context?.let { recPlaceAdapter(it, recPlaceModel) }!!
-                                val layoutManager = GridLayoutManager(context, 2)
-                                recPlace.layoutManager = layoutManager
-                                recPlace.adapter = recPlaceAdapter
-                            }
+                            val intent = Intent(requireContext(), PlaceActivity::class.java)
+                            intent.putExtra("placeId", place.Id)
+                            startActivity(intent)
                         }
-                    }
+                    })
+
+                    recPlace.layoutManager = GridLayoutManager(requireContext(), 2)
+                    recPlace.adapter = recPlaceAdapter
                 }
             }
-        }else
-        {
-            Toast.makeText(context, "Please Connect To Internet!!", Toast.LENGTH_LONG)
-                .show()
         }
     }
 }

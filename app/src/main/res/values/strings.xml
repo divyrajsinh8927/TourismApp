@@ -70,4 +70,9 @@
     <string name="city">City:</string>
     <string name="price">Price:</string>
     <string name="country">Country:</string>
+    <string name="book_hotel">Book Hotel</string>
+    <string name="booking_for">Booking For</string>
+    <string name="totalprice">TotalPrice:</string>
+    <string name="hotelname">HotelName:</string>
+    <string name="book_for">Book For:</string>
 </resources>

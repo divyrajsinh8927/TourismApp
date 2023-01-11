@@ -12,14 +12,15 @@ import com.denzcoskun.imageslider.interfaces.ItemClickListener
 import com.denzcoskun.imageslider.interfaces.TouchListener
 import com.denzcoskun.imageslider.models.SlideModel
 import com.google.gson.Gson
+import international.tourism.app.models.ImagesUrl
 import international.tourism.app.models.PlaceImage
-import international.tourism.app.repo.AuthService
+import international.tourism.app.repo.PlaceService
 import kotlinx.coroutines.*
 import java.net.HttpURLConnection
 
 class PlaceActivity : AppCompatActivity()
 {
-    private lateinit var authService: AuthService
+    private lateinit var placeService: PlaceService
     private lateinit var placeImage: PlaceImage
     private lateinit var placeImage1: String
     private lateinit var placeImage2: String
@@ -31,6 +32,7 @@ class PlaceActivity : AppCompatActivity()
     {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_place)
+        val placeId : String = intent.getIntExtra("placeId", 0).toString()
 
         val imageSlider = findViewById<ImageSlider>(R.id.image_slider) // init imageSlider
         val lblPlaceName = findViewById<TextView>(R.id.lblPlace)
@@ -38,34 +40,33 @@ class PlaceActivity : AppCompatActivity()
         val lblCountryName = findViewById<TextView>(R.id.lblCountryName)
         val lblDescription = findViewById<TextView>(R.id.lblPlaceDescription)
 
+        val imagesUrl = ImagesUrl()
+        placeImage = PlaceImage(Place_id = placeId.toInt())
 
-
-        placeImage = PlaceImage(Place_id = 3)
         val interNetConnection = InterNetConnection()
         if (interNetConnection.checkForInternet(this))
         {
             CoroutineScope(Dispatchers.IO).launch {
-                authService = AuthService()
-                val response = authService.getPlaceImages(placeImage)
+                placeService = PlaceService()
+                val response = placeService.getPlaceImages(placeImage)
                 if (response.code == HttpURLConnection.HTTP_OK)
                 {
-                    val baseUrl = "http://192.168.0.100/ATourism/images/"
-                    val data = Gson().fromJson(response.message, Array<PlaceImage>::class.java)
-                    for (key in data)
-                    {
-                        placeImage1 = key.PlaceImage1
-                        placeImage2 = key.PlaceImage2
-                        placeImage3 = key.PlaceImage3
-                        lblPlaceName.text = key.PlaceName
-                        lblCityName.text = key.CityName
-                        lblCountryName.text = key.CountryName
-                        lblDescription.text =key.Discription
-                    }
+                    val placeData = Gson().fromJson(response.message, Array<PlaceImage>::class.java)
                     GlobalScope.launch(Dispatchers.Main) {
+                    for (place in placeData)
+                    {
+                        placeImage1 = place.PlaceImage1
+                        placeImage2 = place.PlaceImage2
+                        placeImage3 = place.PlaceImage3
+                        lblPlaceName.text = place.PlaceName
+                        lblCityName.text = place.CityName
+                        lblCountryName.text = place.CountryName
+                        lblDescription.text =place.Discription
+                    }
                         val imageList = ArrayList<SlideModel>()
-                        imageList.add(SlideModel(baseUrl.plus(placeImage1), ScaleTypes.FIT))
-                        imageList.add(SlideModel(baseUrl.plus(placeImage2), ScaleTypes.FIT))
-                        imageList.add(SlideModel(baseUrl.plus(placeImage3), ScaleTypes.FIT))
+                        imageList.add(SlideModel(imagesUrl.ImageBaseUrl.plus(placeImage1), ScaleTypes.FIT))
+                        imageList.add(SlideModel(imagesUrl.ImageBaseUrl.plus(placeImage2), ScaleTypes.FIT))
+                        imageList.add(SlideModel(imagesUrl.ImageBaseUrl.plus(placeImage3), ScaleTypes.FIT))
                         imageSlider.setImageList(imageList)
 
                         imageSlider.setItemClickListener(object : ItemClickListener
