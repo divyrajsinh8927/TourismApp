@@ -12,7 +12,7 @@ class BookingService
         return ApiRequest.post(ApiRequest.BOOKING_URL, Gson().toJson(booking))
     }
 
-    fun bookingHotel(booking: Booking): ApiResponse
+    fun bookedHotel(booking: Booking): ApiResponse
     {
         return ApiRequest.post(ApiRequest.BOOKING_URL, Gson().toJson(booking))
     }

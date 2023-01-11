@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.ActionBar
 import com.denzcoskun.imageslider.ImageSlider
 import com.denzcoskun.imageslider.constants.ActionTypes
 import com.denzcoskun.imageslider.constants.ScaleTypes
@@ -32,6 +33,11 @@ class PlaceActivity : AppCompatActivity()
     {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_place)
+
+        val actionBar: ActionBar? = supportActionBar
+        actionBar!!.setHomeAsUpIndicator(R.drawable.ic_arrow_back)
+        actionBar.setDisplayHomeAsUpEnabled(true)
+
         val placeId : String = intent.getIntExtra("placeId", 0).toString()
 
         val imageSlider = findViewById<ImageSlider>(R.id.image_slider) // init imageSlider
@@ -107,5 +113,10 @@ class PlaceActivity : AppCompatActivity()
             Toast.makeText(this, "Please Connect To Internet!!", Toast.LENGTH_LONG)
                 .show()
         }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
     }
 }

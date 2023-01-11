@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.ActionBar
 import com.denzcoskun.imageslider.ImageSlider
 import com.denzcoskun.imageslider.constants.ActionTypes
 import com.denzcoskun.imageslider.constants.ScaleTypes
@@ -33,6 +34,11 @@ class HotelActivity : AppCompatActivity()
     {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hotel)
+
+        val actionBar: ActionBar? = supportActionBar
+        actionBar!!.setHomeAsUpIndicator(R.drawable.ic_arrow_back)
+        actionBar.setDisplayHomeAsUpEnabled(true)
+
         imagesUrl = ImagesUrl()
         val hotelId = intent.getIntExtra("hotelId",0)
 
@@ -110,5 +116,10 @@ class HotelActivity : AppCompatActivity()
             Toast.makeText(this, "Please Connect To Internet!!", Toast.LENGTH_LONG)
                 .show()
         }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
     }
 }

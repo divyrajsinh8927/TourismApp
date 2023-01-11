@@ -1,34 +1,300 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10sp"
+    android:orientation="vertical"
     tools:context=".BookingDetail">
+
+    <LinearLayout
+        android:layout_marginTop="20sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textStyle="bold"
+            android:text="@string/hotelname"
+            android:layout_marginStart="5sp"
+            android:gravity="center_vertical"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/lblHotelName"
+            android:textAlignment="viewEnd"
+            android:paddingEnd="10sp"
+            android:paddingStart="20sp"
+            android:paddingTop="4sp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/raleway_extrabolditalic"
+            tools:text="Ramada by Wyndham "
+            android:textSize="18sp"
+            tools:ignore="RtlSymmetry" />
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_marginTop="10sp">
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/raleway_extrabolditalic"
-            android:text="@string/hotelname"
+            android:layout_height="match_parent"
+            android:textStyle="bold"
+            android:text="@string/book_for"
+            android:layout_marginStart="5sp"
             android:gravity="center_vertical"
-            android:textSize="20sp" />
+            android:textSize="22sp" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="Ramada by Wyndham Gandhidham Shinay"
-            android:textSize="15sp"
-            />
+            android:id="@+id/lblBookFor"
+            android:textAlignment="viewEnd"
+            android:paddingTop="5sp"
+            android:layout_width="match_parent"
+            android:paddingStart="60sp"
+            android:layout_height="match_parent"
+            android:paddingEnd="10sp"
+            android:fontFamily="@font/raleway_extrabolditalic"
+            tools:text="Vala Divyrajsinh Keshubha"
+            android:textSize="18sp"
+            tools:ignore="RtlSymmetry" />
 
     </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20sp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textStyle="bold"
+            android:text="@string/booking_date"
+            android:layout_marginStart="5sp"
+            android:gravity="center_vertical"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/lblBookingDate"
+            android:gravity="end"
+            android:paddingTop="5sp"
+            android:layout_width="match_parent"
+            android:paddingEnd="10sp"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/raleway_extrabolditalic"
+            tools:text="11/01/2023"
+            android:textSize="18sp"
+            tools:ignore="RtlSymmetry" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20sp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textStyle="bold"
+            android:text="@string/arrival_date"
+            android:layout_marginStart="5sp"
+            android:gravity="center_vertical"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/lblArrivalDate"
+            android:gravity="end"
+            android:paddingTop="5sp"
+            android:layout_width="match_parent"
+            android:paddingEnd="10sp"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/raleway_extrabolditalic"
+            tools:text="11/01/2023"
+            android:textSize="18sp"
+            tools:ignore="RtlSymmetry" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20sp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textStyle="bold"
+            android:text="@string/leaving_date"
+            android:layout_marginStart="5sp"
+            android:gravity="center_vertical"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/lblLeavingDate"
+            android:gravity="end"
+            android:paddingTop="5sp"
+            android:layout_width="match_parent"
+            android:paddingEnd="10sp"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/raleway_extrabolditalic"
+            tools:text="11/01/2023"
+            android:textSize="18sp"
+            tools:ignore="RtlSymmetry" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20sp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textStyle="bold"
+            android:text="@string/total_days"
+            android:layout_marginStart="5sp"
+            android:gravity="center_vertical"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/lblTotalDays"
+            android:gravity="end"
+            android:paddingTop="5sp"
+            android:layout_width="match_parent"
+            android:paddingEnd="10sp"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/raleway_extrabolditalic"
+            tools:text="10 Days"
+            android:textSize="18sp"
+            tools:ignore="RtlSymmetry" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20sp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textStyle="bold"
+            android:text="@string/total_rooms"
+            android:layout_marginStart="5sp"
+            android:gravity="center_vertical"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/lblTotalRooms"
+            android:gravity="end"
+            android:paddingTop="5sp"
+            android:layout_width="match_parent"
+            android:paddingEnd="10sp"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/raleway_extrabolditalic"
+            tools:text="10 Days"
+            android:textSize="18sp"
+            tools:ignore="RtlSymmetry" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20sp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textStyle="bold"
+            android:text="@string/per_day_price"
+            android:layout_marginStart="5sp"
+            android:gravity="center_vertical"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/lblPerDayPrice"
+            android:gravity="end"
+            android:paddingTop="5sp"
+            android:layout_width="match_parent"
+            android:paddingEnd="10sp"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/raleway_extrabolditalic"
+            tools:text="2000 Rs"
+            android:textSize="18sp"
+            tools:ignore="RtlSymmetry" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="5sp"
+        android:layout_marginTop="20sp"
+        android:layout_marginEnd="5sp"
+        android:background="@color/colorPrimaryDark"
+        tools:ignore="SmallSp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="15sp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textStyle="bold"
+            android:text="@string/total_price"
+            android:layout_marginStart="5sp"
+            android:gravity="center_vertical"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/lblTotalPrice"
+            android:gravity="end"
+            android:paddingTop="5sp"
+            android:layout_width="match_parent"
+            android:paddingEnd="10sp"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/raleway_extrabolditalic"
+            tools:text="2000 Rs"
+            android:textSize="18sp"
+            tools:ignore="RtlSymmetry" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnCancelBooking"
+        android:layout_width="match_parent"
+        android:layout_height="60sp"
+        android:layout_marginStart="20sp"
+        android:layout_marginTop="50sp"
+        android:layout_marginEnd="20sp"
+        android:background="@drawable/login_signup_button"
+        android:fontFamily="@font/raleway_extrabolditalic"
+        android:text="@string/cancel_booking"
+        android:textSize="20sp"
+        android:layout_gravity="center_vertical"
+        tools:ignore="TextContrastCheck"
+        />
+
+
+</LinearLayout>

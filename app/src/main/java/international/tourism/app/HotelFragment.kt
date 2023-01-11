@@ -1,5 +1,6 @@
 package international.tourism.app
 
+import android.content.Intent
 import international.tourism.app.adapter.RecHotelAdapter
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -22,7 +23,7 @@ class HotelFragment : Fragment()
     private lateinit var imagesUrl: ImagesUrl
 
     private lateinit var recHotel: RecyclerView
-    private lateinit var recHotelModel: ArrayList<Hotel>
+    private lateinit var hotelList: ArrayList<Hotel>
     private lateinit var recHotelAdapter: RecHotelAdapter
 
     override fun onCreateView(
@@ -48,7 +49,7 @@ class HotelFragment : Fragment()
                 val hotelResponse = hotelService.getAllHotel()
                 if (hotelResponse.code == HttpURLConnection.HTTP_OK)
                 {
-                    recHotelModel = ArrayList()
+                    hotelList = ArrayList()
                     val hotelData = Gson().fromJson(hotelResponse.message, Array<Hotel>::class.java)
                     GlobalScope.launch(Dispatchers.Main) {
 
@@ -56,21 +57,28 @@ class HotelFragment : Fragment()
                         {
                             if (hotelKey.HotelIsDelete == 0)
                             {
-                                recHotelModel.add(
+                                hotelList.add(
                                     Hotel(
+                                        Id = hotelKey.Id,
                                         HotelImage = imagesUrl.ImageBaseUrl.plus(hotelKey.HotelImage),
                                         HotelName = hotelKey.HotelName,
                                         CityName = hotelKey.CityName
                                     )
                                 )
+                                recHotelAdapter = RecHotelAdapter(requireContext(), hotelList, object: RecHotelAdapter.OnItemClickListener
+                                {
+                                    override fun onClick(hotel: Hotel)
+                                    {
+                                        val intent = Intent(requireContext(), HotelActivity::class.java)
+                                        intent.putExtra("hotelId", hotel.Id)
+                                        startActivity(intent)
+                                    }
+                                })
+                                recHotel.layoutManager = GridLayoutManager(requireContext(), 2)
+                                recHotel.adapter = recHotelAdapter
                             }
                         }
 
-                        recHotelAdapter = context?.let { RecHotelAdapter(it, recHotelModel) }!!
-                        val hotelManager = GridLayoutManager(context, 2)
-                        recHotel.layoutManager = hotelManager
-                        recHotel.adapter = recHotelAdapter
-                        recHotel.layoutManager = hotelManager
                     }
                 }
             }

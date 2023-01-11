@@ -115,18 +115,18 @@
         android:autofillHints="password"
         tools:ignore="TextFields" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnSignUp"
-        android:layout_width="match_parent"
-        android:layout_height="60sp"
-        android:layout_marginStart="20sp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20sp"
-        android:background="@drawable/login_signup_button"
-        android:text="@string/signup"
-        android:fontFamily="@font/raleway_extrabolditalic"
-        android:textSize="20sp"
-        tools:ignore="TextContrastCheck" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSignUp"
+            android:layout_width="match_parent"
+            android:layout_height="60sp"
+            android:layout_marginStart="20sp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20sp"
+            android:background="@drawable/login_signup_button"
+            android:fontFamily="@font/raleway_extrabolditalic"
+            android:text="@string/signup"
+            android:textSize="20sp"
+            tools:ignore="TextContrastCheck" />
 
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

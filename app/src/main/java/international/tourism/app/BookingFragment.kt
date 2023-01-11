@@ -76,7 +76,7 @@ class BookingFragment : Fragment()
                 listView.adapter = adapter
 
                 listView.setOnItemClickListener { _, _, position, _ ->
-                    val bookingId = bookingData[position].Id.toString()
+                    val bookingId = bookingData[position].Id
                     val intent = Intent(requireContext(), BookingDetail::class.java)
                     intent.putExtra("bookingId", bookingId)
                     startActivity(intent)

@@ -75,4 +75,12 @@
     <string name="totalprice">TotalPrice:</string>
     <string name="hotelname">HotelName:</string>
     <string name="book_for">Book For:</string>
+    <string name="booking_date">Booking Date: </string>
+    <string name="arrival_date">Arrival Date:</string>
+    <string name="leaving_date">Leaving Date:</string>
+    <string name="total_days">Total Days:</string>
+    <string name="total_rooms">Total Rooms:</string>
+    <string name="per_day_price">Per Day Price:</string>
+    <string name="total_price">Total Price:</string>
+    <string name="cancel_booking">Cancel Booking</string>
 </resources>
