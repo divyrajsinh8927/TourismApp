@@ -15,13 +15,15 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.net.HttpURLConnection
 
-class RegisterActivity : AppCompatActivity() {
+class RegisterActivity : AppCompatActivity()
+{
 
     private lateinit var authService: AuthService
     private lateinit var user: User
 
     @SuppressLint("MissingInflatedId")
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?)
+    {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
@@ -32,13 +34,13 @@ class RegisterActivity : AppCompatActivity() {
         val txtConfirmPassword = findViewById<EditText>(R.id.txtConfirmPassword)
         val btnSignUp = findViewById<Button>(R.id.btnSignUp)
 
-        btnSignUp.setOnClickListener{
+        btnSignUp.setOnClickListener {
             val rName = txtName.text.toString()
             val rMobileNumber = txtMobileNUmber.text.toString().toInt()
             val rEmail = txtEmail.text.toString()
             val rPassword = txtPassword.text.toString()
             val rConfirmPassword = txtConfirmPassword.text.toString()
-            if(rPassword == rConfirmPassword)
+            if (rPassword == rConfirmPassword)
             {
                 user = User(
                     Name = rName,
@@ -47,37 +49,42 @@ class RegisterActivity : AppCompatActivity() {
                     PasswordHash = rPassword
                 )
                 registerDone()
-            }
-            else{
-                Toast.makeText(this,"Password Doesn't Match!",Toast.LENGTH_LONG).show()
+            } else
+            {
+                Toast.makeText(this, "Password Doesn't Match!", Toast.LENGTH_LONG).show()
             }
 
         }
     }
 
-    private fun registerDone(){
+    private fun registerDone()
+    {
 
         CoroutineScope(Dispatchers.IO).launch {
             authService = AuthService()
             val response = authService.register(user)
-            if(response.code == HttpURLConnection.HTTP_CREATED)
+            if (response.code == HttpURLConnection.HTTP_CONFLICT)
             {
+                Looper.prepare()
+                Toast.makeText(this@RegisterActivity, "User Already Exist!", Toast.LENGTH_LONG)
+                    .show()
+                Looper.loop()
                 sendToLogin()
-                Looper.prepare()
-                Toast.makeText(this@RegisterActivity,"User Registered Successfully!",Toast.LENGTH_LONG).show()
-                Looper.loop()
             }
-            else if(response.code == HttpURLConnection.HTTP_CONFLICT)
-            {
-                Looper.prepare()
-                Toast.makeText(this@RegisterActivity,"User Already Exist!",Toast.LENGTH_LONG).show()
-                Looper.loop()
-            }
+            Looper.prepare()
+            Toast.makeText(
+                this@RegisterActivity,
+                "User Registered Successfully!",
+                Toast.LENGTH_LONG
+            ).show()
+            Looper.loop()
+
         }
     }
 
-    private fun sendToLogin(){
-        val intent = Intent(this,LoginActivity::class.java)
+    private fun sendToLogin()
+    {
+        val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
         finish()
     }

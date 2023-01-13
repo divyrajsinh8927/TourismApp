@@ -41,8 +41,6 @@ class BookingDetail : AppCompatActivity()
         actionBar!!.setHomeAsUpIndicator(R.drawable.ic_arrow_back)
         actionBar.setDisplayHomeAsUpEnabled(true)
 
-        val bookingId = intent.getIntExtra("bookingId", 0)
-
         lblHotelName = findViewById(R.id.lblHotelName)
         lblBookingFor = findViewById(R.id.lblBookFor)
         lblBookingDate = findViewById(R.id.lblBookingDate)
@@ -55,7 +53,15 @@ class BookingDetail : AppCompatActivity()
         btnCancelBooking = findViewById(R.id.btnCancelBooking)
 
 
+        val bookingId = intent.getIntExtra("bookingId", 0)
         booking = Booking(Id = bookingId)
+
+
+        configureData()
+    }
+
+    private fun configureData()
+    {
         val interNetConnection = InterNetConnection()
         if (!interNetConnection.checkForInternet(this))
         {
@@ -63,11 +69,7 @@ class BookingDetail : AppCompatActivity()
                 .show()
             return
         }
-        configureData()
-    }
 
-    private fun configureData()
-    {
         CoroutineScope(Dispatchers.IO).launch {
             bookingService = BookingService()
 
@@ -104,7 +106,8 @@ class BookingDetail : AppCompatActivity()
         }
     }
 
-    override fun onSupportNavigateUp(): Boolean {
+    override fun onSupportNavigateUp(): Boolean
+    {
         finish()
         return true
     }

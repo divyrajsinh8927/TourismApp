@@ -21,7 +21,7 @@ import java.net.HttpURLConnection
 class PlaceFragment : Fragment()
 {
     private lateinit var placeService: PlaceService
-
+    private lateinit var imagesUrl: ImagesUrl
     private lateinit var recPlace: RecyclerView
     private lateinit var placeList: ArrayList<Place>
     private lateinit var recPlaceAdapter: PlaceAdapter
@@ -34,12 +34,11 @@ class PlaceFragment : Fragment()
         return inflater.inflate(R.layout.fragment_place, container, false)
     }
 
-    @OptIn(DelicateCoroutinesApi::class)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?)
     {
         super.onViewCreated(view, savedInstanceState)
 
-        val imagesUrl = ImagesUrl()
+        imagesUrl = ImagesUrl()
         recPlace = view.findViewById(R.id.recPlace)
 
         val interNetConnection = InterNetConnection()
@@ -48,7 +47,12 @@ class PlaceFragment : Fragment()
             Toast.makeText(context, "Please Connect To Internet!!", Toast.LENGTH_LONG).show()
             return
         }
+        configureData()
+    }
 
+    @OptIn(DelicateCoroutinesApi::class)
+    private fun configureData()
+    {
         CoroutineScope(Dispatchers.IO).launch {
             placeService = PlaceService()
             val response = placeService.getAllPlace()
@@ -91,5 +95,6 @@ class PlaceFragment : Fragment()
                 }
             }
         }
+
     }
 }

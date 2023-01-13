@@ -26,9 +26,14 @@ class PlaceActivity : AppCompatActivity()
     private lateinit var placeImage1: String
     private lateinit var placeImage2: String
     private lateinit var placeImage3: String
+    private lateinit var imageSlider :  ImageSlider
+    private lateinit var lblPlaceName : TextView
+    private lateinit var lblCityName : TextView
+    private lateinit var lblCountryName : TextView
+    private lateinit var lblDescription : TextView
+    private lateinit var imagesUrl: ImagesUrl
 
 
-    @OptIn(DelicateCoroutinesApi::class)
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
@@ -40,25 +45,35 @@ class PlaceActivity : AppCompatActivity()
 
         val placeId : String = intent.getIntExtra("placeId", 0).toString()
 
-        val imageSlider = findViewById<ImageSlider>(R.id.image_slider) // init imageSlider
-        val lblPlaceName = findViewById<TextView>(R.id.lblPlace)
-        val lblCityName = findViewById<TextView>(R.id.lblCityName)
-        val lblCountryName = findViewById<TextView>(R.id.lblCountryName)
-        val lblDescription = findViewById<TextView>(R.id.lblPlaceDescription)
+        imageSlider = findViewById(R.id.image_slider)
+        lblPlaceName = findViewById(R.id.lblPlace)
+        lblCityName = findViewById(R.id.lblCityName)
+        lblCountryName = findViewById(R.id.lblCountryName)
+        lblDescription = findViewById(R.id.lblPlaceDescription)
 
-        val imagesUrl = ImagesUrl()
+        imagesUrl = ImagesUrl()
         placeImage = PlaceImage(Place_id = placeId.toInt())
 
         val interNetConnection = InterNetConnection()
-        if (interNetConnection.checkForInternet(this))
+        if (!interNetConnection.checkForInternet(this))
         {
-            CoroutineScope(Dispatchers.IO).launch {
-                placeService = PlaceService()
-                val response = placeService.getPlaceImages(placeImage)
-                if (response.code == HttpURLConnection.HTTP_OK)
-                {
-                    val placeData = Gson().fromJson(response.message, Array<PlaceImage>::class.java)
-                    GlobalScope.launch(Dispatchers.Main) {
+            Toast.makeText(this, "Please Connect To Internet!!", Toast.LENGTH_LONG)
+                .show()
+            return
+        }
+        configureData()
+    }
+
+    @OptIn(DelicateCoroutinesApi::class)
+    private fun configureData()
+    {
+        CoroutineScope(Dispatchers.IO).launch {
+            placeService = PlaceService()
+            val response = placeService.getPlaceImages(placeImage)
+            if (response.code == HttpURLConnection.HTTP_OK)
+            {
+                val placeData = Gson().fromJson(response.message, Array<PlaceImage>::class.java)
+                GlobalScope.launch(Dispatchers.Main) {
                     for (place in placeData)
                     {
                         placeImage1 = place.PlaceImage1
@@ -69,49 +84,44 @@ class PlaceActivity : AppCompatActivity()
                         lblCountryName.text = place.CountryName
                         lblDescription.text =place.Discription
                     }
-                        val imageList = ArrayList<SlideModel>()
-                        imageList.add(SlideModel(imagesUrl.ImageBaseUrl.plus(placeImage1), ScaleTypes.FIT))
-                        imageList.add(SlideModel(imagesUrl.ImageBaseUrl.plus(placeImage2), ScaleTypes.FIT))
-                        imageList.add(SlideModel(imagesUrl.ImageBaseUrl.plus(placeImage3), ScaleTypes.FIT))
-                        imageSlider.setImageList(imageList)
+                    val imageList = ArrayList<SlideModel>()
+                    imageList.add(SlideModel(imagesUrl.ImageBaseUrl.plus(placeImage1), ScaleTypes.FIT))
+                    imageList.add(SlideModel(imagesUrl.ImageBaseUrl.plus(placeImage2), ScaleTypes.FIT))
+                    imageList.add(SlideModel(imagesUrl.ImageBaseUrl.plus(placeImage3), ScaleTypes.FIT))
+                    imageSlider.setImageList(imageList)
 
-                        imageSlider.setItemClickListener(object : ItemClickListener
+                    imageSlider.setItemClickListener(object : ItemClickListener
+                    {
+                        override fun onItemSelected(position: Int)
                         {
-                            override fun onItemSelected(position: Int)
-                            {
-                                // You can listen here.
-                            }
-                        })
+                            // You can listen here.
+                        }
+                    })
 
-                        imageSlider.setItemChangeListener(object : ItemChangeListener
+                    imageSlider.setItemChangeListener(object : ItemChangeListener
+                    {
+                        override fun onItemChanged(position: Int)
                         {
-                            override fun onItemChanged(position: Int)
-                            {
-                                //println("Pos: " + position)
-                            }
-                        })
+                            //println("Pos: " + position)
+                        }
+                    })
 
-                        imageSlider.setTouchListener(object : TouchListener
+                    imageSlider.setTouchListener(object : TouchListener
+                    {
+                        override fun onTouched(touched: ActionTypes)
                         {
-                            override fun onTouched(touched: ActionTypes)
+                            if (touched == ActionTypes.DOWN)
                             {
-                                if (touched == ActionTypes.DOWN)
-                                {
-                                    imageSlider.stopSliding()
-                                } else if (touched == ActionTypes.UP)
-                                {
-                                    imageSlider.startSliding(5000)
-                                }
+                                imageSlider.stopSliding()
+                            } else if (touched == ActionTypes.UP)
+                            {
+                                imageSlider.startSliding(5000)
                             }
-                        })
+                        }
+                    })
 
-                    }
                 }
             }
-        } else
-        {
-            Toast.makeText(this, "Please Connect To Internet!!", Toast.LENGTH_LONG)
-                .show()
         }
     }
 

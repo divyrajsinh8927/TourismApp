@@ -23,7 +23,7 @@ import java.net.HttpURLConnection.*
 class LoginActivity : AppCompatActivity()
 {
     private lateinit var sharedPref: SharedPreferences
-    private lateinit var  authService: AuthService
+    private lateinit var authService: AuthService
     private lateinit var user: User
 
     override fun onCreate(savedInstanceState: Bundle?)
@@ -35,8 +35,8 @@ class LoginActivity : AppCompatActivity()
         this.supportActionBar!!.hide()
 
         sharedPref = getSharedPreferences("tourism_pref", MODE_PRIVATE)
-        val aEmail = sharedPref.getString("email",null)
-        if(aEmail != null)
+        val aEmail = sharedPref.getString("email", null)
+        if (aEmail != null)
             sendToHome()
 
         val txtEmail = findViewById<EditText>(R.id.txtEmail)
@@ -45,11 +45,11 @@ class LoginActivity : AppCompatActivity()
         val signUp = findViewById<TextView>(R.id.newUser)
         val btnClose = findViewById<ImageView>(R.id.btnClose)
 
-        btnClose.setOnClickListener{startActivity(Intent(this,MainActivity::class.java))}
+        btnClose.setOnClickListener { startActivity(Intent(this, MainActivity::class.java)) }
 
 
 
-        signUp.setOnClickListener{
+        signUp.setOnClickListener {
             val myIntent = Intent(this, RegisterActivity::class.java)
             startActivity(myIntent)
 
@@ -71,52 +71,52 @@ class LoginActivity : AppCompatActivity()
         CoroutineScope(Dispatchers.IO).launch {
             authService = AuthService()
             val response = authService.login(user)
-            if (response.code == HTTP_OK)
-            {
-                user = Gson().fromJson(response.message, User::class.java)
-                val id = user.Id
-                val userIsDelete = user.UserIsDelete
-                val status = user.Status
-                if (userIsDelete != 1)
-                {
-                    if (status == 1)
-                    {
-                        withContext(Dispatchers.Main) {
-                            val editor = sharedPref.edit()
-
-                            editor.putString("email", email)
-                            editor.putString("id", id.toString())
-                            editor.apply()
-                            sendToHome()
-                        }
-                    }
-                    else
-                    {
-                        Looper.prepare()
-                        Toast.makeText(this@LoginActivity, "User Is Deactivated!", Toast.LENGTH_LONG)
-                            .show()
-                        Looper.loop()
-                    }
-                }else
-                {
-                    Looper.prepare()
-                    Toast.makeText(this@LoginActivity, "User Is Deleted!", Toast.LENGTH_LONG)
-                        .show()
-                    Looper.loop()
-                }
-            } else if (response.code == HTTP_NOT_FOUND)
+            if (response.code == HTTP_NOT_FOUND)
             {
                 Looper.prepare()
                 Toast.makeText(this@LoginActivity, "Wrong email or password", Toast.LENGTH_LONG)
                     .show()
                 Looper.loop()
             }
+            user = Gson().fromJson(response.message, User::class.java)
+            val id = user.Id
+            val userIsDelete = user.UserIsDelete
+            val status = user.Status
+            if (userIsDelete == 1)
+            {
+                Looper.prepare()
+                Toast.makeText(this@LoginActivity, "User Is Deleted!", Toast.LENGTH_LONG)
+                    .show()
+                Looper.loop()
+            }
+            if (status == 0)
+            {
+                Looper.prepare()
+                Toast.makeText(
+                    this@LoginActivity,
+                    "User Is Deactivated!",
+                    Toast.LENGTH_LONG
+                )
+                    .show()
+                Looper.loop()
+                return@launch
+            }
+            withContext(Dispatchers.Main) {
+                val editor = sharedPref.edit()
+
+                editor.putString("email", email)
+                editor.putString("id", id.toString())
+                editor.apply()
+                sendToHome()
+            }
 
         }
 
     }
-    private fun sendToHome(){
-        val intent = Intent(this,MainActivity::class.java)
+
+    private fun sendToHome()
+    {
+        val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
         finish()
     }

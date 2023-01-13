@@ -101,11 +101,16 @@ class MainActivity : AppCompatActivity()
         manager.commit()
     }
 
-    private fun showPlaceFragment()
+    fun showPlaceFragment()
     {
         val manager = supportFragmentManager.beginTransaction()
         manager.replace(R.id.fragmentContainer, placeFragment)
         manager.commit()
+        bottomNavigationView.setItemSelected(
+            R.id.bottomNavPlaceBtn,
+            isSelected = true
+        )
+
     }
 
     private fun showHotelFragment()

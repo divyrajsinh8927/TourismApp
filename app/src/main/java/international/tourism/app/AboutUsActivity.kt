@@ -24,8 +24,11 @@ class AboutUsActivity : AppCompatActivity()
     {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_aboutus)
+
         supportActionBar!!.hide()
+
         findViewById<ImageView>(R.id.btnClose).setOnClickListener{startActivity(Intent(this,MainActivity::class.java))}
+
         setupViewPager()
     }
 

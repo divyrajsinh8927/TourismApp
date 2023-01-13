@@ -1,35 +1,39 @@
 package international.tourism.app
 
+import android.annotation.SuppressLint
 import android.content.Intent
-import international.tourism.app.adapter.RecHotelAdapter
-import international.tourism.app.adapter.PlaceAdapter
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.Toast
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
+import international.tourism.app.adapter.HomeHotelAdapter
+import international.tourism.app.adapter.HomePlaceAdapter
 import international.tourism.app.models.*
 import international.tourism.app.repo.HotelService
 import international.tourism.app.repo.PlaceService
 import kotlinx.coroutines.*
 import java.net.HttpURLConnection
+import com.ismaeldivita.chipnavigation.ChipNavigationBar
 
 class HomeFragment : Fragment()
 {
     private lateinit var placeService: PlaceService
     private lateinit var hotelService: HotelService
-
-
+    private lateinit var btnPlaceViewAll: Button
+    private lateinit var bottomNavigationView: ChipNavigationBar
+    private lateinit var imagesUrl: ImagesUrl
     private lateinit var recHomePlace: RecyclerView
     private lateinit var recHomeHotel: RecyclerView
     private lateinit var placeList: ArrayList<Place>
     private lateinit var hotelList: ArrayList<Hotel>
-    private lateinit var recPlaceAdapter: PlaceAdapter
-    private lateinit var recHotelAdapter: RecHotelAdapter
+    private lateinit var homePlaceAdapter: HomePlaceAdapter
+    private lateinit var homeHotelAdapter: HomeHotelAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,14 +44,17 @@ class HomeFragment : Fragment()
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
-    @OptIn(DelicateCoroutinesApi::class)
+    @SuppressLint("SuspiciousIndentation")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?)
     {
         super.onViewCreated(view, savedInstanceState)
-        val imagesUrl = ImagesUrl()
 
-        /* Place Recycle View */
-        recHomePlace = view.findViewById(R.id.recHomePlace)
+
+        bottomNavigationView = requireActivity().findViewById(R.id.bottomNavBar)
+        btnPlaceViewAll = view.findViewById(R.id.btnViewAllPlace)
+        btnPlaceViewAll.setOnClickListener {
+            (requireActivity() as MainActivity).showPlaceFragment()
+        }
         val interNetConnection = InterNetConnection()
         if (!interNetConnection.checkForInternet(requireContext()))
         {
@@ -55,6 +62,21 @@ class HomeFragment : Fragment()
                 .show()
             return
         }
+        imagesUrl = ImagesUrl()
+        /* Place Recycle View */
+        recHomePlace = view.findViewById(R.id.recHomePlace)
+        configurePlaceData()
+
+
+        /* Hotel Recycle View */
+        recHomeHotel = view.findViewById(R.id.recHomeHotel)
+        configureHotelData()
+
+    }
+
+    @OptIn(DelicateCoroutinesApi::class)
+    private fun configurePlaceData()
+    {
         CoroutineScope(Dispatchers.IO).launch {
             placeService = PlaceService()
             val response = placeService.getAllPlace()
@@ -79,10 +101,10 @@ class HomeFragment : Fragment()
                                 CityName = place.CityName
                             )
                         )
-                        recPlaceAdapter = PlaceAdapter(
+                        homePlaceAdapter = HomePlaceAdapter(
                             requireContext(),
                             placeList,
-                            object : PlaceAdapter.OnItemClickListener
+                            object : HomePlaceAdapter.OnItemClickListener
                             {
                                 override fun onClick(place: Place)
                                 {
@@ -94,16 +116,18 @@ class HomeFragment : Fragment()
                             })
 
                         recHomePlace.layoutManager =
-                            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-                        recHomePlace.adapter = recPlaceAdapter
+                            GridLayoutManager(requireContext(), 2)
+                        recHomePlace.adapter = homePlaceAdapter
                     }
                 }
             }
         }
 
+    }
 
-        /* Hotel Recycle View */
-        recHomeHotel = view.findViewById(R.id.recHomeHotel)
+    @OptIn(DelicateCoroutinesApi::class)
+    private fun configureHotelData()
+    {
         CoroutineScope(Dispatchers.IO).launch {
             hotelService = HotelService()
             val hotelResponse = hotelService.getAllHotel()
@@ -118,33 +142,34 @@ class HomeFragment : Fragment()
 
                 for (hotelKey in hotelData)
                 {
-                    if (hotelKey.HotelIsDelete == 0)
-                    {
-                        hotelList.add(
-                            Hotel(
-                                Id = hotelKey.Id,
-                                HotelImage = imagesUrl.ImageBaseUrl.plus(hotelKey.HotelImage),
-                                HotelName = hotelKey.HotelName,
-                                CityName = hotelKey.CityName
-                            )
-                        )
-                        recHotelAdapter = RecHotelAdapter(
-                            requireContext(),
-                            hotelList,
-                            object : RecHotelAdapter.OnItemClickListener
-                            {
-                                override fun onClick(hotel: Hotel)
-                                {
-                                    val intent = Intent(requireContext(), HotelActivity::class.java)
-                                    intent.putExtra("hotelId", hotel.Id)
-                                    startActivity(intent)
-                                }
-                            })
+                    if (hotelKey.HotelIsDelete == 1)
+                        continue
 
-                        recHomeHotel.layoutManager =
-                            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-                        recHomeHotel.adapter = recHotelAdapter
-                    }
+                    hotelList.add(
+                        Hotel(
+                            Id = hotelKey.Id,
+                            HotelImage = imagesUrl.ImageBaseUrl.plus(hotelKey.HotelImage),
+                            HotelName = hotelKey.HotelName,
+                            CityName = hotelKey.CityName
+                        )
+                    )
+                    homeHotelAdapter = HomeHotelAdapter(
+                        requireContext(),
+                        hotelList,
+                        object : HomeHotelAdapter.OnItemClickListener
+                        {
+                            override fun onClick(hotel: Hotel)
+                            {
+                                val intent = Intent(requireContext(), HotelActivity::class.java)
+                                intent.putExtra("hotelId", hotel.Id)
+                                startActivity(intent)
+                            }
+                        })
+
+                    recHomeHotel.layoutManager =
+                        GridLayoutManager(requireContext(), 2)
+                    recHomeHotel.adapter = homeHotelAdapter
+
                 }
             }
         }

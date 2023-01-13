@@ -23,6 +23,7 @@ class BookingFragment : Fragment()
     private lateinit var bookingService: BookingService
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var booking: Booking
+    private lateinit var listView: ListView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,12 +35,31 @@ class BookingFragment : Fragment()
 
     }
 
-    @OptIn(DelicateCoroutinesApi::class)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?)
     {
         super.onViewCreated(view, savedInstanceState)
+        listView = requireView().findViewById(R.id.lstBooking)
 
-        val listView = requireView().findViewById<ListView>(R.id.lstBooking)
+        val userId = checkLogin()
+
+        if(userId == 0)
+            return
+
+        booking = Booking(User_id = userId)
+
+        configureData()
+    }
+
+    private fun checkLogin(): Int
+    {
+        val interNetConnection = InterNetConnection()
+        if (!interNetConnection.checkForInternet(requireContext()))
+        {
+            Toast.makeText(context, "Please Connect To Internet!!", Toast.LENGTH_LONG)
+                .show()
+            return 0
+        }
+
         sharedPreferences = this.requireActivity()
             .getSharedPreferences("tourism_pref", AppCompatActivity.MODE_PRIVATE)
         val userId = sharedPreferences.getString("id", null)
@@ -48,16 +68,15 @@ class BookingFragment : Fragment()
             Toast.makeText(context, "Please Login First!!", Toast.LENGTH_LONG)
                 .show()
             startActivity(Intent(requireContext(), LoginActivity::class.java))
-            return
+            return 0
         }
-        booking = Booking(User_id = userId.toInt())
-        val interNetConnection = InterNetConnection()
-        if (!interNetConnection.checkForInternet(requireContext()))
-        {
-            Toast.makeText(context, "Please Connect To Internet!!", Toast.LENGTH_LONG)
-                .show()
-            return
-        }
+
+        return userId.toInt()
+    }
+
+    @OptIn(DelicateCoroutinesApi::class)
+    private fun configureData()
+    {
         CoroutineScope(Dispatchers.IO).launch {
             bookingService = BookingService()
 
@@ -66,6 +85,7 @@ class BookingFragment : Fragment()
             {
                 Toast.makeText(context, "No Booking History!!", Toast.LENGTH_LONG)
                     .show()
+                return@launch
             }
 
 
