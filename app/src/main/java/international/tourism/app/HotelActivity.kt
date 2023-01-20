@@ -1,7 +1,10 @@
 package international.tourism.app
 
+import android.app.DatePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
@@ -18,6 +21,8 @@ import international.tourism.app.models.ImagesUrl
 import international.tourism.app.repo.HotelService
 import kotlinx.coroutines.*
 import java.net.HttpURLConnection
+import java.util.*
+import kotlin.collections.ArrayList
 
 class HotelActivity : AppCompatActivity()
 {
@@ -34,11 +39,41 @@ class HotelActivity : AppCompatActivity()
     private lateinit var lblDescription: TextView
     private lateinit var lblPerDayPrice: TextView
 
+    lateinit var pickDateBtn: ImageView
+    lateinit var lblDate: TextView
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hotel)
+
+        lblDate = findViewById(R.id.lblDate)
+
+        findViewById<ImageView>(R.id.btnBookingDate).setOnClickListener {
+            val c = Calendar.getInstance()
+
+
+            val year = c.get(Calendar.YEAR)
+            val month = c.get(Calendar.MONTH)
+            val day = c.get(Calendar.DAY_OF_MONTH)
+
+
+            val datePickerDialog = DatePickerDialog(
+                this,
+                { view, year, monthOfYear, dayOfMonth ->
+
+                    lblDate.text =
+                        (dayOfMonth.toString() + "-" + (monthOfYear + 1) + "-" + year)
+                },
+                year,
+                month,
+                day
+            )
+            // at last we are calling show
+            // to display our date picker dialog.
+            datePickerDialog.show()
+        }
+
 
         val actionBar: ActionBar? = supportActionBar
         actionBar!!.setHomeAsUpIndicator(R.drawable.ic_arrow_back)

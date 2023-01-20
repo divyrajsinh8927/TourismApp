@@ -13,7 +13,7 @@ import international.tourism.app.R
 import international.tourism.app.models.Place
 import java.util.ArrayList
 
-class PlaceAdapter(
+class PlaceAdapter  (
     private var context: Context,
     private var places: ArrayList<Place>,
     private var clickListener: OnItemClickListener? = null

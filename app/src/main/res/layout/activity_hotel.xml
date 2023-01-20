@@ -214,12 +214,43 @@
             app:layout_constraintTop_toBottomOf="@+id/lblBookFor"
             android:autofillHints="For Whom" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtBookFor">
+
+            <ImageView
+                android:id="@+id/btnBookingDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_calender"
+                android:textColor="@color/white"
+                android:text="Select Booking Date"
+                android:backgroundTint="@color/green_green"
+                android:layout_marginHorizontal="20sp"
+                android:layout_marginStart="20sp"
+                android:layout_marginTop="20sp"
+                android:layout_marginBottom="20sp" />
 
 
+            <TextView
+                android:id="@+id/lblDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Select Booking Date"
+                android:gravity="start"
+                android:textSize="25sp"
+                android:fontFamily="@font/raleway_extrabolditalic"
+                app:layout_constraintTop_toBottomOf="@+id/txtBookFor" />
+
+        </LinearLayout>
         <Button
             android:id="@+id/citydetails_getlocationbtn"
             android:layout_width="match_parent"
             android:layout_height="56dp"
+            android:textColor="@color/white"
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
@@ -229,9 +260,7 @@
             android:text="@string/book_hotel"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtBookFor" />
-
-
+            app:layout_constraintTop_toBottomOf="@+id/btnBookingDate" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
