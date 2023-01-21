@@ -20,11 +20,11 @@ import java.net.HttpURLConnection
 
 class PlaceFragment : Fragment()
 {
-    private lateinit var placeService: PlaceService
-    private lateinit var imagesUrl: ImagesUrl
-    private lateinit var recPlace: RecyclerView
-    private lateinit var placeList: ArrayList<Place>
-    private lateinit var recPlaceAdapter: PlaceAdapter
+        private lateinit var placeService: PlaceService
+        private lateinit var imagesUrl: ImagesUrl
+        private lateinit var recPlace: RecyclerView
+        private lateinit var placeList: ArrayList<Place>
+        private lateinit var recPlaceAdapter: PlaceAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -89,12 +89,10 @@ class PlaceFragment : Fragment()
                             startActivity(intent)
                         }
                     })
-
                     recPlace.layoutManager = GridLayoutManager(requireContext(), 2)
                     recPlace.adapter = recPlaceAdapter
                 }
             }
         }
-
     }
 }

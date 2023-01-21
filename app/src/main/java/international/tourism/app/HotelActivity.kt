@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.denzcoskun.imageslider.ImageSlider
 import com.denzcoskun.imageslider.constants.ActionTypes
 import com.denzcoskun.imageslider.constants.ScaleTypes
@@ -39,7 +40,6 @@ class HotelActivity : AppCompatActivity()
     private lateinit var lblDescription: TextView
     private lateinit var lblPerDayPrice: TextView
 
-    lateinit var pickDateBtn: ImageView
     lateinit var lblDate: TextView
 
     override fun onCreate(savedInstanceState: Bundle?)
@@ -47,9 +47,9 @@ class HotelActivity : AppCompatActivity()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hotel)
 
-        lblDate = findViewById(R.id.lblDate)
+        lblDate = findViewById(R.id.lblArrivalDate)
 
-        findViewById<ImageView>(R.id.btnBookingDate).setOnClickListener {
+        findViewById<ConstraintLayout>(R.id.bookingDetail1).setOnClickListener {
             val c = Calendar.getInstance()
 
 
