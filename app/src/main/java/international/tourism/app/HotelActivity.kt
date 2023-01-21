@@ -49,6 +49,7 @@ class HotelActivity : AppCompatActivity()
 
         lblDate = findViewById(R.id.lblArrivalDate)
 
+
         findViewById<ConstraintLayout>(R.id.bookingDetail1).setOnClickListener {
             val c = Calendar.getInstance()
 
