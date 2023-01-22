@@ -199,7 +199,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/divider2"/>
 
-
         <EditText
             android:inputType="text"
             android:id="@+id/txtBookFor"
@@ -207,7 +206,9 @@
             android:layout_height="50sp"
             android:hint="@string/booking_for"
             android:gravity="center"
+            android:textSize="20sp"
             android:layout_marginTop="4sp"
+            android:fontFamily="@font/raleway_extrabolditalic"
             android:background="@drawable/booking_editext"
             android:layout_marginStart="20sp"
             android:layout_marginEnd="10sp"
@@ -249,7 +250,7 @@
                 android:fontFamily="@font/raleway_extrabolditalic"
                 android:gravity="center"
                 android:hint="Select Booking Date"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@id/btnBookingDate1"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -290,13 +291,107 @@
                 android:layout_toEndOf="@id/btnBookingDate2"
                 android:fontFamily="@font/raleway_extrabolditalic"
                 android:gravity="center"
-                android:hint="Select Booking Date"
-                android:textSize="25sp"
+                android:hint="Select Arrival Date"
+                android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@id/btnBookingDate2"
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/bookingDetail3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20sp"
+            android:layout_marginEnd="10sp"
+            android:layout_marginTop="20sp"
+            android:background="@drawable/booking_editext"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bookingDetail2">
+
+            <ImageView
+                android:id="@+id/btnBookingDate3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20sp"
+                android:layout_marginStart="20sp"
+                android:backgroundTint="@color/green_green"
+                android:padding="10sp"
+                android:src="@drawable/ic_calender"
+                android:text="Select Booking Date"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/lblLeavingDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/btnBookingDate3"
+                android:fontFamily="@font/raleway_extrabolditalic"
+                android:gravity="center"
+                android:hint="Select Leaving Date"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/btnBookingDate3"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:id="@+id/LastLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="20sp"
+            android:layout_marginHorizontal="20sp"
+            android:weightSum="3"
+            app:layout_constraintTop_toBottomOf="@id/bookingDetail3">
+
+
+            <EditText
+                android:id="@+id/lblTotalRooms"
+                android:layout_width="0sp"
+                android:layout_height="40sp"
+                android:layout_weight="1"
+                android:textSize="16sp"
+                android:hint="Total Rooms"
+                android:inputType="number"
+                android:padding="10sp"
+                android:background="@drawable/booking_editext"
+                android:fontFamily="@font/raleway_extrabolditalic"/>
+
+            <TextView
+                android:id="@+id/txtTotalDays"
+                android:layout_width="0sp"
+                android:layout_height="40sp"
+                android:text="Total Days"
+                android:textSize="16sp"
+                android:layout_weight="1"
+                android:padding="10sp"
+                android:layout_marginStart="20sp"
+                android:background="@drawable/booking_editext"
+                android:fontFamily="@font/raleway_extrabolditalic"/>
+
+            <TextView
+                android:id="@+id/txtTotalPrice"
+                android:layout_width="0sp"
+                android:layout_height="40sp"
+                android:text="Total Days"
+                android:layout_weight="1"
+                android:textSize="16sp"
+                android:padding="10sp"
+                android:layout_marginStart="20sp"
+                android:background="@drawable/booking_editext"
+                android:fontFamily="@font/raleway_extrabolditalic"/>
+
+        </LinearLayout>
+
         <Button
             android:id="@+id/citydetails_getlocationbtn"
             android:layout_width="match_parent"
@@ -311,9 +406,8 @@
             android:text="@string/book_hotel"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/bookingDetail1"
+            app:layout_constraintTop_toBottomOf="@id/LastLayout"
             />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>
