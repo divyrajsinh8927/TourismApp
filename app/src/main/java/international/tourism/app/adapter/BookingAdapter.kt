@@ -1,49 +1,57 @@
 package international.tourism.app.adapter
 
 import android.annotation.SuppressLint
-import android.app.Activity
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import international.tourism.app.R
 import international.tourism.app.models.Booking
+import java.util.ArrayList
 
-class BookingAdapter(
-    private val activity: Activity,
-    private val booking: Array<Booking>
-):  ArrayAdapter<Booking>(activity, R.layout.bookig_list_item, booking)
+class BookingAdapter(private var context: Context,
+                     private var bookings: ArrayList<Booking>,
+                     private var clickListener: OnItemClickListener? = null
+) : RecyclerView.Adapter<BookingAdapter.ViewHolder>()
 {
     @SuppressLint("InflateParams")
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder
     {
-        var view = convertView
-        if (view == null)
-        {
-            view = LayoutInflater.from(activity).inflate(R.layout.bookig_list_item, null)
-
-            val viewHolder = ViewHolder()
-            viewHolder.lblHotelName = view.findViewById(R.id.lblHotelName)
-            viewHolder.lblTotalPrice= view.findViewById(R.id.lblTotalPrice)
-            viewHolder.lblStatus= view.findViewById(R.id.lblStatus)
-
-            view.tag = viewHolder
-        }
-
-        val existingViewHolder = view!!.tag as ViewHolder
-
-        existingViewHolder.lblHotelName.text = booking[position].HotelName
-        existingViewHolder.lblTotalPrice.text = booking[position].TotalPrice.toString().plus(" Rs")
-        existingViewHolder.lblStatus.text = booking[position].Status
-
-        return view
+        return ViewHolder(
+            LayoutInflater.from(context).inflate(R.layout.bookig_list_item, null, true)
+        )
     }
 
-    class ViewHolder
+    override fun onBindViewHolder(holder: ViewHolder, position: Int)
     {
-        lateinit var lblHotelName: TextView
-        lateinit var lblTotalPrice: TextView
-        lateinit var lblStatus: TextView
+        holder.bind(bookings[position])
+    }
+
+    override fun getItemCount(): Int
+    {
+        return bookings.size
+    }
+
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+    {
+        private var lblHotelName: TextView = itemView.findViewById(R.id.lblHotelName)
+        private var lblTotalPrice: TextView = itemView.findViewById(R.id.lblTotalPrice)
+        private var lblStatus: TextView = itemView.findViewById(R.id.lblStatus)
+
+        fun bind(bookings: Booking)
+        {
+            lblHotelName.text = bookings.HotelName
+            lblTotalPrice.text = bookings.TotalPrice.toString()
+            lblStatus.text = bookings.Status
+
+            itemView.setOnClickListener { clickListener?.onClick(bookings) }
+        }
+    }
+
+    interface OnItemClickListener
+    {
+        fun onClick(bookings: Booking)
     }
 }

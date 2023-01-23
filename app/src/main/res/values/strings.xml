@@ -84,4 +84,8 @@
     <string name="total_price">Total Price:</string>
     <string name="cancel_booking">Cancel Booking</string>
     <string name="viewall">View-All</string>
+    <string name="select_booking_date">Select Booking Date</string>
+    <string name="select_arrival_date">Select Arrival Date</string>
+    <string name="select_leaving_date">Select Leaving Date</string>
+    <string name="calenderimage">CalenderImage</string>
 </resources>

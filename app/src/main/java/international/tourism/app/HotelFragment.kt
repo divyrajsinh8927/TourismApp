@@ -48,6 +48,8 @@ class HotelFragment : Fragment()
             return
         }
         configureData()
+        recHotel.startLayoutAnimation()
+
     }
 
     @OptIn(DelicateCoroutinesApi::class)

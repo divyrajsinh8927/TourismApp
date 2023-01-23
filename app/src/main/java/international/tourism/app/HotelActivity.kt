@@ -1,10 +1,9 @@
 package international.tourism.app
 
+import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
@@ -40,39 +39,24 @@ class HotelActivity : AppCompatActivity()
     private lateinit var lblDescription: TextView
     private lateinit var lblPerDayPrice: TextView
 
-    lateinit var lblDate: TextView
+    lateinit var lblArrivalDate: TextView
+    lateinit var lblLeavingDate: TextView
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hotel)
 
-        lblDate = findViewById(R.id.lblArrivalDate)
+        lblArrivalDate = findViewById(R.id.lblArrivalDate)
+        lblLeavingDate = findViewById(R.id.lblLeavingDate)
 
+        findViewById<ConstraintLayout>(R.id.dtArrivalDate).setOnClickListener {
+             showArrivalCalender()
+        }
 
-        findViewById<ConstraintLayout>(R.id.bookingDetail1).setOnClickListener {
-            val c = Calendar.getInstance()
-
-
-            val year = c.get(Calendar.YEAR)
-            val month = c.get(Calendar.MONTH)
-            val day = c.get(Calendar.DAY_OF_MONTH)
-
-
-            val datePickerDialog = DatePickerDialog(
-                this,
-                { view, year, monthOfYear, dayOfMonth ->
-
-                    lblDate.text =
-                        (dayOfMonth.toString() + "-" + (monthOfYear + 1) + "-" + year)
-                },
-                year,
-                month,
-                day
-            )
-            // at last we are calling show
-            // to display our date picker dialog.
-            datePickerDialog.show()
+        findViewById<ConstraintLayout>(R.id.dtLeavingDate).setOnClickListener{
+            showLeavingCalender()
         }
 
 
@@ -170,5 +154,53 @@ class HotelActivity : AppCompatActivity()
     {
         finish()
         return true
+    }
+
+    private fun showArrivalCalender()
+    {
+        val c = Calendar.getInstance()
+
+        val year = c.get(Calendar.YEAR)
+        val month = c.get(Calendar.MONTH)
+        val day = c.get(Calendar.DAY_OF_MONTH)
+
+
+        val datePickerDialog = DatePickerDialog(
+            this,
+            { _, year, monthOfYear, dayOfMonth ->
+
+                   lblArrivalDate.text = (dayOfMonth.toString() + "-" + (monthOfYear + 1) + "-" + year)
+            },
+            year,
+            month,
+            day
+        )
+        // at last we are calling show
+        // to display our date picker dialog.
+        datePickerDialog.show()
+    }
+
+    private fun showLeavingCalender()
+    {
+        val c = Calendar.getInstance()
+
+        val year = c.get(Calendar.YEAR)
+        val month = c.get(Calendar.MONTH)
+        val day = c.get(Calendar.DAY_OF_MONTH)
+
+
+        val datePickerDialog = DatePickerDialog(
+            this,
+            { _, year, monthOfYear, dayOfMonth ->
+
+                lblLeavingDate.text = (dayOfMonth.toString() + "-" + (monthOfYear + 1) + "-" + year)
+            },
+            year,
+            month,
+            day
+        )
+        // at last we are calling show
+        // to display our date picker dialog.
+        datePickerDialog.show()
     }
 }

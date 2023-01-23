@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
+import android.view.animation.LayoutAnimationController
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -40,6 +42,7 @@ class PlaceFragment : Fragment()
 
         imagesUrl = ImagesUrl()
         recPlace = view.findViewById(R.id.recPlace)
+        recPlace.startLayoutAnimation()
 
         val interNetConnection = InterNetConnection()
         if (!interNetConnection.checkForInternet(requireContext()))

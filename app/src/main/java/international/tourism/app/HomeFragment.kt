@@ -66,11 +66,13 @@ class HomeFragment : Fragment()
         /* Place Recycle View */
         recHomePlace = view.findViewById(R.id.recHomePlace)
         configurePlaceData()
+        recHomePlace.startLayoutAnimation()
 
 
         /* Hotel Recycle View */
         recHomeHotel = view.findViewById(R.id.recHomeHotel)
         configureHotelData()
+        recHomeHotel.startLayoutAnimation()
 
     }
 

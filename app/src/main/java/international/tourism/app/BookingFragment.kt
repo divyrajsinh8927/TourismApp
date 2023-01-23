@@ -10,9 +10,14 @@ import android.view.ViewGroup
 import android.widget.ListView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.RecycledViewPool
 import com.google.gson.Gson
 import international.tourism.app.adapter.BookingAdapter
+import international.tourism.app.adapter.PlaceAdapter
 import international.tourism.app.models.Booking
+import international.tourism.app.models.Place
 import international.tourism.app.repo.BookingService
 import kotlinx.coroutines.*
 import java.net.HttpURLConnection
@@ -23,7 +28,9 @@ class BookingFragment : Fragment()
     private lateinit var bookingService: BookingService
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var booking: Booking
-    private lateinit var listView: ListView
+    private lateinit var bookingList: ArrayList<Booking>
+    private lateinit var bookingRecycledView: RecyclerView
+    private lateinit var bookingAdapter: BookingAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,7 +45,7 @@ class BookingFragment : Fragment()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?)
     {
         super.onViewCreated(view, savedInstanceState)
-        listView = requireView().findViewById(R.id.lstBooking)
+        bookingRecycledView = requireView().findViewById(R.id.lstBooking)
 
         val userId = checkLogin()
 
@@ -48,6 +55,8 @@ class BookingFragment : Fragment()
         booking = Booking(User_id = userId)
 
         configureData()
+        bookingRecycledView.startLayoutAnimation()
+
     }
 
     private fun checkLogin(): Int
@@ -88,18 +97,34 @@ class BookingFragment : Fragment()
                 return@launch
             }
 
-
+            bookingList = ArrayList()
             val bookingData =
                 Gson().fromJson(response.message, Array<Booking>::class.java)
             GlobalScope.launch(Dispatchers.Main) {
-                val adapter = BookingAdapter(requireActivity(), bookingData)
-                listView.adapter = adapter
+                for (booking in bookingData)
+                {
 
-                listView.setOnItemClickListener { _, _, position, _ ->
-                    val bookingId = bookingData[position].Id
-                    val intent = Intent(requireContext(), BookingDetail::class.java)
-                    intent.putExtra("bookingId", bookingId)
-                    startActivity(intent)
+                    GlobalScope.launch(Dispatchers.Main) {
+                        bookingList.add(
+                            Booking(
+                                Id = booking.Id,
+                                HotelName = booking.HotelName,
+                                TotalPrice = booking.TotalPrice,
+                                Status = booking.Status
+                            )
+                        )
+                         bookingAdapter = BookingAdapter(requireContext(), bookingList, object: BookingAdapter.OnItemClickListener
+                        {
+                            override fun onClick(bookings: Booking)
+                            {
+                                val intent = Intent(requireContext(), BookingDetail::class.java)
+                                intent.putExtra("bookingId", bookings.Id)
+                                startActivity(intent)
+                            }
+                        })
+                        bookingRecycledView.layoutManager = GridLayoutManager(requireContext(), 1)
+                        bookingRecycledView.adapter = bookingAdapter
+                    }
                 }
             }
         }

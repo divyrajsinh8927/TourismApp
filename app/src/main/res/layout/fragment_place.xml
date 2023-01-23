@@ -21,6 +21,7 @@
 
  <androidx.recyclerview.widget.RecyclerView
      android:id="@+id/recPlace"
+     android:layoutAnimation="@anim/iteam_layout_animation"
      android:layout_width="match_parent"
      android:layout_height="wrap_content" />
 

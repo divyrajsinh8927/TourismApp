@@ -22,6 +22,7 @@
 
   <androidx.recyclerview.widget.RecyclerView
       android:id="@+id/recHotel"
+      android:layoutAnimation="@anim/iteam_layout_animation"
       android:layout_width="match_parent"
-      android:layout_height="match_parent" />
+      android:layout_height="wrap_content" />
 </LinearLayout>

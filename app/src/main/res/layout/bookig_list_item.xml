@@ -5,9 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardElevation="8dp"
-    app:cardCornerRadius="8sp"
-    app:cardMaxElevation="10dp"
+    app:cardElevation="3sp"
     app:cardPreventCornerOverlap="true"
     app:cardUseCompatPadding="true">
 

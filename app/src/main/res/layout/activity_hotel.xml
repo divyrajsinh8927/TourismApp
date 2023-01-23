@@ -216,7 +216,7 @@
             android:autofillHints="For Whom" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/bookingDetail1"
+            android:id="@+id/dtArrivalDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20sp"
@@ -228,48 +228,6 @@
             app:layout_constraintTop_toBottomOf="@id/txtBookFor">
 
             <ImageView
-                android:id="@+id/btnBookingDate1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20sp"
-                android:layout_marginStart="20sp"
-                android:backgroundTint="@color/green_green"
-                android:padding="10sp"
-                android:src="@drawable/ic_calender"
-                android:text="Select Booking Date"
-                android:textColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/lblBookingDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/btnBookingDate1"
-                android:fontFamily="@font/raleway_extrabolditalic"
-                android:gravity="center"
-                android:hint="Select Booking Date"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/btnBookingDate1"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/bookingDetail2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20sp"
-            android:layout_marginEnd="10sp"
-            android:layout_marginTop="20sp"
-            android:background="@drawable/booking_editext"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/bookingDetail1">
-
-            <ImageView
                 android:id="@+id/btnBookingDate2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -278,11 +236,13 @@
                 android:backgroundTint="@color/green_green"
                 android:padding="10sp"
                 android:src="@drawable/ic_calender"
-                android:text="Select Booking Date"
+                android:text="@string/select_booking_date"
                 android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ExtraText"
+                android:contentDescription="@string/calenderimage"/>
 
             <TextView
                 android:id="@+id/lblArrivalDate"
@@ -291,16 +251,17 @@
                 android:layout_toEndOf="@id/btnBookingDate2"
                 android:fontFamily="@font/raleway_extrabolditalic"
                 android:gravity="center"
-                android:hint="Select Arrival Date"
+                android:hint="@string/select_arrival_date"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@id/btnBookingDate2"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/bookingDetail3"
+            android:id="@+id/dtLeavingDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20sp"
@@ -309,9 +270,10 @@
             android:background="@drawable/booking_editext"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/bookingDetail2">
+            app:layout_constraintTop_toBottomOf="@id/dtArrivalDate">
 
             <ImageView
+                android:contentDescription="@string/calenderimage"
                 android:id="@+id/btnBookingDate3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -320,7 +282,7 @@
                 android:backgroundTint="@color/green_green"
                 android:padding="10sp"
                 android:src="@drawable/ic_calender"
-                android:text="Select Booking Date"
+                android:text="@string/select_booking_date"
                 android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -333,7 +295,7 @@
                 android:layout_toEndOf="@id/btnBookingDate3"
                 android:fontFamily="@font/raleway_extrabolditalic"
                 android:gravity="center"
-                android:hint="Select Leaving Date"
+                android:hint="@string/select_leaving_date"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@id/btnBookingDate3"
@@ -351,7 +313,7 @@
             android:layout_marginTop="20sp"
             android:layout_marginHorizontal="20sp"
             android:weightSum="3"
-            app:layout_constraintTop_toBottomOf="@id/bookingDetail3">
+            app:layout_constraintTop_toBottomOf="@id/dtLeavingDate">
 
 
             <EditText
@@ -359,18 +321,20 @@
                 android:layout_width="0sp"
                 android:layout_height="40sp"
                 android:layout_weight="1"
-                android:textSize="16sp"
-                android:hint="Total Rooms"
+                android:background="@drawable/booking_editext"
+                android:fontFamily="@font/raleway_extrabolditalic"
+                android:hint="@string/total_rooms"
                 android:inputType="number"
                 android:padding="10sp"
-                android:background="@drawable/booking_editext"
-                android:fontFamily="@font/raleway_extrabolditalic"/>
+                android:textSize="16sp"
+                tools:ignore="TouchTargetSizeCheck"
+                android:autofillHints="" />
 
             <TextView
                 android:id="@+id/txtTotalDays"
                 android:layout_width="0sp"
                 android:layout_height="40sp"
-                android:text="Total Days"
+                android:text="@string/total_days"
                 android:textSize="16sp"
                 android:layout_weight="1"
                 android:padding="10sp"
@@ -382,7 +346,7 @@
                 android:id="@+id/txtTotalPrice"
                 android:layout_width="0sp"
                 android:layout_height="40sp"
-                android:text="Total Days"
+                android:text="@string/total_price"
                 android:layout_weight="1"
                 android:textSize="16sp"
                 android:padding="10sp"
@@ -393,7 +357,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/citydetails_getlocationbtn"
+            android:id="@+id/btnBook"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:textColor="@color/white"

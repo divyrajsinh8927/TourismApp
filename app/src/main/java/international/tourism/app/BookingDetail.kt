@@ -57,11 +57,6 @@ class BookingDetail : AppCompatActivity()
         booking = Booking(Id = bookingId)
 
 
-        configureData()
-    }
-
-    private fun configureData()
-    {
         val interNetConnection = InterNetConnection()
         if (!interNetConnection.checkForInternet(this))
         {
@@ -69,6 +64,11 @@ class BookingDetail : AppCompatActivity()
                 .show()
             return
         }
+        configureData()
+    }
+
+    private fun configureData()
+    {
 
         CoroutineScope(Dispatchers.IO).launch {
             bookingService = BookingService()
