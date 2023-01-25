@@ -88,4 +88,7 @@
     <string name="select_arrival_date">Select Arrival Date</string>
     <string name="select_leaving_date">Select Leaving Date</string>
     <string name="calenderimage">CalenderImage</string>
+    <string name="rooms">Rooms</string>
+    <string name="days">Days</string>
+    <string name="Price">Price</string>
 </resources>

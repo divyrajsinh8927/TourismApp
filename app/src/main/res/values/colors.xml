@@ -31,6 +31,7 @@
     <color name="AlienBlack">#1a2228</color>
     <color name="about_heading">#202b70</color>
     <color name="white_lightblack">#CACACA</color>
+    <color name="navBar_Color">#1976D2</color>
 
 
 </resources>

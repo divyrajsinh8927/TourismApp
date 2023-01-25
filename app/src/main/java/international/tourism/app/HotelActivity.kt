@@ -2,10 +2,12 @@ package international.tourism.app
 
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBar
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.denzcoskun.imageslider.ImageSlider
@@ -24,6 +26,7 @@ import java.net.HttpURLConnection
 import java.util.*
 import kotlin.collections.ArrayList
 
+@Suppress("NAME_SHADOWING", "CAST_NEVER_SUCCEEDS")
 class HotelActivity : AppCompatActivity()
 {
     private lateinit var hotelService: HotelService
@@ -38,10 +41,12 @@ class HotelActivity : AppCompatActivity()
     private lateinit var lblCountryName: TextView
     private lateinit var lblDescription: TextView
     private lateinit var lblPerDayPrice: TextView
+    private var totalDays: Long = 0
+    private lateinit var txtTotalDays: TextView
+    private lateinit var lblArrivalDate: TextView
+    private lateinit var lblLeavingDate: TextView
 
-    lateinit var lblArrivalDate: TextView
-    lateinit var lblLeavingDate: TextView
-
+    @RequiresApi(Build.VERSION_CODES.O)
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?)
     {
@@ -79,10 +84,20 @@ class HotelActivity : AppCompatActivity()
         lblCountryName = findViewById(R.id.lblCountryName)
         lblDescription = findViewById(R.id.lblHotelDescription)
         lblPerDayPrice = findViewById(R.id.lblPerDayPrise)
+        txtTotalDays = findViewById(R.id.txtTotalDays)
 
 
         hotelImage = HotelImage(Hotel_id = hotelId)
         configureHotelData()
+
+    }
+
+    @SuppressLint("SimpleDateFormat")
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun calculateTotalDay()
+    {
+        val date1 = lblArrivalDate.text.toString()
+        val date2 = lblLeavingDate.text.toString()
 
     }
 
@@ -169,7 +184,7 @@ class HotelActivity : AppCompatActivity()
             this,
             { _, year, monthOfYear, dayOfMonth ->
 
-                   lblArrivalDate.text = (dayOfMonth.toString() + "-" + (monthOfYear + 1) + "-" + year)
+                   lblArrivalDate.text = (year.toString().plus( "-").plus(monthOfYear + 1).plus( "-").plus(dayOfMonth.toString()))
             },
             year,
             month,
@@ -180,6 +195,7 @@ class HotelActivity : AppCompatActivity()
         datePickerDialog.show()
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun showLeavingCalender()
     {
         val c = Calendar.getInstance()
@@ -193,7 +209,7 @@ class HotelActivity : AppCompatActivity()
             this,
             { _, year, monthOfYear, dayOfMonth ->
 
-                lblLeavingDate.text = (dayOfMonth.toString() + "-" + (monthOfYear + 1) + "-" + year)
+                lblLeavingDate.text = (year.toString().plus( "-").plus(monthOfYear + 1).plus( "-").plus(dayOfMonth.toString()))
             },
             year,
             month,
@@ -202,5 +218,6 @@ class HotelActivity : AppCompatActivity()
         // at last we are calling show
         // to display our date picker dialog.
         datePickerDialog.show()
+        calculateTotalDay()
     }
 }

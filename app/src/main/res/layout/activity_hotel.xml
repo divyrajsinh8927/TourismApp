@@ -110,7 +110,7 @@
             android:layout_marginTop="24dp"
             android:fontFamily="@font/raleway_extrabolditalic"
             android:text="@string/details"
-            android:textColor="#1976D2"
+            android:textColor="#1E88E5"
             android:textSize="25sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/lblCity" />
@@ -227,6 +227,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txtBookFor">
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:gravity="center"
+                >
+
             <ImageView
                 android:id="@+id/btnBookingDate2"
                 android:layout_width="wrap_content"
@@ -238,26 +246,21 @@
                 android:src="@drawable/ic_calender"
                 android:text="@string/select_booking_date"
                 android:textColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="ExtraText"
                 android:contentDescription="@string/calenderimage"/>
 
             <TextView
                 android:id="@+id/lblArrivalDate"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/btnBookingDate2"
-                android:fontFamily="@font/raleway_extrabolditalic"
                 android:gravity="center"
+                android:fontFamily="@font/raleway_extrabolditalic"
                 android:hint="@string/select_arrival_date"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/btnBookingDate2"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/btnBookingDate2"
-                app:layout_constraintTop_toTopOf="parent"
                 />
-
+            </RelativeLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -323,18 +326,18 @@
                 android:layout_weight="1"
                 android:background="@drawable/booking_editext"
                 android:fontFamily="@font/raleway_extrabolditalic"
-                android:hint="@string/total_rooms"
+                android:hint="@string/rooms"
                 android:inputType="number"
                 android:padding="10sp"
                 android:textSize="16sp"
-                tools:ignore="TouchTargetSizeCheck"
+                tools:ignore="LabelFor,TouchTargetSizeCheck"
                 android:autofillHints="" />
 
             <TextView
                 android:id="@+id/txtTotalDays"
                 android:layout_width="0sp"
                 android:layout_height="40sp"
-                android:text="@string/total_days"
+                android:text="@string/days"
                 android:textSize="16sp"
                 android:layout_weight="1"
                 android:padding="10sp"
@@ -346,7 +349,7 @@
                 android:id="@+id/txtTotalPrice"
                 android:layout_width="0sp"
                 android:layout_height="40sp"
-                android:text="@string/total_price"
+                android:text="@string/Price"
                 android:layout_weight="1"
                 android:textSize="16sp"
                 android:padding="10sp"

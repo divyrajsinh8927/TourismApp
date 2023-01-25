@@ -7,17 +7,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ListView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.RecycledViewPool
 import com.google.gson.Gson
 import international.tourism.app.adapter.BookingAdapter
-import international.tourism.app.adapter.PlaceAdapter
 import international.tourism.app.models.Booking
-import international.tourism.app.models.Place
 import international.tourism.app.repo.BookingService
 import kotlinx.coroutines.*
 import java.net.HttpURLConnection
