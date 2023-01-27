@@ -23,7 +23,7 @@ class PlaceAdapter  (
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder
     {
         return ViewHolder(
-            LayoutInflater.from(context).inflate(R.layout.card_view_design, null, true)
+            LayoutInflater.from(context).inflate(R.layout.hotel_place_design, null, true)
         )
     }
 

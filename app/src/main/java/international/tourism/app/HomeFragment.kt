@@ -49,7 +49,6 @@ class HomeFragment : Fragment()
     {
         super.onViewCreated(view, savedInstanceState)
 
-
         bottomNavigationView = requireActivity().findViewById(R.id.bottomNavBar)
         btnPlaceViewAll = view.findViewById(R.id.btnViewAllPlace)
         btnPlaceViewAll.setOnClickListener {

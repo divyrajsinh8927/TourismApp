@@ -94,7 +94,7 @@ class HotelFragment : Fragment()
                                 startActivity(intent)
                             }
                         })
-                    recHotel.layoutManager = GridLayoutManager(requireContext(), 2)
+                    recHotel.layoutManager = GridLayoutManager(requireContext(), 1)
                     recHotel.adapter = recHotelAdapter
                 }
             }

@@ -92,7 +92,7 @@ class PlaceFragment : Fragment()
                             startActivity(intent)
                         }
                     })
-                    recPlace.layoutManager = GridLayoutManager(requireContext(), 2)
+                    recPlace.layoutManager = GridLayoutManager(requireContext(), 1)
                     recPlace.adapter = recPlaceAdapter
                 }
             }
