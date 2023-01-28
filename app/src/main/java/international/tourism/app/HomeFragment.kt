@@ -64,6 +64,7 @@ class HomeFragment : Fragment()
         imagesUrl = ImagesUrl()
         /* Place Recycle View */
         recHomePlace = view.findViewById(R.id.recHomePlace)
+        recHomePlace.setHasFixedSize(true)
         configurePlaceData()
         recHomePlace.startLayoutAnimation()
 
@@ -75,7 +76,6 @@ class HomeFragment : Fragment()
 
     }
 
-    @OptIn(DelicateCoroutinesApi::class)
     private fun configurePlaceData()
     {
         CoroutineScope(Dispatchers.IO).launch {
@@ -88,7 +88,7 @@ class HomeFragment : Fragment()
             }
             placeList = ArrayList()
             val placeData = Gson().fromJson(response.message, Array<Place>::class.java)
-            GlobalScope.launch(Dispatchers.Main) {
+            withContext(Dispatchers.Main) {
 
                 for (place in placeData)
                 {

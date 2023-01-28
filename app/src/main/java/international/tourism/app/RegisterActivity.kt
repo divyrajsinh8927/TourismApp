@@ -1,6 +1,5 @@
 package international.tourism.app
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.os.Looper
@@ -21,7 +20,6 @@ class RegisterActivity : AppCompatActivity()
     private lateinit var authService: AuthService
     private lateinit var user: User
 
-    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)

@@ -3,8 +3,10 @@ package international.tourism.app
 import android.app.DatePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Looper
 import android.text.Editable
 import android.text.TextWatcher
+import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
@@ -18,8 +20,10 @@ import com.denzcoskun.imageslider.interfaces.ItemClickListener
 import com.denzcoskun.imageslider.interfaces.TouchListener
 import com.denzcoskun.imageslider.models.SlideModel
 import com.google.gson.Gson
+import international.tourism.app.models.Booking
 import international.tourism.app.models.HotelImage
 import international.tourism.app.models.ImagesUrl
+import international.tourism.app.repo.BookingService
 import international.tourism.app.repo.HotelService
 import kotlinx.coroutines.*
 import java.net.HttpURLConnection
@@ -29,6 +33,8 @@ import kotlin.collections.ArrayList
 
 class HotelActivity : AppCompatActivity()
 {
+    private lateinit var bookingService: BookingService
+    private lateinit var booking: Booking
     private lateinit var hotelService: HotelService
     private lateinit var imagesUrl: ImagesUrl
     private lateinit var hotelImage: HotelImage
@@ -42,14 +48,18 @@ class HotelActivity : AppCompatActivity()
     private lateinit var lblDescription: TextView
     private lateinit var lblPerDayPrice: TextView
     private lateinit var txtTotalRooms: EditText
+    private lateinit var txtBookFor: EditText
+    private lateinit var bookingFor: String
     private var totalDays: Int = 0
     private var totalPrice: Int = 0
     private var perDayPrice = 0
     private var totalRooms = 1
+    private var hotelId: Int = 0
     private lateinit var txtTotalDays: TextView
     private lateinit var lblArrivalDate: TextView
     private lateinit var lblLeavingDate: TextView
     private lateinit var txtTotalPrice: TextView
+    private lateinit var btnBooking: Button
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
@@ -58,6 +68,7 @@ class HotelActivity : AppCompatActivity()
 
         lblArrivalDate = findViewById(R.id.lblArrivalDate)
         lblLeavingDate = findViewById(R.id.lblLeavingDate)
+        btnBooking = findViewById(R.id.btnBooking)
 
         findViewById<ConstraintLayout>(R.id.dtArrivalDate).setOnClickListener {
              showArrivalCalender()
@@ -67,6 +78,7 @@ class HotelActivity : AppCompatActivity()
             showLeavingCalender()
         }
 
+        btnBooking.setOnClickListener { bookingHotel() }
 
         val actionBar: ActionBar? = supportActionBar
         actionBar!!.setHomeAsUpIndicator(R.drawable.ic_arrow_back)
@@ -79,7 +91,7 @@ class HotelActivity : AppCompatActivity()
             return
         }
         imagesUrl = ImagesUrl()
-        val hotelId = intent.getIntExtra("hotelId", 0)
+        hotelId = intent.getIntExtra("hotelId", 0)
 
         imageSlider = findViewById(R.id.image_slider) // init imageSlider
         lblPlaceName = findViewById(R.id.lblHotel)
@@ -91,6 +103,7 @@ class HotelActivity : AppCompatActivity()
         txtTotalRooms = findViewById(R.id.txtTotalRooms)
         txtTotalRooms.addTextChangedListener(textWatcher)
         txtTotalPrice = findViewById(R.id.txtTotalPrice)
+        txtBookFor = findViewById(R.id.txtBookFor)
 
 
 
@@ -266,5 +279,41 @@ class HotelActivity : AppCompatActivity()
     {
         totalPrice = totalDays * perDayPrice * totalRooms
         txtTotalPrice.text = totalPrice.toString()
+    }
+
+    private fun bookingHotel()
+    {
+        bookingFor = txtBookFor.text.toString()
+        val currentDate = Calendar.getInstance()
+        val sharedPref = getSharedPreferences("tourism_pref", MODE_PRIVATE)
+        val userId = sharedPref.getString("id", null)
+        booking = Booking(
+                            BookingFor = bookingFor,
+                            HotelName = hotelId.toString(),
+                            BookingDate = currentDate.toString(),
+                            ArrivalDate = lblArrivalDate.text.toString(),
+                            LeavingDate = lblLeavingDate.text.toString(),
+                            Totaldays = totalDays,
+                            TotalRooms = totalRooms,
+                            TotalPrice = totalPrice,
+                            User_id = userId.toString().toInt()
+                         )
+        CoroutineScope(Dispatchers.IO).launch {
+            bookingService = BookingService()
+            val response = bookingService.booking(booking)
+            if (response.code == HttpURLConnection.HTTP_CREATED)
+            {
+                Looper.prepare()
+                Toast.makeText(this@HotelActivity, "Booking Done!", Toast.LENGTH_LONG)
+                    .show()
+                Looper.loop()
+                return@launch
+            }
+            Looper.prepare()
+            Toast.makeText(this@HotelActivity, "Something Wrong!", Toast.LENGTH_LONG)
+                .show()
+            Looper.loop()
+        }
+
     }
 }

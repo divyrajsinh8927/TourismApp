@@ -9,11 +9,16 @@ class BookingService
 {
     fun bookingAllData(booking: Booking): ApiResponse
     {
-        return ApiRequest.post(ApiRequest.BOOKING_URL, Gson().toJson(booking))
+        return ApiRequest.get(ApiRequest.BOOKING_URL.plus("?User_id=").plus(booking.User_id))
     }
 
     fun bookedHotel(booking: Booking): ApiResponse
     {
-        return ApiRequest.post(ApiRequest.BOOKING_URL, Gson().toJson(booking))
+        return ApiRequest.get(ApiRequest.BOOKING_URL.plus("?id=").plus(booking.Id))
+    }
+
+    fun booking(booking: Booking): ApiResponse
+    {
+        return ApiRequest.post(ApiRequest.BOOKING_URL,Gson().toJson(booking))
     }
 }

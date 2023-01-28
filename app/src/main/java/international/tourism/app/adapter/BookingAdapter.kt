@@ -1,6 +1,5 @@
 package international.tourism.app.adapter
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -16,11 +15,10 @@ class BookingAdapter(private var context: Context,
                      private var clickListener: OnItemClickListener? = null
 ) : RecyclerView.Adapter<BookingAdapter.ViewHolder>()
 {
-    @SuppressLint("InflateParams")
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder
     {
         return ViewHolder(
-            LayoutInflater.from(context).inflate(R.layout.bookig_list_item, null, true)
+            LayoutInflater.from(context).inflate(R.layout.bookig_list_item, parent, false)
         )
     }
 

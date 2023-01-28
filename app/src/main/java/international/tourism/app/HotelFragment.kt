@@ -95,7 +95,7 @@ class HotelFragment : Fragment()
                             }
                         })
                     recHotel.layoutManager = GridLayoutManager(requireContext(), 1)
-                    recHotel.adapter = recHotelAdapter
+                    recHotel.adapter =      recHotelAdapter
                 }
             }
         }
