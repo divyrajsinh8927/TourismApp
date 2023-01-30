@@ -60,6 +60,8 @@ class HotelActivity : AppCompatActivity()
     private lateinit var lblLeavingDate: TextView
     private lateinit var txtTotalPrice: TextView
     private lateinit var btnBooking: Button
+    private lateinit var arrivalDate: String
+    private lateinit var leavingDate: String
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
@@ -219,7 +221,9 @@ class HotelActivity : AppCompatActivity()
                 calendar.set(calendarYear, monthOfYear, dayOfMonth)
 
                 val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.US)
+                val dateFormatDatabase = SimpleDateFormat("yyyy-MM-dd", Locale.US)
                 lblArrivalDate.text = dateFormat.format(calendar.time)
+                arrivalDate = dateFormatDatabase.format(calendar.time)
             },
             year,
             month,
@@ -245,8 +249,9 @@ class HotelActivity : AppCompatActivity()
                 calendar.set(calendarYear, monthOfYear, dayOfMonth)
 
                 val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.US)
+                val dateFormatDatabase = SimpleDateFormat("yyyy-MM-dd", Locale.US)
                 lblLeavingDate.text = dateFormat.format(calendar.time)
-
+                leavingDate = dateFormatDatabase.format(calendar.time)
                 calculateTotalDay()
             },
             year,
@@ -285,14 +290,16 @@ class HotelActivity : AppCompatActivity()
     {
         bookingFor = txtBookFor.text.toString()
         val currentDate = Calendar.getInstance()
+        val dateFormatDatabase = SimpleDateFormat("yyyy-MM-dd", Locale.US)
+        val bookingDate = dateFormatDatabase.format(currentDate.time)
         val sharedPref = getSharedPreferences("tourism_pref", MODE_PRIVATE)
         val userId = sharedPref.getString("id", null)
         booking = Booking(
                             BookingFor = bookingFor,
                             HotelName = hotelId.toString(),
-                            BookingDate = currentDate.toString(),
-                            ArrivalDate = lblArrivalDate.text.toString(),
-                            LeavingDate = lblLeavingDate.text.toString(),
+                            BookingDate = bookingDate,
+                            ArrivalDate = arrivalDate,
+                            LeavingDate = leavingDate,
                             Totaldays = totalDays,
                             TotalRooms = totalRooms,
                             TotalPrice = totalPrice,
