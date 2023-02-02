@@ -26,12 +26,13 @@
     <color name="lightblue">#a1c4fd</color>
     <color name="lightblack">#454545</color>
     <color name="colorPrimary">#4150D5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimaryDark">@color/black</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="AlienBlack">#1a2228</color>
+    <color name="AlienBlack">#4FA5D3</color>
     <color name="about_heading">#202b70</color>
     <color name="white_lightblack">#CACACA</color>
-    <color name="navBar_Color">#1976D2</color>
+    <color name="navBar_Color">@color/black</color>
+    <color name="CardColor">#eaf4fc</color>
 
 
 </resources>
