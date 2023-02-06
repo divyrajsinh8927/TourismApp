@@ -9,5 +9,7 @@
     <color name="gray_anchorgrey">#596062</color>
     <color name="about_heading">#0D7EE3</color>
     <color name="bottom_Nav_Background">#B4B4B4</color>
+    <color name="blue_white">#FFFFFF</color>
+    <color name="offWhite_black">#1e272c</color>
 
 </resources>

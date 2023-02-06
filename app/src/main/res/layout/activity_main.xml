@@ -7,8 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="horizontal"
     tools:context=".MainActivity"
-    android:background="@color/login_signup_background"
-    >
+    android:background="@color/login_signup_background">
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainer"

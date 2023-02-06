@@ -1,6 +1,5 @@
 package international.tourism.app
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -44,16 +43,15 @@ class HomeFragment : Fragment()
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
-    @SuppressLint("SuspiciousIndentation")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?)
     {
         super.onViewCreated(view, savedInstanceState)
 
         bottomNavigationView = requireActivity().findViewById(R.id.bottomNavBar)
-        btnPlaceViewAll = view.findViewById(R.id.btnViewAllPlace)
-        btnPlaceViewAll.setOnClickListener {
-            (requireActivity() as MainActivity).showPlaceFragment()
-        }
+//        btnPlaceViewAll = view.findViewById(R.id.btnViewAllPlace)
+//        btnPlaceViewAll.setOnClickListener {
+//            (requireActivity() as MainActivity).showPlaceFragment()
+//        }
         val interNetConnection = InterNetConnection()
         if (!interNetConnection.checkForInternet(requireContext()))
         {
@@ -126,7 +124,6 @@ class HomeFragment : Fragment()
 
     }
 
-    @OptIn(DelicateCoroutinesApi::class)
     private fun configureHotelData()
     {
         CoroutineScope(Dispatchers.IO).launch {
@@ -139,7 +136,7 @@ class HomeFragment : Fragment()
             }
             hotelList = ArrayList()
             val hotelData = Gson().fromJson(hotelResponse.message, Array<Hotel>::class.java)
-            GlobalScope.launch(Dispatchers.Main) {
+            withContext(Dispatchers.Main) {
 
                 for (hotelKey in hotelData)
                 {

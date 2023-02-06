@@ -109,7 +109,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:textColor="@color/black_white"
+        android:textColor="@color/blue"
         android:layout_marginTop="15sp"
         android:clickable="true"
         android:focusable="true"
@@ -119,6 +119,7 @@
         android:textSize="20sp"
         android:textStyle="bold"
         tools2:ignore="TouchTargetSizeCheck" />
+
     </LinearLayout>
     </ScrollView>
 

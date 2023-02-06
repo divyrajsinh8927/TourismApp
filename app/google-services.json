@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "5387482189",
+    "project_id": "shivtourism-978dc",
+    "storage_bucket": "shivtourism-978dc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:5387482189:android:152e4f74911e2c8b63d804",
+        "android_client_info": {
+          "package_name": "international.tourism.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "5387482189-1i23dcmnoqdtb58mf90otus4k9rlsbsm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBBeNH4wusD0MH69P0NE5zGmnZnGFIajhY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "5387482189-1i23dcmnoqdtb58mf90otus4k9rlsbsm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
