@@ -113,9 +113,9 @@ class BookingFragment : Fragment()
                         {
                             override fun onClick(bookings: Booking)
                             {
-                                val intent = Intent(requireContext(), BookingDetail::class.java)
-                                intent.putExtra("bookingId", bookings.Id)
-                                startActivity(intent)
+//                                val intent = Intent(requireContext(), BookingDetail::class.java)
+//                                intent.putExtra("bookingId", bookings.Id)
+//                                startActivity(intent)
                             }
                         })
                         bookingRecycledView.layoutManager = GridLayoutManager(requireContext(), 1)

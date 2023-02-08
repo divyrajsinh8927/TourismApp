@@ -8,13 +8,13 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import international.tourism.app.R
 import international.tourism.app.models.Booking
-import java.util.ArrayList
 
 class BookingAdapter(private var context: Context,
                      private var bookings: ArrayList<Booking>,
                      private var clickListener: OnItemClickListener? = null
 ) : RecyclerView.Adapter<BookingAdapter.ViewHolder>()
 {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder
     {
         return ViewHolder(
@@ -37,6 +37,7 @@ class BookingAdapter(private var context: Context,
         private var lblHotelName: TextView = itemView.findViewById(R.id.lblHotelName)
         private var lblTotalPrice: TextView = itemView.findViewById(R.id.lblTotalPrice)
         private var lblStatus: TextView = itemView.findViewById(R.id.lblStatus)
+
 
         fun bind(bookings: Booking)
         {
