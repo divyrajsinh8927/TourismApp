@@ -1,5 +1,6 @@
 package international.tourism.app
 
+import android.app.Activity
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -27,6 +28,7 @@ class BookingFragment : Fragment()
     private lateinit var bookingList: ArrayList<Booking>
     private lateinit var bookingRecycledView: RecyclerView
     private lateinit var bookingAdapter: BookingAdapter
+    private lateinit var attachedContext: Activity
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,11 +43,12 @@ class BookingFragment : Fragment()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?)
     {
         super.onViewCreated(view, savedInstanceState)
-        bookingRecycledView = requireView().findViewById(R.id.lstBooking)
+        bookingRecycledView = view.findViewById(R.id.lstBooking)
+        attachedContext = activity ?: return
 
         val userId = checkLogin()
 
-        if(userId == 0)
+        if (userId == 0)
             return
 
         booking = Booking(User_id = userId)
@@ -58,28 +61,27 @@ class BookingFragment : Fragment()
     private fun checkLogin(): Int
     {
         val interNetConnection = InterNetConnection()
-        if (!interNetConnection.checkForInternet(requireContext()))
+        if (!interNetConnection.checkForInternet(attachedContext))
         {
             Toast.makeText(context, "Please Connect To Internet!!", Toast.LENGTH_LONG)
                 .show()
             return 0
         }
 
-        sharedPreferences = this.requireActivity()
+        sharedPreferences = this.attachedContext
             .getSharedPreferences("tourism_pref", AppCompatActivity.MODE_PRIVATE)
         val userId = sharedPreferences.getString("id", null)
         if (userId == null)
         {
-            Toast.makeText(context, "Please Login First!!", Toast.LENGTH_LONG)
+            Toast.makeText(attachedContext, "Please Login First!!", Toast.LENGTH_LONG)
                 .show()
-            startActivity(Intent(requireContext(), LoginActivity::class.java))
+            startActivity(Intent(attachedContext, LoginActivity::class.java))
             return 0
         }
 
         return userId.toInt()
     }
 
-    @OptIn(DelicateCoroutinesApi::class)
     private fun configureData()
     {
         CoroutineScope(Dispatchers.IO).launch {
@@ -88,7 +90,7 @@ class BookingFragment : Fragment()
             val response = bookingService.bookingAllData(booking)
             if (response.code == HttpURLConnection.HTTP_NOT_FOUND)
             {
-                Toast.makeText(context, "No Booking History!!", Toast.LENGTH_LONG)
+                Toast.makeText(attachedContext, "No Booking History!!", Toast.LENGTH_LONG)
                     .show()
                 return@launch
             }
@@ -96,31 +98,32 @@ class BookingFragment : Fragment()
             bookingList = ArrayList()
             val bookingData =
                 Gson().fromJson(response.message, Array<Booking>::class.java)
-            GlobalScope.launch(Dispatchers.Main) {
-                for (booking in bookingData)
-                {
+            for (booking in bookingData)
+            {
 
-                    GlobalScope.launch(Dispatchers.Main) {
-                        bookingList.add(
-                            Booking(
-                                Id = booking.Id,
-                                HotelName = booking.HotelName,
-                                TotalPrice = booking.TotalPrice,
-                                Status = booking.Status
-                            )
+                withContext(Dispatchers.Main) {
+                    bookingList.add(
+                        Booking(
+                            Id = booking.Id,
+                            HotelName = booking.HotelName,
+                            TotalPrice = booking.TotalPrice,
+                            Status = booking.Status
                         )
-                         bookingAdapter = BookingAdapter(requireContext(), bookingList, object: BookingAdapter.OnItemClickListener
+                    )
+                    bookingAdapter = BookingAdapter(
+                        attachedContext,
+                        bookingList,
+                        object : BookingAdapter.OnItemClickListener
                         {
                             override fun onClick(bookings: Booking)
                             {
-//                                val intent = Intent(requireContext(), BookingDetail::class.java)
-//                                intent.putExtra("bookingId", bookings.Id)
-//                                startActivity(intent)
+                                val intent = Intent(attachedContext, BookingDetail::class.java)
+                                intent.putExtra("bookingId", bookings.Id)
+                                startActivity(intent)
                             }
                         })
-                        bookingRecycledView.layoutManager = GridLayoutManager(requireContext(), 1)
-                        bookingRecycledView.adapter = bookingAdapter
-                    }
+                    bookingRecycledView.layoutManager = GridLayoutManager(attachedContext, 1)
+                    bookingRecycledView.adapter = bookingAdapter
                 }
             }
         }

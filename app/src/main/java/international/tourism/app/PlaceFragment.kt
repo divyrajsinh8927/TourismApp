@@ -1,5 +1,6 @@
 package international.tourism.app
 
+import android.app.Activity
 import android.content.Intent
 import international.tourism.app.adapter.PlaceAdapter
 import android.os.Bundle
@@ -7,8 +8,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.AnimationUtils
-import android.view.animation.LayoutAnimationController
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -27,6 +26,7 @@ class PlaceFragment : Fragment()
         private lateinit var recPlace: RecyclerView
         private lateinit var placeList: ArrayList<Place>
         private lateinit var recPlaceAdapter: PlaceAdapter
+        private lateinit var attachedContext: Activity
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,13 +39,14 @@ class PlaceFragment : Fragment()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?)
     {
         super.onViewCreated(view, savedInstanceState)
+        attachedContext = activity ?: return
 
         imagesUrl = ImagesUrl()
         recPlace = view.findViewById(R.id.recPlace)
         recPlace.startLayoutAnimation()
 
         val interNetConnection = InterNetConnection()
-        if (!interNetConnection.checkForInternet(requireContext()))
+        if (!interNetConnection.checkForInternet(attachedContext))
         {
             Toast.makeText(context, "Please Connect To Internet!!", Toast.LENGTH_LONG).show()
             return
@@ -83,16 +84,16 @@ class PlaceFragment : Fragment()
                             CityName = place.CityName
                         )
                     )
-                    recPlaceAdapter = PlaceAdapter(requireContext(), placeList, object: PlaceAdapter.OnItemClickListener
+                    recPlaceAdapter = PlaceAdapter(attachedContext, placeList, object: PlaceAdapter.OnItemClickListener
                     {
                         override fun onClick(place: Place)
                         {
-                            val intent = Intent(requireContext(), PlaceActivity::class.java)
+                            val intent = Intent(attachedContext, PlaceActivity::class.java)
                             intent.putExtra("placeId", place.Id)
                             startActivity(intent)
                         }
                     })
-                    recPlace.layoutManager = GridLayoutManager(requireContext(), 1)
+                    recPlace.layoutManager = GridLayoutManager(attachedContext, 1)
                     recPlace.adapter = recPlaceAdapter
                 }
             }

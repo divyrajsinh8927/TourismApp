@@ -1,5 +1,6 @@
 package international.tourism.app
 
+import android.app.Activity
 import android.content.Intent
 import international.tourism.app.adapter.RecHotelAdapter
 import android.os.Bundle
@@ -21,7 +22,7 @@ class HotelFragment : Fragment()
 {
     private lateinit var hotelService: HotelService
     private lateinit var imagesUrl: ImagesUrl
-
+    private lateinit var attachedContext: Activity
     private lateinit var recHotel: RecyclerView
     private lateinit var hotelList: ArrayList<Hotel>
     private lateinit var recHotelAdapter: RecHotelAdapter
@@ -37,11 +38,12 @@ class HotelFragment : Fragment()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?)
     {
         super.onViewCreated(view, savedInstanceState)
+        attachedContext = activity ?: return
 
         recHotel = view.findViewById(R.id.recHotel)
         imagesUrl = ImagesUrl()
         val interNetConnection = InterNetConnection()
-        if (!interNetConnection.checkForInternet(requireContext()))
+        if (!interNetConnection.checkForInternet(attachedContext))
         {
             Toast.makeText(context, "Please Connect To Internet!!", Toast.LENGTH_LONG)
                 .show()
@@ -52,7 +54,6 @@ class HotelFragment : Fragment()
 
     }
 
-    @OptIn(DelicateCoroutinesApi::class)
     private fun configureData()
     {
         CoroutineScope(Dispatchers.IO).launch {
@@ -66,7 +67,7 @@ class HotelFragment : Fragment()
             }
             hotelList = ArrayList()
             val hotelData = Gson().fromJson(hotelResponse.message, Array<Hotel>::class.java)
-            GlobalScope.launch(Dispatchers.Main) {
+            withContext(Dispatchers.Main) {
 
                 for (hotelKey in hotelData)
                 {
@@ -82,20 +83,20 @@ class HotelFragment : Fragment()
                         )
                     )
                     recHotelAdapter = RecHotelAdapter(
-                        requireContext(),
+                        attachedContext.applicationContext,
                         hotelList,
                         object : RecHotelAdapter.OnItemClickListener
                         {
                             override fun onClick(hotel: Hotel)
                             {
                                 val intent =
-                                    Intent(requireContext(), HotelActivity::class.java)
+                                    Intent(attachedContext, HotelActivity::class.java)
                                 intent.putExtra("hotelId", hotel.Id)
                                 startActivity(intent)
                             }
                         })
-                    recHotel.layoutManager = GridLayoutManager(requireContext(), 1)
-                    recHotel.adapter =      recHotelAdapter
+                    recHotel.layoutManager = GridLayoutManager(attachedContext, 1)
+                    recHotel.adapter = recHotelAdapter
                 }
             }
         }

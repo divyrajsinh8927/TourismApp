@@ -1,5 +1,6 @@
 package international.tourism.app
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -25,6 +26,7 @@ class HomeFragment : Fragment()
     private lateinit var placeService: PlaceService
     private lateinit var hotelService: HotelService
     private lateinit var btnPlaceViewAll: Button
+    private lateinit var btnViewAllHotel: Button
     private lateinit var bottomNavigationView: ChipNavigationBar
     private lateinit var imagesUrl: ImagesUrl
     private lateinit var recHomePlace: RecyclerView
@@ -33,6 +35,7 @@ class HomeFragment : Fragment()
     private lateinit var hotelList: ArrayList<Hotel>
     private lateinit var homePlaceAdapter: HomePlaceAdapter
     private lateinit var homeHotelAdapter: HomeHotelAdapter
+    private lateinit var attachedContext: Activity
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,14 +49,19 @@ class HomeFragment : Fragment()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?)
     {
         super.onViewCreated(view, savedInstanceState)
+        attachedContext = activity ?: return
 
         bottomNavigationView = requireActivity().findViewById(R.id.bottomNavBar)
-//        btnPlaceViewAll = view.findViewById(R.id.btnViewAllPlace)
-//        btnPlaceViewAll.setOnClickListener {
-//            (requireActivity() as MainActivity).showPlaceFragment()
-//        }
+        btnPlaceViewAll = view.findViewById(R.id.btnViewAllPlace)
+        btnViewAllHotel = view.findViewById(R.id.btnViewAllHotel)
+        btnPlaceViewAll.setOnClickListener {
+            (requireActivity() as MainActivity).showPlaceFragment()
+        }
+        btnViewAllHotel.setOnClickListener {
+            (requireActivity() as MainActivity).showHotelFragment()
+        }
         val interNetConnection = InterNetConnection()
-        if (!interNetConnection.checkForInternet(requireContext()))
+        if (!interNetConnection.checkForInternet(attachedContext))
         {
             Toast.makeText(context, "Please Connect To Internet!", Toast.LENGTH_LONG)
                 .show()
@@ -101,21 +109,21 @@ class HomeFragment : Fragment()
                             )
                         )
                         homePlaceAdapter = HomePlaceAdapter(
-                            requireContext(),
+                            attachedContext,
                             placeList,
                             object : HomePlaceAdapter.OnItemClickListener
                             {
                                 override fun onClick(place: Place)
                                 {
 
-                                    val intent = Intent(requireContext(), PlaceActivity::class.java)
+                                    val intent = Intent(attachedContext, PlaceActivity::class.java)
                                     intent.putExtra("placeId", place.Id)
                                     startActivity(intent)
                                 }
                             })
 
                         recHomePlace.layoutManager =
-                            GridLayoutManager(requireContext(), 2)
+                            GridLayoutManager(attachedContext, 2)
                         recHomePlace.adapter = homePlaceAdapter
                     }
                 }
@@ -152,20 +160,20 @@ class HomeFragment : Fragment()
                         )
                     )
                     homeHotelAdapter = HomeHotelAdapter(
-                        requireContext(),
+                        attachedContext,
                         hotelList,
                         object : HomeHotelAdapter.OnItemClickListener
                         {
                             override fun onClick(hotel: Hotel)
                             {
-                                val intent = Intent(requireContext(), HotelActivity::class.java)
+                                val intent = Intent(attachedContext, HotelActivity::class.java)
                                 intent.putExtra("hotelId", hotel.Id)
                                 startActivity(intent)
                             }
                         })
 
                     recHomeHotel.layoutManager =
-                        GridLayoutManager(requireContext(), 2)
+                        GridLayoutManager(attachedContext, 2)
                     recHomeHotel.adapter = homeHotelAdapter
 
                 }

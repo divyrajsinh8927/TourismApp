@@ -13,11 +13,9 @@ class ApiRequest
         @JvmStatic val BASE_URL = "http://192.168.106.51/ATourism/api"
         @JvmStatic val LOGIN_URL = "$BASE_URL/login.php"
         @JvmStatic val REGISTER_URL = "$BASE_URL/user.php"
-        @JvmStatic val COUNTRY_URL = "$BASE_URL/country.php"
         @JvmStatic val PLACE_URL = "$BASE_URL/place.php"
         @JvmStatic val HOTEL_URL = "$BASE_URL/hotel.php"
         @JvmStatic val BOOKING_URL = "$BASE_URL/booking.php"
-        @JvmStatic val PLACE_IMAGE = "$BASE_URL/placeimages.php"
 
 
         @JvmStatic
