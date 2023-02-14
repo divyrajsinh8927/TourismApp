@@ -1,4 +1,4 @@
-package international.tourism.app.repo
+package international.tourism.app.services
 
 import com.google.gson.Gson
 import international.tourism.app.models.PlaceImage

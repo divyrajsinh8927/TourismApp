@@ -9,7 +9,7 @@ import androidx.appcompat.app.ActionBar
 import androidx.core.view.isVisible
 import com.google.gson.Gson
 import international.tourism.app.models.Booking
-import international.tourism.app.repo.BookingService
+import international.tourism.app.services.BookingService
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -64,10 +64,10 @@ class BookingDetail : AppCompatActivity()
                 .show()
             return
         }
-        configureData()
+        populateBookingData()
     }
 
-    private fun configureData()
+    private fun populateBookingData()
     {
 
         CoroutineScope(Dispatchers.IO).launch {

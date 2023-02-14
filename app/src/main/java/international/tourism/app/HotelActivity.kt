@@ -23,8 +23,8 @@ import com.google.gson.Gson
 import international.tourism.app.models.Booking
 import international.tourism.app.models.HotelImage
 import international.tourism.app.models.ImagesUrl
-import international.tourism.app.repo.BookingService
-import international.tourism.app.repo.HotelService
+import international.tourism.app.services.BookingService
+import international.tourism.app.services.HotelService
 import kotlinx.coroutines.*
 import java.net.HttpURLConnection
 import java.text.SimpleDateFormat
@@ -110,7 +110,7 @@ class HotelActivity : AppCompatActivity()
 
 
         hotelImage = HotelImage(Hotel_id = hotelId)
-        configureHotelData()
+        populateHotelData()
 
     }
 
@@ -134,7 +134,7 @@ class HotelActivity : AppCompatActivity()
         }
     }
 
-    private fun configureHotelData()
+    private fun populateHotelData()
     {
         CoroutineScope(Dispatchers.IO).launch {
             hotelService = HotelService()

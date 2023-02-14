@@ -1,12 +1,13 @@
 package international.tourism.app.models
 
 data class User(
-    var Id: Int = 0,
-    var Name: String = "",
-    var MobileNumber: Int = 0,
-    var UserType: String = "U",
-    var Email: String = "",
-    var PasswordHash: String = "",
-    var Status: Int = 0,
-    var UserIsDelete: Int = 0
+    val Id: Int = 0,
+    val Name: String = "",
+    val MobileNumber: Int = 0,
+    val UserType: String = "U",
+    val Email: String = "",
+    val PasswordHash: String = "",
+    val Status: Int = 0,
+    val UserIsDelete: Int = 0,
+    val FirebaseToken: String = ""
     )

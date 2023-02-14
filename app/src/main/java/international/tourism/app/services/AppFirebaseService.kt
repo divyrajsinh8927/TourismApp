@@ -3,25 +3,23 @@ package international.tourism.app.services
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
+import android.database.sqlite.SQLiteDatabase
 import android.os.Build
-import android.util.Log
 import androidx.core.app.NotificationCompat
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import international.tourism.app.R
-import international.tourism.app.utils.ApiRequest
-import okhttp3.OkHttpClient
-import okhttp3.Request
 
 class AppFirebaseService : FirebaseMessagingService()
 {
+    private lateinit var database: SQLiteDatabase
     override fun onNewToken(token: String)
     {
-        val sharedPref = getSharedPreferences("tourism_pref", MODE_PRIVATE)
-        val id = sharedPref.getString("id", null)
-        Log.d("Token", token)
-        val request = Request.Builder().get().url(ApiRequest.BASE_URL.plus("/firebase/add-token.php?id=${id}&token=${token}")).build()
-        OkHttpClient().newCall(request).execute()
+        database = configureDatabase()
+
+        val query = "INSERT INTO userToken (Token) VALUES (?)"
+        database.execSQL(query, arrayOf(token))
+
     }
 
     override fun onMessageReceived(message: RemoteMessage)
@@ -47,5 +45,12 @@ class AppFirebaseService : FirebaseMessagingService()
         }
 
         notificationManager.notify(0, notification)
+    }
+    private fun configureDatabase(): SQLiteDatabase
+    {
+        val database = openOrCreateDatabase("ShivTourism_db", MODE_PRIVATE, null)
+        database.execSQL("CREATE TABLE IF NOT EXISTS userToken (Id INTEGER PRIMARY KEY AUTOINCREMENT, Token TEXT NOT NULL)")
+
+        return database
     }
 }

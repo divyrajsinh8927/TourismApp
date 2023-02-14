@@ -4,7 +4,6 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Looper
 import android.text.method.LinkMovementMethod
 import android.widget.Button
 import android.widget.EditText
@@ -13,7 +12,7 @@ import android.widget.TextView
 import android.widget.Toast
 import com.google.gson.Gson
 import international.tourism.app.models.User
-import international.tourism.app.repo.AuthService
+import international.tourism.app.services.AuthService
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -25,6 +24,7 @@ class LoginActivity : AppCompatActivity()
     private lateinit var sharedPref: SharedPreferences
     private lateinit var authService: AuthService
     private lateinit var user: User
+    private var userId: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
@@ -60,12 +60,13 @@ class LoginActivity : AppCompatActivity()
             val email = txtEmail.text.toString()
             val password = txtPassword.text.toString()
             user = User(Email = email, PasswordHash = password)
-            loginDone(email)
+            loginDone()
+            registerToken()
         }
     }
 
 
-    private fun loginDone(email: String)
+    private fun loginDone()
     {
 
         CoroutineScope(Dispatchers.IO).launch {
@@ -73,45 +74,45 @@ class LoginActivity : AppCompatActivity()
             val response = authService.login(user)
             if (response.code == HTTP_NOT_FOUND)
             {
-                Looper.prepare()
-                Toast.makeText(this@LoginActivity, "Wrong email or password", Toast.LENGTH_LONG)
-                    .show()
-                Looper.loop()
+                withContext(Dispatchers.Main)
+                {
+                    Toast.makeText(this@LoginActivity, "Wrong email or password", Toast.LENGTH_LONG)
+                        .show()
+                }
+                return@launch
             }
             user = Gson().fromJson(response.message, User::class.java)
-            val id = user.Id
+            userId = user.Id
             val userIsDelete = user.UserIsDelete
             val status = user.Status
             if (userIsDelete == 1)
             {
-                Looper.prepare()
+                withContext(Dispatchers.Main){
                 Toast.makeText(this@LoginActivity, "User Is Deleted!", Toast.LENGTH_LONG)
                     .show()
-                Looper.loop()
+                }
+                return@launch
             }
             if (status == 0)
             {
-                Looper.prepare()
-                Toast.makeText(
-                    this@LoginActivity,
-                    "User Is Deactivated!",
-                    Toast.LENGTH_LONG
-                )
-                    .show()
-                Looper.loop()
+                withContext(Dispatchers.Main) {
+                    Toast.makeText(
+                        this@LoginActivity,
+                        "User Is Deactivated!",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
                 return@launch
             }
             withContext(Dispatchers.Main) {
                 val editor = sharedPref.edit()
 
-                editor.putString("email", email)
-                editor.putString("id", id.toString())
+                editor.putString("email", user.Email)
+                editor.putString("id", userId.toString())
                 editor.apply()
                 sendToHome()
             }
-
         }
-
     }
 
     private fun sendToHome()
@@ -120,4 +121,29 @@ class LoginActivity : AppCompatActivity()
         startActivity(intent)
         finish()
     }
+
+    private fun registerToken()
+    {
+
+        val database = openOrCreateDatabase("ShivTourism_db", MODE_PRIVATE, null)
+        val query = "SELECT * FROM userToken"
+        val cursor = database.rawQuery(query,null)
+        if (cursor.count == 0)
+        {
+            cursor.close()
+            Toast.makeText(this, "Token does not exist!", Toast.LENGTH_LONG).show()
+            return
+        }
+
+        cursor.moveToFirst()
+        val token = cursor.getString(1)
+
+        user = User(FirebaseToken = token)
+        CoroutineScope(Dispatchers.IO).launch {
+            authService.addToken(user)
+        }
+        cursor.close()
+    }
 }
+
+

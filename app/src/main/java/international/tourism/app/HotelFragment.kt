@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import international.tourism.app.models.Hotel
 import international.tourism.app.models.ImagesUrl
-import international.tourism.app.repo.HotelService
+import international.tourism.app.services.HotelService
 import kotlinx.coroutines.*
 import java.net.HttpURLConnection
 
@@ -49,12 +49,12 @@ class HotelFragment : Fragment()
                 .show()
             return
         }
-        configureData()
+        populateHotelData()
         recHotel.startLayoutAnimation()
 
     }
 
-    private fun configureData()
+    private fun populateHotelData()
     {
         CoroutineScope(Dispatchers.IO).launch {
             hotelService = HotelService()

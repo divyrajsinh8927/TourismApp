@@ -10,7 +10,7 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.google.gson.Gson
 import international.tourism.app.models.User
-import international.tourism.app.repo.AuthService
+import international.tourism.app.services.AuthService
 import kotlinx.coroutines.*
 import java.net.HttpURLConnection
 
@@ -41,10 +41,10 @@ class ProfileActivity : AppCompatActivity()
         user = User(Id = id!!.toInt())
         btnChangePassword = findViewById(R.id.btnChangePassword)
         btnChangePassword.setOnClickListener{startActivity(Intent(this,ChangePassword::class.java))}
-        configureData()
+        populateProfileData()
     }
 
-    private fun configureData()
+    private fun populateProfileData()
     {
         CoroutineScope(Dispatchers.IO).launch {
             authService = AuthService()

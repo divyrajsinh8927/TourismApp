@@ -15,8 +15,8 @@ import com.google.gson.Gson
 import international.tourism.app.adapter.HomeHotelAdapter
 import international.tourism.app.adapter.HomePlaceAdapter
 import international.tourism.app.models.*
-import international.tourism.app.repo.HotelService
-import international.tourism.app.repo.PlaceService
+import international.tourism.app.services.HotelService
+import international.tourism.app.services.PlaceService
 import kotlinx.coroutines.*
 import java.net.HttpURLConnection
 import com.ismaeldivita.chipnavigation.ChipNavigationBar
@@ -71,18 +71,18 @@ class HomeFragment : Fragment()
         /* Place Recycle View */
         recHomePlace = view.findViewById(R.id.recHomePlace)
         recHomePlace.setHasFixedSize(true)
-        configurePlaceData()
+        populatePlaceData()
         recHomePlace.startLayoutAnimation()
 
 
         /* Hotel Recycle View */
         recHomeHotel = view.findViewById(R.id.recHomeHotel)
-        configureHotelData()
+        populateHotelData()
         recHomeHotel.startLayoutAnimation()
 
     }
 
-    private fun configurePlaceData()
+    private fun populatePlaceData()
     {
         CoroutineScope(Dispatchers.IO).launch {
             placeService = PlaceService()
@@ -132,7 +132,7 @@ class HomeFragment : Fragment()
 
     }
 
-    private fun configureHotelData()
+    private fun populateHotelData()
     {
         CoroutineScope(Dispatchers.IO).launch {
             hotelService = HotelService()

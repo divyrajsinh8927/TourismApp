@@ -15,7 +15,7 @@ import com.denzcoskun.imageslider.models.SlideModel
 import com.google.gson.Gson
 import international.tourism.app.models.ImagesUrl
 import international.tourism.app.models.PlaceImage
-import international.tourism.app.repo.PlaceService
+import international.tourism.app.services.PlaceService
 import kotlinx.coroutines.*
 import java.net.HttpURLConnection
 
@@ -61,11 +61,10 @@ class PlaceActivity : AppCompatActivity()
                 .show()
             return
         }
-        configureData()
+        populatePlaceData()
     }
 
-    @OptIn(DelicateCoroutinesApi::class)
-    private fun configureData()
+    private fun populatePlaceData()
     {
         CoroutineScope(Dispatchers.IO).launch {
             placeService = PlaceService()
@@ -73,7 +72,7 @@ class PlaceActivity : AppCompatActivity()
             if (response.code == HttpURLConnection.HTTP_OK)
             {
                 val placeData = Gson().fromJson(response.message, Array<PlaceImage>::class.java)
-                GlobalScope.launch(Dispatchers.Main) {
+                withContext(Dispatchers.Main) {
                     for (place in placeData)
                     {
                         placeImage1 = place.PlaceImage1

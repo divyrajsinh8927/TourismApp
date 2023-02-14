@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import international.tourism.app.adapter.BookingAdapter
 import international.tourism.app.models.Booking
-import international.tourism.app.repo.BookingService
+import international.tourism.app.services.BookingService
 import kotlinx.coroutines.*
 import java.net.HttpURLConnection
 
@@ -53,7 +53,7 @@ class BookingFragment : Fragment()
 
         booking = Booking(User_id = userId)
 
-        configureData()
+        populateBookingData()
         bookingRecycledView.startLayoutAnimation()
 
     }
@@ -82,7 +82,7 @@ class BookingFragment : Fragment()
         return userId.toInt()
     }
 
-    private fun configureData()
+    private fun populateBookingData()
     {
         CoroutineScope(Dispatchers.IO).launch {
             bookingService = BookingService()

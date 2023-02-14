@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import international.tourism.app.models.ImagesUrl
 import international.tourism.app.models.Place
-import international.tourism.app.repo.PlaceService
+import international.tourism.app.services.PlaceService
 import kotlinx.coroutines.*
 import java.net.HttpURLConnection
 
@@ -51,11 +51,10 @@ class PlaceFragment : Fragment()
             Toast.makeText(context, "Please Connect To Internet!!", Toast.LENGTH_LONG).show()
             return
         }
-        configureData()
+        populatePlaceData()
     }
 
-    @OptIn(DelicateCoroutinesApi::class)
-    private fun configureData()
+    private fun populatePlaceData()
     {
         CoroutineScope(Dispatchers.IO).launch {
             placeService = PlaceService()
@@ -75,7 +74,7 @@ class PlaceFragment : Fragment()
                 if (place.PlaceIsDelete == 1)
                     continue
 
-                GlobalScope.launch(Dispatchers.Main) {
+                withContext(Dispatchers.Main) {
                     placeList.add(
                         Place(
                             Id = place.Id,
