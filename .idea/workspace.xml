@@ -9,23 +9,36 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9aa8eab4-7be1-4d44-9564-e7d4d8e2abf8" name="Changes" comment="Implement Splash Screen">
-      <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetDropDown.xml" beforeDir="false" />
+    <list default="true" id="9aa8eab4-7be1-4d44-9564-e7d4d8e2abf8" name="Changes" comment="edith auth api url">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/ResetpasswordActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/forgotpasswordActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/email_icon.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/forgot_password.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/lock.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/login.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/login_image.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/password_icon.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/person.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/register_image.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/reset_password.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/signup_reset_password.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/telephone.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_forgotpassword.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_resetpassword.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/BookingFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/BookingFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/HomeFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/HomeFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/HotelFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/HotelFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/PlaceFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/PlaceFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/utils/ApiRequest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/utils/ApiRequest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/login_signup_button.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/login_signup_button.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/login_signup_editext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/login_signup_editext.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_register.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_register.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\divyr\.android\avd\Pixel_2_API_33.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[adb-HM5LFEJBHM7L85YD-d0BzTo._adb-tls-connect._tcp]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -74,8 +87,8 @@
       <list>
         <option value="Kotlin Data Class" />
         <option value="layoutResourceFile" />
-        <option value="resourceFile" />
         <option value="Kotlin Class" />
+        <option value="resourceFile" />
       </list>
     </option>
   </component>
@@ -113,7 +126,8 @@
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/sir/FirebaseDemoB&quot;,
+    &quot;last_directory_selection&quot;: &quot;C:/androidproject/project/app/src/main/res/layout&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/androidproject/project/app/src/main/res/drawable&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.tools&quot;,
     &quot;settings.editor.splitter.proportion&quot;: &quot;0.24847251&quot;
   }
@@ -123,18 +137,22 @@
       <recent name="international.tourism.app" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\androidproject\project\app\src\main\res\drawable" />
+      <recent name="C:\androidproject\project\app\src\main\res\layout" />
       <recent name="C:\androidproject\project\app\src\main\res\raw" />
       <recent name="C:\androidproject\project\app\src\main\res\anim" />
-      <recent name="C:\androidproject\project\app\src\main\res\drawable" />
       <recent name="C:\androidproject\project\app\src\main\res\values" />
-      <recent name="C:\androidproject\project\app\src\main\res\font" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\androidproject\project\app\src\main\res\font" />
       <recent name="C:\androidproject\project\app\src\main\res\drawable" />
+      <recent name="C:\androidproject\project\app\src\main\res\color" />
+      <recent name="C:\androidproject\project\app\src\main\res\font" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
       <recent name="international.tourism.app.models" />
+    </key>
+    <key name="android.template.-1112584390">
+      <recent name="international.tourism.app" />
     </key>
     <key name="android.template.191626797">
       <recent name="international.tourism.app" />
@@ -338,7 +356,21 @@
       <option name="project" value="LOCAL" />
       <updated>1675920808655</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="error solve dark mode and lightmode">
+      <created>1676293634316</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1676293634316</updated>
+    </task>
+    <task id="LOCAL-00020" summary="edith auth api url">
+      <created>1676293791099</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1676293791100</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -369,7 +401,9 @@
     <MESSAGE value="Edit Recycle view Card" />
     <MESSAGE value="booking update" />
     <MESSAGE value="Implement Splash Screen" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implement Splash Screen" />
+    <MESSAGE value="error solve dark mode and lightmode" />
+    <MESSAGE value="edith auth api url" />
+    <option name="LAST_COMMIT_MESSAGE" value="edith auth api url" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

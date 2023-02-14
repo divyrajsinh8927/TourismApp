@@ -19,6 +19,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="33">
         <activity
+            android:name=".ResetpasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".forgotpasswordActivity"
+            android:exported="false" />
+        <activity
             android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>

@@ -28,7 +28,7 @@
     <string name="your_password">Your Password</string>
     <string name="image">image</string>
     <string name="please_log_into_your_existing_account">Please Log into your existing account</string>
-    <string name="please_register_your_account">Please Register your account</string>
+    <string name="please_register_your_account">Create Acount</string>
     <string name="profile">User Profile</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -91,4 +91,13 @@
     <string name="rooms">Rooms</string>
     <string name="days">Days</string>
     <string name="Price">Price</string>
+    <string name="todo">todo</string>
+    <string name="create_accout_below">Go ahead and sign up, let everyone know how awesome you are!</string>
+    <string name="forgetpassword">ForgetPassword</string>
+    <string name="forgotpassword_text">Don’t worry! It happens. Please enter the email associated with your account.</string>
+    <string name="submit">submit</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="resetpassword_text">Ready to create new password? Please type something you’ll remember.</string>
+    <string name="new_password">New password</string>
+    <string name="otp">OTP</string>
 </resources>
