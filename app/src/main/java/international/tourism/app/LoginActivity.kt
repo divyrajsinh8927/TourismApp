@@ -24,7 +24,6 @@ class LoginActivity : AppCompatActivity()
     private lateinit var sharedPref: SharedPreferences
     private lateinit var authService: AuthService
     private lateinit var user: User
-    private var userId: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
@@ -46,9 +45,6 @@ class LoginActivity : AppCompatActivity()
         val btnClose = findViewById<ImageView>(R.id.btnClose)
 
         btnClose.setOnClickListener { startActivity(Intent(this, MainActivity::class.java)) }
-
-
-
         signUp.setOnClickListener {
             val myIntent = Intent(this, RegisterActivity::class.java)
             startActivity(myIntent)
@@ -60,18 +56,18 @@ class LoginActivity : AppCompatActivity()
             val email = txtEmail.text.toString()
             val password = txtPassword.text.toString()
             user = User(Email = email, PasswordHash = password)
+
             loginDone()
-            registerToken()
         }
     }
 
-
     private fun loginDone()
     {
-
         CoroutineScope(Dispatchers.IO).launch {
+
             authService = AuthService()
             val response = authService.login(user)
+
             if (response.code == HTTP_NOT_FOUND)
             {
                 withContext(Dispatchers.Main)
@@ -81,18 +77,21 @@ class LoginActivity : AppCompatActivity()
                 }
                 return@launch
             }
+
             user = Gson().fromJson(response.message, User::class.java)
-            userId = user.Id
+
             val userIsDelete = user.UserIsDelete
             val status = user.Status
+
             if (userIsDelete == 1)
             {
-                withContext(Dispatchers.Main){
-                Toast.makeText(this@LoginActivity, "User Is Deleted!", Toast.LENGTH_LONG)
-                    .show()
+                withContext(Dispatchers.Main) {
+                    Toast.makeText(this@LoginActivity, "User Is Deleted!", Toast.LENGTH_LONG)
+                        .show()
                 }
                 return@launch
             }
+
             if (status == 0)
             {
                 withContext(Dispatchers.Main) {
@@ -104,12 +103,32 @@ class LoginActivity : AppCompatActivity()
                 }
                 return@launch
             }
+
+            val database = openOrCreateDatabase("ShivTourism_db", MODE_PRIVATE, null)
+            val query = "SELECT * FROM userToken"
+            database.rawQuery(query, null).use { cursor ->
+                if (cursor.count == 0)
+                {
+                    Toast.makeText(this@LoginActivity, "Token does not exist!", Toast.LENGTH_LONG).show()
+                    return@launch
+                }
+
+                cursor.moveToFirst()
+                val token = cursor.getString(1)
+
+                val userToken = User(Id = user.Id, FirebaseToken = token)
+                CoroutineScope(Dispatchers.IO).launch {
+                    authService.addToken(userToken)
+                }
+            }
+
             withContext(Dispatchers.Main) {
                 val editor = sharedPref.edit()
 
                 editor.putString("email", user.Email)
-                editor.putString("id", userId.toString())
+                editor.putString("id", user.Id.toString())
                 editor.apply()
+
                 sendToHome()
             }
         }
@@ -120,29 +139,6 @@ class LoginActivity : AppCompatActivity()
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
         finish()
-    }
-
-    private fun registerToken()
-    {
-
-        val database = openOrCreateDatabase("ShivTourism_db", MODE_PRIVATE, null)
-        val query = "SELECT * FROM userToken"
-        val cursor = database.rawQuery(query,null)
-        if (cursor.count == 0)
-        {
-            cursor.close()
-            Toast.makeText(this, "Token does not exist!", Toast.LENGTH_LONG).show()
-            return
-        }
-
-        cursor.moveToFirst()
-        val token = cursor.getString(1)
-
-        user = User(FirebaseToken = token)
-        CoroutineScope(Dispatchers.IO).launch {
-            authService.addToken(user)
-        }
-        cursor.close()
     }
 }
 

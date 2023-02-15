@@ -9,27 +9,10 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9aa8eab4-7be1-4d44-9564-e7d4d8e2abf8" name="Changes" comment="User login,register,forgetPassword,resetPassword Completeed Design">
+    <list default="true" id="9aa8eab4-7be1-4d44-9564-e7d4d8e2abf8" name="Changes" comment="implement FireBase">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/BookingDetail.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/BookingDetail.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/BookingFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/BookingFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/ChangePassword.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/ChangePassword.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/HomeFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/HomeFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/HotelActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/HotelActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/HotelFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/HotelFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/LoginActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/LoginActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/PlaceActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/PlaceActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/PlaceFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/PlaceFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/ProfileActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/ProfileActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/RegisterActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/RegisterActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/models/ImagesUrl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/models/ImagesUrl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/models/User.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/models/User.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/repo/AuthService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/services/AuthService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/repo/BookingService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/services/BookingService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/repo/HotelService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/services/HotelService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/repo/PlaceService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/services/PlaceService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/services/AppFirebaseService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/services/AppFirebaseService.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/utils/ApiRequest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/utils/ApiRequest.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -116,24 +99,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "android-custom-viewC:/Android/sdk/sources/android-33/android/widget/TextView.java_SELECTED": "TextView",
-    "android-custom-viewC:/Users/divyr/.gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.1.0/f2bdf79e1977939817f54a9d3e2f6bc52b63bdd0/recyclerview-1.1.0-sources.jar!/androidx/recyclerview/widget/RecyclerView.java_SELECTED": "RecyclerView",
-    "cidr.known.project.marker": "true",
-    "com.google.services.firebase.aqiPopupShown": "true",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_directory_selection": "C:/androidproject/project/app/src/main/res/layout",
-    "last_opened_file_path": "C:/",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.17",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "configurable.group.tools",
-    "settings.editor.splitter.proportion": "0.24847251"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;android-custom-viewC:/Android/sdk/sources/android-33/android/widget/TextView.java_SELECTED&quot;: &quot;TextView&quot;,
+    &quot;android-custom-viewC:/Users/divyr/.gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.1.0/f2bdf79e1977939817f54a9d3e2f6bc52b63bdd0/recyclerview-1.1.0-sources.jar!/androidx/recyclerview/widget/RecyclerView.java_SELECTED&quot;: &quot;RecyclerView&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_directory_selection&quot;: &quot;C:/androidproject/project/app/src/main/res/layout&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.tools&quot;,
+    &quot;settings.editor.splitter.proportion&quot;: &quot;0.24847251&quot;
   }
-}]]></component>
+}</component>
   <component name="PsdUISettings">
     <option name="MODULE_TAB" value="Properties" />
     <option name="LAST_EDITED_SIGNING_CONFIG" value="debug" />
@@ -383,7 +366,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676353966850</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="implement FireBase">
+      <created>1676376481918</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1676376481918</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -417,50 +407,16 @@
     <MESSAGE value="error solve dark mode and lightmode" />
     <MESSAGE value="edith auth api url" />
     <MESSAGE value="User login,register,forgetPassword,resetPassword Completeed Design" />
-    <option name="LAST_COMMIT_MESSAGE" value="User login,register,forgetPassword,resetPassword Completeed Design" />
+    <MESSAGE value="implement FireBase" />
+    <option name="LAST_COMMIT_MESSAGE" value="implement FireBase" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/international/tourism/app/services/AppFirebaseService.kt</url>
-          <line>19</line>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/international/tourism/app/services/AppFirebaseService.kt</url>
-          <line>20</line>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/international/tourism/app/services/AppFirebaseService.kt</url>
-          <line>17</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/international/tourism/app/LoginActivity.kt</url>
-          <line>140</line>
-          <option name="timeStamp" value="24" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/international/tourism/app/LoginActivity.kt</url>
-          <line>142</line>
-          <option name="timeStamp" value="25" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/international/tourism/app/services/AuthService.kt</url>
-          <line>31</line>
-          <option name="timeStamp" value="26" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/international/tourism/app/LoginActivity.kt</url>
-          <line>62</line>
-          <option name="timeStamp" value="27" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/international/tourism/app/LoginActivity.kt</url>
-          <line>84</line>
-          <option name="timeStamp" value="28" />
+          <line>109</line>
+          <option name="timeStamp" value="42" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
