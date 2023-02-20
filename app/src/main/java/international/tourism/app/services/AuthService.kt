@@ -31,4 +31,15 @@ class AuthService
     {
         return ApiRequest.get(ApiRequest.ADDTOKEN_URL.plus("?userId=").plus(user.Id).plus("&token=".plus(user.FirebaseToken)))
     }
+
+    fun verifyEmailAndSendOtp(user: User): ApiResponse
+    {
+        return ApiRequest.post(ApiRequest.SENDOTP_URL,Gson().toJson(user))
+    }
+
+    fun resetPassword(forgotPasswordOtp: ForgotPasswordOtp): ApiResponse
+    {
+        return ApiRequest.post(ApiRequest.RESETPASSWORD_URL,Gson().toJson(forgotPasswordOtp))
+    }
+
 }

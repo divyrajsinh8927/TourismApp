@@ -17,6 +17,8 @@ class ApiRequest
         @JvmStatic val HOTEL_URL = "$BASE_URL/hotel.php"
         @JvmStatic val BOOKING_URL = "$BASE_URL/booking.php"
         @JvmStatic val ADDTOKEN_URL = "$BASE_URL/firebase/add-token.php"
+        @JvmStatic val SENDOTP_URL = "$BASE_URL/auth/send-otp.php"
+        @JvmStatic val RESETPASSWORD_URL = "$BASE_URL/auth/forgot-password.php"
 
 
         @JvmStatic

@@ -142,7 +142,7 @@
             tools2:ignore="TouchTargetSizeCheck" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/ForgetPassword"
+            android:id="@+id/btnForgetPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20sp"

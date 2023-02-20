@@ -6,7 +6,9 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.ismaeldivita.chipnavigation.ChipNavigationBar
+
 
 class MainActivity : AppCompatActivity()
 {
@@ -16,26 +18,49 @@ class MainActivity : AppCompatActivity()
     private lateinit var hotelFragment: HotelFragment
     private lateinit var homeFragment: HomeFragment
     private lateinit var bookingFragment: BookingFragment
-
     private lateinit var sharedPref: SharedPreferences
+    private lateinit var fragment: Map<Int,Fragment>
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
         bottomNavigationView = findViewById(R.id.bottomNavBar)
         bottomNavigationView.setOnItemSelectedListener(::bottomItemNavSelected)
+
 
         homeFragment = HomeFragment()
         placeFragment = PlaceFragment()
         hotelFragment = HotelFragment()
         bookingFragment = BookingFragment()
 
+        fragment = mapOf(1 to homeFragment, 2 to placeFragment, 3 to hotelFragment,4 to bookingFragment)
+
         bottomNavigationView.setItemSelected(R.id.bottomNavHomeBtn, true)
-        showHomeFragment()
+
+
     }
 
+    override fun onRestoreInstanceState(savedInstanceState: Bundle)
+    {
+        super.onRestoreInstanceState(savedInstanceState)
+
+        when(savedInstanceState.getInt("Fragment")){
+                2 -> showPlaceFragment()
+                3 -> showHotelFragment()
+                4 -> showBookingFragment()
+                else -> showHomeFragment()
+            }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        val currentFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainer)
+        val keyOfFragment = fragment.entries.find { it.value == currentFragment }!!.key
+        outState.putInt("Fragment", keyOfFragment)
+    }
     override fun onCreateOptionsMenu(menu: Menu): Boolean
     {
         menuInflater.inflate(R.menu.action_bar, menu)
@@ -99,6 +124,10 @@ class MainActivity : AppCompatActivity()
         val manager = supportFragmentManager.beginTransaction()
         manager.replace(R.id.fragmentContainer, homeFragment)
         manager.commit()
+        bottomNavigationView.setItemSelected(
+            R.id.bottomNavHomeBtn,
+            isSelected = true
+        )
     }
 
     fun showPlaceFragment()
@@ -129,5 +158,10 @@ class MainActivity : AppCompatActivity()
         val manager = supportFragmentManager.beginTransaction()
         manager.replace(R.id.fragmentContainer, bookingFragment)
         manager.commit()
+        bottomNavigationView.setItemSelected(
+            R.id.bottomNavBookingBtn,
+            isSelected = true
+        )
     }
+
 }

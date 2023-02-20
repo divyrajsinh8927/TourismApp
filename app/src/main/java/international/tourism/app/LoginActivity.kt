@@ -44,11 +44,12 @@ class LoginActivity : AppCompatActivity()
         val signUp = findViewById<TextView>(R.id.newUser)
         val btnClose = findViewById<ImageView>(R.id.btnClose)
 
-        btnClose.setOnClickListener { startActivity(Intent(this, MainActivity::class.java)) }
+        btnClose.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+        }
         signUp.setOnClickListener {
-            val myIntent = Intent(this, RegisterActivity::class.java)
-            startActivity(myIntent)
-
+            startActivity(Intent(this, RegisterActivity::class.java))
             signUp.movementMethod = LinkMovementMethod.getInstance()
         }
 
@@ -58,6 +59,10 @@ class LoginActivity : AppCompatActivity()
             user = User(Email = email, PasswordHash = password)
 
             loginDone()
+        }
+
+        findViewById<Button>(R.id.btnForgetPassword).setOnClickListener {
+            startActivity(Intent(this,ForgotPasswordActivity::class.java))
         }
     }
 

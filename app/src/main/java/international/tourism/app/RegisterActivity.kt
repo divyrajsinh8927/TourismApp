@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.os.Looper
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import international.tourism.app.models.User
@@ -31,6 +32,11 @@ class RegisterActivity : AppCompatActivity()
         val txtPassword = findViewById<EditText>(R.id.txtPassword)
         val txtConfirmPassword = findViewById<EditText>(R.id.txtConfirmPassword)
         val btnSignUp = findViewById<Button>(R.id.btnSignUp)
+
+        findViewById<ImageView>(R.id.btnClose).setOnClickListener{
+            startActivity(Intent(this,LoginActivity::class.java))
+            finish()
+        }
 
         btnSignUp.setOnClickListener {
             val rName = txtName.text.toString()

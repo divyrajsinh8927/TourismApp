@@ -180,4 +180,9 @@ class HomeFragment : Fragment()
             }
         }
     }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt("Fragment",1)
+    }
 }
