@@ -5,6 +5,7 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.ismaeldivita.chipnavigation.ChipNavigationBar
@@ -24,8 +25,10 @@ class MainActivity : AppCompatActivity()
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
+        supportActionBar?.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM)
+        supportActionBar!!.setCustomView(R.layout.toolbar_title_layout)
+        supportActionBar!!.elevation = 0F
         setContentView(R.layout.activity_main)
-
 
         bottomNavigationView = findViewById(R.id.bottomNavBar)
         bottomNavigationView.setOnItemSelectedListener(::bottomItemNavSelected)

@@ -19,8 +19,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-
-
             <ImageView
                 android:id="@+id/cardImage"
                 android:layout_width="178sp"

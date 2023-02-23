@@ -19,7 +19,7 @@ class ApiRequest
         @JvmStatic val ADDTOKEN_URL = "$BASE_URL/firebase/add-token.php"
         @JvmStatic val SENDOTP_URL = "$BASE_URL/auth/send-otp.php"
         @JvmStatic val RESETPASSWORD_URL = "$BASE_URL/auth/forgot-password.php"
-
+        @JvmStatic val REVIEW_URl = "$BASE_URL/review.php"
 
         @JvmStatic
         fun get(url: String): ApiResponse

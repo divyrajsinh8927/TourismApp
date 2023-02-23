@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffe4"
+    android:background="#fcfff9"
     tools:context=".HomeFragment">
 
     <LinearLayout

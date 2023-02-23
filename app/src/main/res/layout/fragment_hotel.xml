@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffe4"
+    android:background="#fcfff9"
     android:orientation="vertical"
     tools:context=".HotelFragment">
 
@@ -23,7 +23,7 @@
   <androidx.recyclerview.widget.RecyclerView
       android:id="@+id/recHotel"
       android:layoutAnimation="@anim/iteam_layout_animation"
-      android:background="#ffffe4"
+      android:background="#fcfff9"
       android:layout_width="match_parent"
       android:layout_height="wrap_content" />
 

@@ -12,7 +12,7 @@
         android:id="@+id/img"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/about1"
+        android:src="@drawable/about3"
         android:layout_marginTop="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,10 +48,10 @@
 
     <ImageView
         android:id="@+id/service1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/aboutpage1"
+        android:layout_width="match_parent"
+        android:layout_height="80sp"
         android:layout_marginTop="10sp"
+        android:src="@drawable/aboutpage1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
@@ -59,10 +59,10 @@
 
     <ImageView
         android:id="@+id/service2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/aboutpage2"
+        android:layout_width="match_parent"
+        android:layout_height="80sp"
         android:layout_marginTop="10sp"
+        android:src="@drawable/aboutpage2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/service1"

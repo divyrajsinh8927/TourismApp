@@ -13,7 +13,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cardInnerLayout"
         android:layout_width="match_parent"
-        android:background="@color/offWhite_black"
+        android:background="@color/CardColor"
         android:layout_height="100sp"
         android:orientation="vertical">
 
