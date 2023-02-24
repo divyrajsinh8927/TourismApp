@@ -8,8 +8,9 @@
     <color name="gray_formalgray">#97969a</color>
     <color name="gray_anchorgrey">#596062</color>
     <color name="about_heading">#0D7EE3</color>
-    <color name="bottom_Nav_Background">#B4B4B4</color>
+    <color name="bottom_Nav_Background">#61A9E3</color>
     <color name="blue_white">#FFFFFF</color>
     <color name="offWhite_black">#1e272c</color>
+    <color name="CardColor">#61A9E3</color>
 
 </resources>
