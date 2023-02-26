@@ -31,6 +31,7 @@ class BookingDetail : AppCompatActivity()
     private lateinit var lblPerDayPrice: TextView
     private lateinit var lblTotalPrice: TextView
     private lateinit var btnCancelBooking: Button
+    private var bookingId: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
@@ -53,7 +54,7 @@ class BookingDetail : AppCompatActivity()
         btnCancelBooking = findViewById(R.id.btnCancelBooking)
 
 
-        val bookingId = intent.getIntExtra("bookingId", 0)
+        bookingId = intent.getIntExtra("bookingId", 0)
         booking = Booking(Id = bookingId)
 
 
@@ -64,7 +65,9 @@ class BookingDetail : AppCompatActivity()
                 .show()
             return
         }
+
         populateBookingData()
+        btnCancelBooking.setOnClickListener { cancelBooking() }
     }
 
     private fun populateBookingData()
@@ -85,22 +88,35 @@ class BookingDetail : AppCompatActivity()
             val bookingData = Gson().fromJson(response.message, Array<Booking>::class.java)
 
             withContext(Dispatchers.Main) {
-                for (bookings in bookingData)
+                for (booking in bookingData)
                 {
-                    lblHotelName.text = bookings.HotelName
-                    lblBookingFor.text = bookings.BookingFor
-                    lblBookingDate.text = bookings.BookingDate
-                    lblArrivalDate.text = bookings.ArrivalDate
-                    lblLeavingDate.text = bookings.LeavingDate
-                    lblTotalDays.text = bookings.Totaldays.toString().plus(" Day's")
-                    lblTotalRooms.text = bookings.TotalRooms.toString().plus(" Room's")
-                    lblPerDayPrice.text = bookings.PerDayPrice.toString().plus(" Rs")
-                    lblTotalPrice.text = bookings.TotalPrice.toString().plus(" Rs")
+                    lblHotelName.text = booking.HotelName
+                    lblBookingFor.text = booking.BookingFor
+                    lblBookingDate.text = booking.BookingDate
+                    lblArrivalDate.text = booking.ArrivalDate
+                    lblLeavingDate.text = booking.LeavingDate
+                    lblTotalDays.text = booking.Totaldays.toString().plus(" Day's")
+                    lblTotalRooms.text = booking.TotalRooms.toString().plus(" Room's")
+                    lblPerDayPrice.text = booking.PerDayPrice.toString().plus(" Rs")
+                    lblTotalPrice.text = booking.TotalPrice.toString().plus(" Rs")
 
-                    if (bookings.Status != "waiting")
-                    {
+                    if (booking.Status != "waiting" || booking.BookingIsCancel == 1)
                         btnCancelBooking.isVisible = false
-                    }
+                }
+            }
+        }
+    }
+
+    private fun cancelBooking()
+    {
+        CoroutineScope(Dispatchers.IO).launch {
+            val cancelBookingResponse = bookingService.cancelBooking(bookingId)
+            if(cancelBookingResponse.code == HttpURLConnection.HTTP_OK)
+            {
+                withContext(Dispatchers.Main)
+                {
+                    Toast.makeText(this@BookingDetail, "Booking IS Canceled", Toast.LENGTH_SHORT).show()
+                    btnCancelBooking.isVisible = false
                 }
             }
         }

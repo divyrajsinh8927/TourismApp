@@ -21,4 +21,9 @@ class BookingService
     {
         return ApiRequest.post(ApiRequest.BOOKING_URL,Gson().toJson(booking))
     }
+
+    fun cancelBooking(bookingId: Int): ApiResponse
+    {
+        return ApiRequest.delete(ApiRequest.BOOKING_URL.plus("?id=$bookingId"))
+    }
 }
