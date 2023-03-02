@@ -6,23 +6,23 @@
         android:id="@+id/bottomNavHomeBtn"
         android:title="@string/home"
         android:icon="@drawable/ic_home"
-        app:cnb_iconColor="@color/colorPrimaryDark"/>
+        app:cnb_iconColor="@color/bottom_nav_color"/>
 
     <item
         android:id="@+id/bottomNavPlaceBtn"
         android:title="@string/places"
         android:icon="@drawable/ic_place"
-        app:cnb_iconColor="@color/colorPrimaryDark"/>
+        app:cnb_iconColor="@color/bottom_nav_color"/>
 
     <item
         android:id="@+id/bottomNavHotelBtn"
         android:title="@string/hotels"
         android:icon="@drawable/ic_hotel"
-        app:cnb_iconColor="@color/colorPrimaryDark"/>
+        app:cnb_iconColor="@color/bottom_nav_color"/>
 
     <item
         android:id="@+id/bottomNavBookingBtn"
         android:title="@string/bookings"
         android:icon="@drawable/ic_booking"
-        app:cnb_iconColor="@color/colorPrimaryDark"/>
+        app:cnb_iconColor="@color/bottom_nav_color"/>
 </menu>

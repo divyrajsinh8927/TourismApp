@@ -18,9 +18,10 @@
     <color name="white_lightBlack">#FFFFFFFF</color>
     <color name="gray_formalgray">#f3f9e9</color>
     <color name="gray_anchorgrey">#FFFFFFFF</color>
-    <color name="bottom_Nav_Background">#61A9E3</color>
+    <color name="bottom_Nav_Background">#eaf4fc</color>
     <color name="blue_white">#3A3AC3</color>
     <color name="offWhite_black">#ffffe4</color>
+    <color name="bottom_nav_color">#454545</color>
 
 <!--    Only apply white them-->
     <color name="blue">#3A3AC3</color>
