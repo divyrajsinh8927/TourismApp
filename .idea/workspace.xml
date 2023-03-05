@@ -9,32 +9,16 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9aa8eab4-7be1-4d44-9564-e7d4d8e2abf8" name="Changes" comment="Implement Cancel Booking">
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/font/jura_bold.ttf" afterDir="false" />
+    <list default="true" id="9aa8eab4-7be1-4d44-9564-e7d4d8e2abf8" name="Changes" comment="Change design,color and logo">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/adapter/HomePlaceAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/adapter/HomePlaceAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/models/ImagesUrl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/models/ImagesUrl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/utils/ApiRequest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/international/tourism/app/utils/ApiRequest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/font/raleway_extrabolditalic.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/font/raleway_extrabolditalic.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/bookig_list_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/bookig_list_item.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/card_view_design.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/card_view_design.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_hotel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_hotel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_place.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_place.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/hotel_place_design.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/hotel_place_design.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/toolbar_title_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/toolbar_title_layout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/bottom_nav_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/bottom_nav_menu.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-night/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-night/colors.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-night/themes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-night/themes.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[5141fc4c]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\divyr\.android\avd\Pixel_2_API_33.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -89,6 +73,12 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PUSH_TAGS">
+      <GitPushTagMode>
+        <option name="argument" value="--tags" />
+        <option name="title" value="All" />
+      </GitPushTagMode>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitSEFilterConfiguration">
@@ -415,7 +405,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677392887174</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Change design,color and logo">
+      <created>1677731757071</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1677731757072</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -454,7 +451,8 @@
     <MESSAGE value="done forgot password" />
     <MESSAGE value="change Design and add logo" />
     <MESSAGE value="Implement Cancel Booking" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implement Cancel Booking" />
+    <MESSAGE value="Change design,color and logo" />
+    <option name="LAST_COMMIT_MESSAGE" value="Change design,color and logo" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
