@@ -218,17 +218,20 @@ class HotelActivity : AppCompatActivity()
             { _, calendarYear, monthOfYear, dayOfMonth ->
 
                 val calendar = Calendar.getInstance()
+
                 calendar.set(calendarYear, monthOfYear, dayOfMonth)
 
                 val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.US)
                 val dateFormatDatabase = SimpleDateFormat("yyyy-MM-dd", Locale.US)
                 lblArrivalDate.text = dateFormat.format(calendar.time)
                 arrivalDate = dateFormatDatabase.format(calendar.time)
+
             },
             year,
             month,
             day
         )
+        datePickerDialog.datePicker.minDate = System.currentTimeMillis()
         datePickerDialog.show()
     }
 
@@ -247,7 +250,6 @@ class HotelActivity : AppCompatActivity()
 
                 val calendar = Calendar.getInstance()
                 calendar.set(calendarYear, monthOfYear, dayOfMonth)
-
                 val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.US)
                 val dateFormatDatabase = SimpleDateFormat("yyyy-MM-dd", Locale.US)
                 lblLeavingDate.text = dateFormat.format(calendar.time)
@@ -258,6 +260,7 @@ class HotelActivity : AppCompatActivity()
             month,
             day
         )
+        datePickerDialog.datePicker.minDate = System.currentTimeMillis()
         datePickerDialog.show()
     }
 
