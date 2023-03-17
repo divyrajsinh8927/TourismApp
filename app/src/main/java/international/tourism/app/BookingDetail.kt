@@ -36,6 +36,9 @@ class BookingDetail : AppCompatActivity()
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
+        supportActionBar?.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM)
+        supportActionBar!!.setCustomView(R.layout.toolbar_title_layout)
+        supportActionBar!!.elevation = 0F
         setContentView(R.layout.activity_booking_detail)
 
         val actionBar: ActionBar? = supportActionBar
